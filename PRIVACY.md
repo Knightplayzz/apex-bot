@@ -13,10 +13,10 @@ The bot Stores the following information on /link command:
 - ``discordID`` - User ID as the value.
 - ``username`` - The specified username giving the user.
 - ``platform`` - Apex Legends platform as value.
-- ``serverID`` - Server ID as the value
+- ``serverID`` - Server ID as the value.
 
 The bot Stores the following information on /autorole command:
-- ``serverID`` - Server ID as the value
+- ``serverID`` - Server ID as the value.
 
 The Bot may also save PNG images for history data graphs, top data graphs and map image. The Bot also saves logs of every command ran and the parameters given to the Bot. The logs are cleared every month.
 
