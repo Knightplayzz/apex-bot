@@ -14,6 +14,7 @@ The bot Stores the following information on /link command:
 - ``username`` - The specified username giving the user.
 - ``platform`` - Apex Legends platform as value.
 - ``serverID`` - Server ID as the value
+
 The bot Stores the following information on /autorole command:
 - ``serverID`` - Server ID as the value
 
