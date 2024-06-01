@@ -1,6 +1,7 @@
 <p align="center">
  <img src=https://repobeats.axiom.co/api/embed/1655dd98d3517f93b6d246c98f3a1dd134f37595.svg>
 </p>
+
 # Apex Legends Bot
 
 Get user stats, Battle Royale and Mixtape map rotations, and more. Start by typing `/` for a list of commands.
