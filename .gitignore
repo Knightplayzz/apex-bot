@@ -1,0 +1,4 @@
+node_modules/
+src/commands/needupdateCommand/
+.env
+todo.txt

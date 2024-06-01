@@ -1,0 +1,62 @@
+[
+    {
+        "label": "Loba",
+        "value": "1"
+    },
+    {
+        "label": "Valkyrie",
+        "value": "2"
+    },
+    {
+        "label": "Crypto",
+        "value": "3"
+    },
+    {
+        "label": "Wattson",
+        "value": "4"
+    },
+    {
+        "label": "Rampart",
+        "value": "5"
+    },
+    {
+        "label": "Revenant",
+        "value": "6"
+    },
+    {
+        "label": "Bangalore",
+        "value": "7"
+    },
+    {
+        "label": "Gibraltar",
+        "value": "8"
+    },
+    {
+        "label": "Caustic",
+        "value": "9"
+    },
+    {
+        "label": "Mirage",
+        "value": "10"
+    },
+    {
+        "label": "Octane",
+        "value": "11"
+    },
+    {
+        "label": "Pathfinder",
+        "value": "12"
+    },
+    {
+        "label": "Lifeline",
+        "value": "13"
+    },
+    {
+        "label": "Bloodhound",
+        "value": "14"
+    },
+    {
+        "label": "Wraith",
+        "value": "15"
+    }
+]

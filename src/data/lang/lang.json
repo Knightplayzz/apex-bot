@@ -1,0 +1,254 @@
+{
+    "en": {
+        "error": {
+            "line_1": "ERROR",
+            "line_2": "Please try again later"
+        },
+        "map": {
+            "line_1": "Legends are currently dropping into",
+            "line_2": "ends",
+            "line_3": "at",
+            "line_4": "Up next",
+            "line_5": "No LTM",
+            "line_6": "Sorry there is no ltm"
+        },
+        "autorole": {
+            "line_1": "The bot doesn't have the permission to do this",
+            "line_2": "Invite the bot again by pressing [here]",
+            "line_3": "Changed to: disabled",
+            "line_4": "Changed to: enabled",
+            "line_5": "Currently: enabled",
+            "line_6": "Currently: disabled",
+            "line_7": "The Apex Bot role must be higher that the ranked roles",
+            "line_8": "You already have this rank",
+            "line_9": "You now have the",
+            "line_10": "rank",
+            "line_11": "This feature is off in this server",
+            "line_12": "ERROR",
+            "line_13": "SUCCES",
+            "line_14": "You are not linked"
+        },
+        "crafting": {
+            "line_2": "Weekly Reset"
+        },
+        "distribution": {
+            "line_1": "Data from",
+            "line_2": "This data is from all the user that exist in the ALS database",
+            "line_3": "Rank distribution"
+        },
+        "drop": {
+            "line_1": "Drop in",
+            "line_2": "this round"
+        },
+        "heirloom": {
+            "line_1": "Select a legend",
+            "line_2": "Inactive do /heirloom again"
+        },
+        "invite": {
+            "line_1": "Thank you for inviting",
+            "line_2": "Click [here]",
+            "line_3": "to invite"
+        },
+        "link": {
+            "line_1": "ERROR",
+            "line_2": "You are already linked to",
+            "line_3": "SUCCES",
+            "line_4": "You are now linked to"
+        },
+        "lang": {
+            "line_1": "Language Changed",
+            "line_2": "Changed to: ``English``"
+        },
+        "loadout": {
+            "line_1": "loadout",
+            "line_2": "Use",
+            "line_3": "this round"
+        },
+        "report": {
+            "line_1": "What command has the issue",
+            "line_2": "What is the issue",
+            "line_3": "What is the problem? Be as detailed as possible.",
+            "line_4": "Select a command",
+            "line_5": "Bug",
+            "line_6": "You have selected",
+            "line_7": "If this is not correct you can chage it in the command field",
+            "line_8": "If you cancelled your request do ``/report`` again",
+            "line_9": "Bug reported",
+            "line_10": "Thank you for your report"
+        },
+        "serverstatus": {
+            "line_1": "Apex Legends Server Status",
+            "line_2": "US East",
+            "line_3": "US Central",
+            "line_4": "US West",
+            "line_5": "EU East",
+            "line_6": "EU West",
+            "line_7": "South America",
+            "line_8": "Asia",
+            "line_9": "[Crossplay] Apex Login",
+            "line_10": "Origin Login",
+            "line_11": "EA Accounts",
+            "line_12": "Lobby & MatchMaking Services",
+            "line_13": "Status data provided by"
+        },
+        "comming": {
+            "line_1": "Maintenance",
+            "line_2": "This will be added very soon",
+            "line_3": "For shop click [here]",
+            "line_4": "For leaderboard click [here]"
+        },
+        "stats": {
+            "line_1": "Coudn't delete data",
+            "line_4": "Currently Equipped Trackers",
+            "line_6": "Equip the BattlePass badge to update it",
+            "line_5": "SUCCES",
+            "line_7": "Lookup error",
+            "line_8": "Looks like you haven't linked your account",
+            "line_9": "Do ``/link`` and try again",
+            "line_15": "This user is not linked",
+            "line_16": "You can't get stats from a bot",
+            "line_17": "You are not linked",
+            "line_18": "You are now unlinked from"
+        },
+        "vote": {
+            "line_1": "YOU VOTED",
+            "line_2": "Thank you for voting your reward has been given",
+            "line_3": "Thank you for voting",
+            "line_4": "For the reward join the [support server]",
+            "line_6": "VOTE FIRST",
+            "line_7": "You haven't voted",
+            "line_8": "Click [here]",
+            "line_9": "to vote"
+        },
+        "who": {
+            "line_1": "Play",
+            "line_2": "this round"
+        }
+    },
+    "nl": {
+        "error": {
+            "line_1": "ERROR",
+            "line_2": "Probeer het later opnieuw"
+        },
+        "map": {
+            "line_1": "Legends droppen nu in",
+            "line_2": "eindigt",
+            "line_3": "om",
+            "line_4": "Volgende",
+            "line_5": "Geen LTM",
+            "line_6": "Sorry er is geen ltm"
+        },
+        "autorole": {
+            "line_1": "De bot heeft niet je juiste permissies",
+            "line_2": "Invite de bot opnieuw, druk [hier]",
+            "line_3": "Veranderd naar: uit",
+            "line_4": "Veranderd naar: aan",
+            "line_5": "Het staat nu: aan",
+            "line_6": "Het staat nu: uit",
+            "line_7": "De Apex Bot role moet hoger zijn dan de ranked rollen",
+            "line_8": "Je hebt deze rank al",
+            "line_9": "Je hebt nu de",
+            "line_10": "rank",
+            "line_11": "Dit staat uit is deze server",
+            "line_12": "FOUT OPGETREDEN",
+            "line_13": "SUCCES",
+            "line_14": "Je bent niet gelinked"
+        },
+        "crafting": {
+            "line_2": "Weekelijkse Reset"
+        },
+        "distribution": {
+            "line_1": "Data komt van",
+            "line_2": "Alle data komt van de ALS database",
+            "line_3": "Rank verdeling"
+        },
+        "drop": {
+            "line_1": "Land in",
+            "line_2": "deze ronde"
+        },
+        "heirloom": {
+            "line_1": "Kies een legend",
+            "line_2": "Inactief do /heirloom opnieuw"
+        },
+        "invite": {
+            "line_1": "Dankje dat je de bo hebt geinvite",
+            "line_2": "Druk [hier]",
+            "line_3": "om de bot te inviten"
+        },
+        "link": {
+            "line_1": "FOUT OPGETREDEN",
+            "line_2": "Je bent al gelinked aan",
+            "line_3": "SUCCES",
+            "line_4": "Je bent nu gelinked aan"
+        },
+        "lang": {
+            "line_1": "Taal Veranderd",
+            "line_2": "Veranderd naar: ``Nederlands``"
+        },
+        "loadout": {
+            "line_1": "loadout",
+            "line_2": "Gebruik",
+            "line_3": "deze ronde"
+        },
+        "report": {
+            "line_1": "Welk command heeft een probleem",
+            "line_2": "Wat is het probleem?",
+            "line_3": "Wat is het probleem? Leg het zo goed mogelijk uit.",
+            "line_4": "Kies een command",
+            "line_5": "Bug",
+            "line_6": "Je koos",
+            "line_7": "Als je niet het juiste commando hebt gekozen, kan je het nog veranderen",
+            "line_8": "Als het heeft geannuleerd do ``/report`` opnieuw",
+            "line_9": "Bug gerapporteerd",
+            "line_10": "Dankjewel voor je melding"
+        },
+        "serverstatus": {
+            "line_1": "Apex Legends Server Status",
+            "line_2": "VS oost",
+            "line_3": "VS Centraal",
+            "line_4": "VS West",
+            "line_5": "EU Oost",
+            "line_6": "EU West",
+            "line_7": "Zuid-Amerika",
+            "line_8": "Azië",
+            "line_9": "[Crossplay] Apex Login",
+            "line_10": "Origin Login",
+            "line_11": "EA Accounts",
+            "line_12": "Lobby & MatchMaking Services",
+            "line_13": "Data komt van"
+        },
+        "comming": {
+            "line_1": "Onderhoud",
+            "line_2": "Dit wordt binnenkort toegevoed",
+            "line_3": "Voor shop druk [hier]",
+            "line_4": "Voor leaderboard druk [hier]"
+        },
+        "stats": {
+            "line_1": "Kon data niet verwijderen",
+            "line_4": "Aangezette Trackers",
+            "line_6": "Zet de BattlePass badge aan om te updaten",
+            "line_5": "SUCCES",
+            "line_7": "Lookup error",
+            "line_8": "Het lijkt erop dat je je account niet hebt gelinked",
+            "line_9": "Doe ``/link`` en probeer opnieuw",
+            "line_15": "Deze gebruiker is niet gelinked",
+            "line_16": "Je kan geen stastieken van een bot opvragen",
+            "line_17": "Je bent niet gelinked",
+            "line_18": "Je bent nu unlinked van"
+        },
+        "vote": {
+            "line_1": "Je hebt gevote",
+            "line_2": "Dankje voor het voten, je hebt de role ontvangen",
+            "line_3": "Dankje voor het voten",
+            "line_4": "Voor de role join de [support server]",
+            "line_6": "Je moet eerst voten",
+            "line_7": "Je hebt niet gevote",
+            "line_8": "Druk [hier]",
+            "line_9": "om te voten"
+        },
+        "who": {
+            "line_1": "Speel",
+            "line_2": "deze ronde"
+        }
+    }
+}

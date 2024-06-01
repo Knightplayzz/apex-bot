@@ -1,0 +1,29 @@
+{
+  "name": "apexbot",
+  "version": "2.0.1",
+  "description": "The Best Apex Bot for Discord!",
+  "main": "src/Shard.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "author": "Philippe Smeets",
+  "license": "CC BY-NC",
+  "engines": {
+    "node": "20.14.0"
+  },
+  "dependencies": {
+    "canvas": "^2.11.2",
+    "cron": "^2.4.4",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.1",
+    "firebase": "^9.23.0",
+    "ms": "^2.1.3",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^2.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.3.0"
+  }
+}

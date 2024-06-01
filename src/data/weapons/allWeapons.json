@@ -1,0 +1,127 @@
+[
+    {
+        "name": "Flatline",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/f/f1/VK-47_Flatline.png/revision/latest?cb=20220511040308",
+        "description": "Versatile assault rifle, solid damage at close and medium ranges."
+    },
+    {
+        "name": "Havoc",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/e/ec/HAVOC_Rifle.png/revision/latest?cb=20220616154439",
+        "description": "Energy assault rifle, sustained fire, deadly with Turbocharger."
+    },
+    {
+        "name": "R-301",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/f/f1/R-301_Carbine.png/revision/latest?cb=20220604191827",
+        "description": "Reliable assault rifle, high rate of fire, low recoil."
+    },
+    {
+        "name": "Hemlok",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/7/74/Hemlok_Burst_AR.png/revision/latest?cb=20220617000007",
+        "description": "Burst-fire rifle, precise shots at medium range."
+    },
+    {
+        "name": "Alternator",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/e/e9/Alternator_SMG.png/revision/latest?cb=20220513124637",
+        "description": "Light SMG, decent rate of fire, manageable recoil."
+    },
+    {
+        "name": "Prowler",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/b/bf/Prowler_Burst_PDW.png/revision/latest?cb=20220829140000",
+        "description": "Burst-fire SMG, transformable to full-auto, close to medium range."
+    },
+    {
+        "name": "R-99",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/d/d5/R-99_SMG.png/revision/latest?cb=20220829171808",
+        "description": "High-rate of fire SMG, excellent close-range damage."
+    },
+    {
+        "name": "Volt",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/6/60/Volt_SMG.png/revision/latest?cb=20210717062422",
+        "description": "Versatile energy SMG, low recoil, suitable for mid-range."
+    },
+    {
+        "name": "CAR",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/1/13/C.A.R._SMG.png/revision/latest?cb=20211104170312",
+        "description": "Compact SMG, moderate rate of fire, good accuracy."
+    },
+    {
+        "name": "Devotion",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/8/8c/Devotion_LMG.png/revision/latest?cb=20220917210303",
+        "description": "Rapid-fire LMG, slow start, high speed over time."
+    },
+    {
+        "name": "L-STAR",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/0/01/L-STAR_EMG.png/revision/latest?cb=20220915044251",
+        "description": "Powerful energy LMG, high rate of fire, prone to overheating."
+    },
+    {
+        "name": "Spitfire",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/f/f2/M600_Spitfire.png/revision/latest?cb=20220919090724",
+        "description": "Heavy LMG, large magazine, sustained fire, effective against shields."
+    },
+    {
+        "name": "G7 Scout",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/e/eb/G7_Scout.png/revision/latest?cb=20220830141535",
+        "description": "Semi-auto marksman rifle, accurate shots at medium to long range."
+    },
+    {
+        "name": "Triple Take",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/d/d9/Triple_Take.png/revision/latest?cb=20210823030642",
+        "description": "Unique sniper rifle, fires three projectiles, effective for close to medium range."
+    },
+    {
+        "name": "30-30 Repeater",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/8/86/30-30_Repeater.png/revision/latest?cb=20220911173300",
+        "description": "Lever-action marksman rifle, high damage, precise long-range engagements."
+    },
+    {
+        "name": "Charge Rifle",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/2/2b/Charge_Rifle.png/revision/latest?cb=20221009165709",
+        "description": "Powerful sniper rifle, high damage, requires charge-up before firing."
+    },
+    {
+        "name": "Longbow",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/4/46/Longbow_DMR.png/revision/latest?cb=20220906141950",
+        "description": "Semi-auto sniper rifle, precise shots, high damage at long range."
+    },
+    {
+        "name": "Sentinel",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/9/91/Sentinel.png/revision/latest?cb=20220515012656",
+        "description": "Bolt-action sniper rifle, high damage, charge-up shots for more damage."
+    },
+    {
+        "name": "EVA-8",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/9/97/EVA-8_Auto.png/revision/latest?cb=20210817041450",
+        "description": "Semi-auto shotgun, good damage at close range."
+    },
+    {
+        "name": "Mozambique",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/a/ae/Mozambique_Shotgun.png/revision/latest?cb=20210813094328",
+        "description": "Triple-barrel shotgun pistol, moderate damage at close range."
+    },
+    {
+        "name": "Peacekeeper",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/6/64/Peacekeeper.png/revision/latest?cb=20210814095843",
+        "description": "Lever-action shotgun, high damage, effective at close range."
+    },
+    {
+        "name": "RE-45",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/2/25/RE-45_Auto.png/revision/latest?cb=20210816090119",
+        "description": "Full-auto pistol, moderate rate of fire, suitable for close-quarters combat."
+    },
+    {
+        "name": "P2020",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/c/c1/P2020.png/revision/latest?cb=20210815055000",
+        "description": "Semi-auto pistol, decent rate of fire, moderate damage."
+    },
+    {
+        "name": "Wingman",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/0/09/Wingman.png/revision/latest?cb=20210813090820",
+        "description": "High-caliber revolver, high damage per shot, effective at mid-range."
+    },
+    {
+        "name": "Nemesis",
+        "url": "https://static.wikia.nocookie.net/apexlegends_gamepedia_en/images/b/b8/Nemesis_Burst_AR.png/revision/latest/scale-to-width-down/314?cb=20230215125901",
+        "description": "A fast burst energy SMG that keeps shooting faster as you go."
+    }
+]

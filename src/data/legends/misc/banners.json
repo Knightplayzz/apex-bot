@@ -1,0 +1,106 @@
+[
+    {
+        "name": "Alter",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/alter/apex-grid-tile-legends-alter.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Ash",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-ash.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Ballistic",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/arsenal/apex-grid-tile-legends-ballistic.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Bangalore",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-bangalore.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Bloodhound",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-bloodhound.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Catalyst",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2022/10/apex-grid-tile-legends-catalyst.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Caustic",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-caustic.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Conduit",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/conduit/apex-grid-tile-legends-conduit.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Crypto",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-crypto.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Fuse",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2021/01/apex-grid-tile-legends-fuse.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Gibraltar",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-gibraltar.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Horizon",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2020/10/horizon/apex-grid-tile-legends-horizon.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Lifeline",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-lifeline.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Loba",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2020/05/apex-grid-tile-legends-loba.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Mad Maggie",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2022/01/apex-grid-tile-legends-maggie.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Mirage",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-mirage.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Newcastle",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2022/05/apex-grid-tile-legends-newcastle.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Octane",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-octane.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Pathfinder",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-pathfinder.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Rampart",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2020/08/rampart/apex-grid-tile-legends-rampart.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Revenant",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2023/07/apex-grid-tile-legends-revenant.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Seer",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2021/07/seer-assets/apex-grid-tile-legends-seer.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Valkyrie",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2021/04/apex-grid-tile-legends-valkyrie.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Vantage",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2022/07/apex-grid-tile-legends-vantage.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Wattson",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-wattson.png.adapt.crop16x9.png"
+    },
+    {
+        "name": "Wraith",
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-wraith.png.adapt.crop16x9.png"
+    }
+]
