@@ -8,11 +8,19 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Knightplayzz/apex-bot.git"
+  },
   "author": "Philippe Smeets",
   "license": "CC BY-NC",
   "engines": {
     "node": "20.14.0"
   },
+  "bugs": {
+    "url": "https://github.com/Knightplayzz/apex-bot/issues"
+  },
+  "homepage": "https://github.com/Knightplayzz/apex-bot#readme",
   "dependencies": {
     "canvas": "^2.11.2",
     "cron": "^2.4.4",
