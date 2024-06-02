@@ -1,5 +1,9 @@
 <p align="center">
  <img src=https://repobeats.axiom.co/api/embed/1655dd98d3517f93b6d246c98f3a1dd134f37595.svg>
+
+ <a href="https://top.gg/bot/1014207340188270673">
+  <img src="https://top.gg/api/widget/1014207340188270673.svg">
+</a>
 </p>
 
 # Apex Legends Bot
