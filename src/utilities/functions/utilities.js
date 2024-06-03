@@ -1,5 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const lang = require('../../data/lang/lang.json');
+const fetch = require('node-fetch');
+require('dotenv').config();
 
 function getStatus(data) {
     var state;
@@ -60,4 +62,29 @@ function sentErrorEmbed(interaction, langOpt, error) {
     console.log(error);
     interaction.editReply({ embeds: [errorEmbed], ephemeral: true });
 }
-module.exports = { getStatus, getMapDescription, sentErrorEmbed }
+function sentVoteEmbed(interaction, langOpt) {
+    var voteEmbed = new EmbedBuilder()
+        .setTitle(`${lang[langOpt].vote.line_1}`)
+        .setDescription(`${lang[langOpt].vote.line_2}(https://discord.com/application-directory/1014207340188270673).` +
+            `\n${lang[langOpt].vote.line_3}(https://top.gg/bot/1014207340188270673/vote).`)
+        .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
+        .setTimestamp()
+        .setColor("Red");
+
+    return interaction.reply({ embeds: [voteEmbed], ephemeral: true });
+}
+async function hasUserVoted(interaction, langOpt) {
+    if (1 === 1) return false //check if code it working
+    var url = `https://top.gg/api/bots/1014207340188270673/check?userId=${interaction.user.id}`;
+    try {
+        const res = await fetch(url, {
+            headers: { "Authorization": process.env.topgg_AUTH }
+        });
+        const data = await res.json();
+        return data.voted === 1;
+    } catch (error) {
+        sentErrorEmbed(interaction, langOpt, error);
+        return null; // Return null in case of an error
+    }
+}
+module.exports = { getStatus, getMapDescription, sentErrorEmbed, sentVoteEmbed, hasUserVoted }

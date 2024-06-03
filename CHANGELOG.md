@@ -1,5 +1,36 @@
 # Changelog
 
+## V2.0.2
+
+### Updates to commands
+
+Some minor bug fixes to some commands.
+
+### New SUBSCRIPTIONS
+
+Buy subscriptions for Apex Bot and get access to new features. Some commands need a subscriptions, some are free.
+All premium command can be accessed for FREE if you vote on top.gg for Apex Bot. (This is not done to make money, I need to pay the host)
+
+### New loadout command
+
+New command
+
+### Aplication name change
+
+Ask discord dev to change the name of the app from "Apex" to "Apex Bot".
+
+### Changed Banner and Profile Picture
+
+Change bot's profile picture and banner.
+
+### Updated ESLINT V9.3.0 -> V9.4.0
+
+Updated Package
+
+### Updated discord V14.15.1 -> V14.15.3
+
+Updated package
+
 ## V2.0.1
 
 ### Added commands

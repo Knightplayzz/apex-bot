@@ -23,6 +23,7 @@ const { embedColor } = require('../../../data/utilities/utilities.json');
 const { getStatus, sentErrorEmbed } = require('../../../utilities/functions/utilities');
 
 module.exports = {
+    premium: true,
     data: new SlashCommandBuilder()
         .setName('me')
         .setDMPermission(false)

@@ -1,6 +1,6 @@
 {
   "name": "apexbot",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "The Best Apex Bot for Discord!",
   "main": "src/Shard.js",
   "type": "commonjs",
@@ -24,7 +24,7 @@
   "dependencies": {
     "canvas": "^2.11.2",
     "cron": "^2.4.4",
-    "discord.js": "^14.14.1",
+    "discord.js": "^14.15.2",
     "dotenv": "^16.4.1",
     "firebase": "^9.23.0",
     "ms": "^2.1.3",

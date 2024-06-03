@@ -60,8 +60,8 @@
             "line_2": "Changed to: ``English``"
         },
         "loadout": {
-            "line_1": "loadout",
-            "line_2": "Use",
+            "line_1": "and the",
+            "line_2": "Use the",
             "line_3": "this round"
         },
         "report": {
@@ -111,14 +111,9 @@
             "line_18": "You are now unlinked from"
         },
         "vote": {
-            "line_1": "YOU VOTED",
-            "line_2": "Thank you for voting your reward has been given",
-            "line_3": "Thank you for voting",
-            "line_4": "For the reward join the [support server]",
-            "line_6": "VOTE FIRST",
-            "line_7": "You haven't voted",
-            "line_8": "Click [here]",
-            "line_9": "to vote"
+            "line_1": "This is a Premium command!",
+            "line_2": "To buy premium click [here]",
+            "line_3": "Or Vote for free by clicking [here]"
         },
         "who": {
             "line_1": "Play",
@@ -237,14 +232,9 @@
             "line_18": "Je bent nu unlinked van"
         },
         "vote": {
-            "line_1": "Je hebt gevote",
-            "line_2": "Dankje voor het voten, je hebt de role ontvangen",
-            "line_3": "Dankje voor het voten",
-            "line_4": "Voor de role join de [support server]",
-            "line_6": "Je moet eerst voten",
-            "line_7": "Je hebt niet gevote",
-            "line_8": "Druk [hier]",
-            "line_9": "om te voten"
+            "line_1": "Dit is een premium command!",
+            "line_2": "Voor premium click [hier]",
+            "line_3": "Of Vote gratis en druk [hier]"
         },
         "who": {
             "line_1": "Speel",

@@ -37,6 +37,8 @@ module.exports = {
         fetch(url)
             .then(res => { if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, `stats.js l.38`) })
             .then(data => {
+                if (!data || !data.global) return sentErrorEmbed(interaction, langOpt, 'WRONG USERNAME');
+
                 var badge1 = data?.legends?.selected?.data[0] ?? "**-**";
                 var badge2 = data?.legends?.selected?.data[1] ?? "**-**";
                 var badge3 = data?.legends?.selected?.data[2] ?? "**-**";

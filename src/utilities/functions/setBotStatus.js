@@ -6,6 +6,7 @@ async function setMapData(client, auth) {
     fetch(url)
         .then(res => { if (res.status === 200) return res.json() })
         .then(data => {
+            if (data.current === undefined) return console.log(`SET SATUS ERROR DATA:\n${data}`)
             var timeDay = Math.round(Number(data.current.remainingMins) / 1440); //here error
             var hours = Number(data.current.remainingMins) / 60;
 

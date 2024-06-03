@@ -21,6 +21,7 @@ const { embedColor } = require('../../../data/utilities/utilities.json')
 
 
 module.exports = {
+    premium: true,
     data: new SlashCommandBuilder()
         .setName('language')
         .setDescription('Change the language of the bot.')

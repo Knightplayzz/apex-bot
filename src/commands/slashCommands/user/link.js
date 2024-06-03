@@ -22,6 +22,7 @@ const db = getFirestore(app);
 
 
 module.exports = {
+    premium: true,
     data: new SlashCommandBuilder()
         .setName('link')
         .setDescription('Link your Discord account to your Apex Legends username.')
@@ -69,6 +70,8 @@ module.exports = {
                 .then(res => {
                     if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, `link.js l.69`)
                 }).then(async data => {
+                    if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentErrorEmbed(interaction, langOpt, `link.js l.73`);
+
                     const citiesRef = collection(db, 'serverUsers', interaction.guild.id, 'users');
                     await setDoc(doc(citiesRef, interaction.user.id), {
                         platform: platform,
