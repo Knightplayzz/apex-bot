@@ -25,4 +25,4 @@ The owner of the Bot may not be made liable for individuals breaking these Terms
 Contact
 -
 
-People may get in contact trough E-mail (<philippesmeets0@gmail.com>) and/or discord (philippesmeets) and/or [our discord server](https://discord.gg/cgdssWTqAT).
+People may get in contact trough E-mail (<philippesmeets@icloud.com>) and/or discord (philippesmeets) and/or [our discord server](https://discord.gg/cgdssWTqAT).

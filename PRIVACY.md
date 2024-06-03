@@ -18,10 +18,6 @@ The bot Stores the following information on /link command:
 - ``platform`` - Apex Legends platform as value.
 - ``serverID`` - Server ID as the value.
 
-The bot Stores the following information on /autorole command:
-
-- ``serverID`` - Server ID as the value.
-
 The Bot may also save PNG images for history data graphs, top data graphs and map image. The Bot also saves logs of every command ran and the parameters given to the Bot. The logs are cleared every month.
 
 No other information outside of the above mentioned ones will be stored.
@@ -29,4 +25,4 @@ No other information outside of the above mentioned ones will be stored.
 Removal of Data
 -
 
-Serves/Guilds data can be removed automatically through means of removing the Bot from the Server/Guild. This can be achieved by either kicking or banning the Bot from the Server/Guild. Re-inviting the Bot will add the same values as mentioned above. User data can be removed using the a specific command (/unlink) to remove all of the user data or by leaving the server where the bot is currently active.
+Serves/Guilds data can be removed automatically through means of removing the Bot from the Server/Guild. This can be achieved by either kicking or banning the Bot from the Server/Guild. Re-inviting the Bot will add the same values as mentioned above. User data can be removed using the a specific command (/unlink) to remove all of the user data.
