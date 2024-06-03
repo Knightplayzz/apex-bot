@@ -1,10 +1,10 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const fetch = require('node-fetch');
 const emoji = require('../../../data/utilities/emoji.json');
-const lang = require("../../../data/lang/lang.json");
 const { sentErrorEmbed } = require('../../../utilities/functions/utilities');
 
 module.exports = {
+    premium: true,
     data: new SlashCommandBuilder()
         .setName('status')
         .setDMPermission(true)
