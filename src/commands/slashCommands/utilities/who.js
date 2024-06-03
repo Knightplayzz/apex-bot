@@ -7,9 +7,15 @@ module.exports = {
         .setName('who')
         .setDMPermission(true)
         .setDescription('Picks a random legend to play in-game.')
+        .setDescriptionLocalizations({
+            nl: 'Kiest een willekeurige legend om in-game te gebruiken.'
+        })
         .addStringOption(option =>
             option.setName('class')
                 .setDescription('Category of legends to choose from.')
+                .setDescriptionLocalizations({
+                    nl: 'Categorie aan legends om van te kiezen.'
+                })
                 .setRequired(false)
                 .addChoices(
                     { name: 'Assault', value: 'assault' },

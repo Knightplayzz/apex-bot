@@ -1,5 +1,27 @@
 # Changelog
 
+## V2.0.3
+
+### Added shard count for top.gg
+
+Added shard count in the post request.
+
+### Changed Activity Type
+
+Custom activity. Removed Playing ...
+
+### New added /invite
+
+invite the bot to your server.
+
+### Change /current -> /season
+
+Change the name of the command.
+
+### Multi languages Support
+
+Added name localizations for Dutch.
+
 ## V2.0.2
 
 ### Updates to commands

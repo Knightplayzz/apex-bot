@@ -9,9 +9,18 @@ module.exports = {
         .setName('map')
         .setDMPermission(true)
         .setDescription('Shows the current in-game map.')
+        .setDescriptionLocalizations({
+            nl: 'Zie de huidige in-game map.'
+        })
         .addStringOption(option =>
             option.setName('gamemode')
                 .setDescription('Select Gamemode.')
+                .setNameLocalizations({
+                    nl: 'gamemode'
+                })
+                .setDescriptionLocalizations({
+                    nl: 'Kies een Gamemode.'
+                })
                 .setRequired(false)
                 .addChoices(
                     { name: 'Battle Royale', value: 'br' },

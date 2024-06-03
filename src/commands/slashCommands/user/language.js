@@ -25,10 +25,16 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('language')
         .setDescription('Change the language of the bot.')
+        .setDescriptionLocalizations({
+            nl: 'Verander de taal van de bot.'
+        })
         .setDMPermission(false)
         .addStringOption(option =>
             option.setName('language')
                 .setDescription('Select the language.')
+                .setDescriptionLocalizations({
+                    nl: 'Kies de taal.'
+                })
                 .setRequired(true)
                 .addChoices(
                     { name: 'English (Default)', value: 'en' },

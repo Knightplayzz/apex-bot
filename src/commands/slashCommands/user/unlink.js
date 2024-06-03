@@ -22,7 +22,10 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('unlink')
         .setDMPermission(false)
-        .setDescription('Unlink your Discord account from your Apex username.'),
+        .setDescription('Unlink your Discord account from your Apex username.')
+        .setDescriptionLocalizations({
+            nl: 'Ontkoppel je Discord account van je Apex gebruikersnaam.'
+        }),
 
     async execute(interaction, auth, langOpt) {
 

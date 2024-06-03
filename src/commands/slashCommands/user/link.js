@@ -26,10 +26,16 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('link')
         .setDescription('Link your Discord account to your Apex Legends username.')
+        .setDescriptionLocalizations({
+            nl: 'Koppel je Discord account aan je Apex Legends gebruikersnaam.'
+        })
         .setDMPermission(false)
         .addStringOption(option =>
             option.setName('platform')
                 .setDescription('The platform you play Apex on.')
+                .setDescriptionLocalizations({
+                    nl: 'Het platform waarop je Apex speelt.'
+                })
                 .setRequired(true)
                 .addChoices(
                     { name: 'PC(Steam/Origin)', value: 'PC' },
@@ -39,6 +45,9 @@ module.exports = {
         .addStringOption(option =>
             option.setName('username')
                 .setDescription('Your in-game username.')
+                .setDescriptionLocalizations({
+                    nl: 'Je in-game gebruikersnaam.'
+                })
                 .setRequired(true)
         ),
 

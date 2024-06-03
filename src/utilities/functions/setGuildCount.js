@@ -13,7 +13,10 @@ module.exports = {
                     guildCountChannel.setName("Servers Active: " + guildCount.toString())
                 } catch (error) { console.log(error) }
 
-                let todo = { "server_count": guildCount };
+                let todo = {
+                    "server_count": guildCount,
+                    "shard_count": client.shard.count
+                };
                 fetch('https://top.gg/api/bots/1014207340188270673/stats', {
                     method: 'POST',
                     body: JSON.stringify(todo),

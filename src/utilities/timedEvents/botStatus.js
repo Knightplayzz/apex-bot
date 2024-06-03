@@ -20,6 +20,6 @@ module.exports = {
         if (time <= 1) return setMapData(client, auth);
         time--;
 
-        client.user.setActivity(`${oldActivity.name.replace(match[0], "").trim()} [${time} min]`, { type: ActivityType.Playing });
+        client.user.setActivity(`${oldActivity.name.replace(match[0], "").trim()} [${time} min]`, { type: ActivityType.Custom });
     }
 }

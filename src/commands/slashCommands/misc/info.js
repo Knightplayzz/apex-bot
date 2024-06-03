@@ -8,7 +8,10 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('info')
         .setDMPermission(true)
-        .setDescription('Shows info about the bot.'),
+        .setDescription('Shows info about the bot.')
+        .setDescriptionLocalizations({
+            nl: 'Zie informatie van de bot.'
+        }),
 
     async execute(interaction, auth, langOpt) {
 

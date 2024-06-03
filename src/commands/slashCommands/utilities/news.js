@@ -4,7 +4,10 @@ const fetch = require('node-fetch');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('news')
-        .setDescription('Shows the latest news form EA news feed about Apex Legends.'),
+        .setDescription('Shows the latest news form EA news feed about Apex Legends.')
+        .setDescriptionLocalizations({
+            nl: 'Toont het laatste nieuws van EA over Apex Legends.'
+        }),
 
     async execute(interaction, auth) {
 

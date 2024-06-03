@@ -9,10 +9,16 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('stats')
         .setDescription('Shows legends stats, account and rank info, and online status.')
+        .setDescriptionLocalizations({
+            nl: 'Toont de statistieken, account rank informatie en online status.'
+        })
         .setDMPermission(true)
         .addStringOption(option =>
             option.setName('platform')
                 .setDescription('The platform you play Apex on.')
+                .setDescriptionLocalizations({
+                    nl: 'Het platform waarop je Apex speelt.'
+                })
                 .setRequired(true)
                 .addChoices(
                     { name: 'PC(Steam/Origin)', value: 'PC' },
@@ -22,6 +28,9 @@ module.exports = {
         .addStringOption(option =>
             option.setName('username')
                 .setDescription('Your in-game username.')
+                .setDescriptionLocalizations({
+                    nl: 'Je in-game gebruikersnaam.'
+                })
                 .setRequired(true)
         ),
 

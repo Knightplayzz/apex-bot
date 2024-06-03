@@ -9,7 +9,10 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('distribution')
         .setDMPermission(true)
-        .setDescription('Shows the rank distribution.'),
+        .setDescription('Shows the rank distribution.')
+        .setDescriptionLocalizations({
+            nl: 'Toont de rank distribution.'
+        }),
 
     async execute(interaction, auth, langOpt) {
 

@@ -9,7 +9,10 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('crafting')
         .setDMPermission(true)
-        .setDescription('Show current items that can be crafted at the replicator!'),
+        .setDescription('Show current items that can be crafted at the replicator.')
+        .setDescriptionLocalizations({
+            nl: 'Toont de voorwerpen die je kan craften in de replicator.'
+        }),
 
     async execute(interaction, auth, langOpt) {
 

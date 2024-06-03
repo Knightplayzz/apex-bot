@@ -7,7 +7,10 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('predator')
         .setDMPermission(true)
-        .setDescription('See how many points you need to reach Apex Predator on each platform.'),
+        .setDescription('See how many points you need to reach Apex Predator on each platform.')
+        .setDescriptionLocalizations({
+            nl: 'Zie hoeveel punten je nodig hebt om Apex Predator te bereiken op elk platform.'
+        }),
 
     async execute(interaction, auth, langOpt) {
 

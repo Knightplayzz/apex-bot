@@ -5,8 +5,11 @@ const { sentErrorEmbed } = require('../../../utilities/functions/utilities')
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('current')
-        .setDescription('Information about the current season.'),
+        .setName('season')
+        .setDescription('Information about the current season.')
+        .setDescriptionLocalizations({
+            nl: 'Informatie over het huidige seizoen.'
+        }),
 
     async execute(interaction, auth, langOpt) {
 

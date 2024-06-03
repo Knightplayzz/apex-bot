@@ -27,7 +27,10 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('me')
         .setDMPermission(false)
-        .setDescription('Shows the stats of your linked Apex account.'),
+        .setDescription('Shows the stats of your linked Apex account.')
+        .setDescriptionLocalizations({
+            nl: 'Toont de statistieken van je gekoppelde Apex Account.'
+        }),
 
     async execute(interaction, auth, langOpt) {
 
