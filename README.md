@@ -11,7 +11,7 @@
   <img src="https://repobeats.axiom.co/api/embed/1655dd98d3517f93b6d246c98f3a1dd134f37595.svg">
 </p>
 
-# [Apex Legends Bot](https://yourbotwebsite.com)
+# Apex Legends Bot
 
 Apex Legends Bot is your ultimate companion for everything related to Apex Legends. Get user stats, Battle Royale and Mixtape map rotations, server status, and more. Start by typing `/` for a list of commands.
 
