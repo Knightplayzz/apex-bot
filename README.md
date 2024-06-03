@@ -57,6 +57,8 @@ To install the Apex Legends Bot, simply add it to your [Discord server](https://
 ## Links
 
 - [GitHub Repository](https://github.com/Knightplayzz/apex-bot)
+- [Add Apex Bot](https://discord.com/api/oauth2/authorize?client_id=1014207340188270673&permissions=8&scope=bot%20applications.commands)
+- [View Store](https://discord.com/application-directory/1014207340188270673)
 - [Support Server](https://discord.gg/cgdssWTqAT)
 
 ## Contributing
