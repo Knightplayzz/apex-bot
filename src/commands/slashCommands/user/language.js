@@ -1,16 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const firebase = require('firebase/app');
 const { getFirestore, collection, doc, setDoc, getDoc, deleteDoc } = require('firebase/firestore');
-const firebaseConfig = {
-    apiKey: "AIzaSyBJ12J-Q0HGEH115drMeCRKsPd_kt-Z68A",
-    authDomain: "apex-discordbot.firebaseapp.com",
-    databaseURL: "https://apex-discordbot-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "apex-discordbot",
-    storageBucket: "apex-discordbot.appspot.com",
-    messagingSenderId: "985625049043",
-    appId: "1:985625049043:web:0401c7b6c4ceea7e516126",
-    measurementId: "G-JSY0XDKC14"
-};
+const firebaseConfig = require('../../../SECURITY/firebaseConfig.json')
 
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);

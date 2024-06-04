@@ -1,7 +1,7 @@
 const { EmbedBuilder, ActionRowBuilder, AttachmentBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const Canvas = require('canvas');
 const fetch = require('node-fetch');
-const { sentErrorEmbed } = require('../functions/utilities');
+const { handleError } = require('../functions/utilities');
 
 module.exports = {
     async execute(interaction, auth, langOpt) {
@@ -12,10 +12,13 @@ module.exports = {
         const ctx = canvas.getContext('2d')
 
         var url = encodeURI(`https://api.mozambiquehe.re/store?auth=${auth}`);
-
-
         fetch(url)
-            .then(res => { if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, 'shop.js l.18') })
+            .then(res => {
+                if (res.status === 200) { return res.json() } else {
+                    handleError(interaction, langOpt, res.status)
+                    return Promise.reject('Error occurred');
+                }
+            })
             .then(async data => {
                 var z = -400
                 var p = 0
@@ -136,6 +139,6 @@ module.exports = {
                     await interaction.editReply({ content: "Reloaded" });
                     message.edit({ embeds: [botEmbed], files: [], components: [row] });
                 }
-            }).catch(error => { sentErrorEmbed(interaction, langOpt, error) })
+            }).catch(error => { console.error('Fetch error:', error) })
     }
 }

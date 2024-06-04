@@ -2,7 +2,7 @@ const { EmbedBuilder, SlashCommandBuilder, AttachmentBuilder } = require("discor
 const fetch = require('node-fetch');
 const Canvas = require('canvas');
 const lang = require('../../../data/lang/lang.json');
-const { sentErrorEmbed } = require('../../../utilities/functions/utilities');
+const { handleError } = require('../../../utilities/functions/utilities');
 const { embedColor } = require('../../../data/utilities/utilities.json');
 
 module.exports = {
@@ -23,8 +23,12 @@ module.exports = {
         const url = "https://apexlegendsstatus.com/lib/php/rankdistrib.php?unranked=yes";
         fetch(url)
             .then(res => {
-                if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, `crafting.js l.22`);
-            }).then(async data => {
+                if (res.status === 200) { return res.json() } else {
+                    handleError(interaction, langOpt, res.status)
+                    return Promise.reject('Error occurred');
+                }
+            })
+            .then(async data => {
                 const distData = data;
 
                 const distribEmbed = new EmbedBuilder()
@@ -100,6 +104,6 @@ module.exports = {
                 distribEmbed.setImage(`attachment://${attachment.name}`)
 
                 return await interaction.editReply({ embeds: [distribEmbed], files: [attachment], ephemeral: true });
-            }).catch(error => { sentErrorEmbed(interaction, langOpt, error) })
+            }).catch(error => { console.error('Fetch error:', error) })
     }
 }

@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const fetch = require('node-fetch');
 const emoji = require('../../../data/utilities/emoji.json');
-const { sentErrorEmbed } = require('../../../utilities/functions/utilities');
+const { handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
     premium: true,
@@ -20,8 +20,12 @@ module.exports = {
         var url = encodeURI(`https://api.mozambiquehe.re/servers?auth=${auth}`);
         fetch(url)
             .then(res => {
-                if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, `serverStatus.js l.20`)
-            }).then(data => {
+                if (res.status === 200) { return res.json() } else {
+                    handleError(interaction, langOpt, res.status)
+                    return Promise.reject('Error occurred');
+                }
+            })
+            .then(data => {
                 let colorArray = [];
                 const type = ["ApexOauth_Crossplay", "Origin_login", "EA_accounts", "EA_novafusion"];
                 const type2 = ["US-East", "US-Central", "US-West", "EU-East", "EU-West", "SouthAmerica", "Asia"];
@@ -114,6 +118,6 @@ module.exports = {
 
                 interaction.editReply({ embeds: [serverStatusEmbed], ephemeral: true });
 
-            }).catch(error => { sentErrorEmbed(interaction, langOpt, error) })
+            }).catch(error => { console.error('Fetch error:', error) })
     }
 }

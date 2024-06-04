@@ -1,4 +1,5 @@
 node_modules/
 src/commands/needupdateCommand/
+src/SECURITY/
 .env
 todo.txt

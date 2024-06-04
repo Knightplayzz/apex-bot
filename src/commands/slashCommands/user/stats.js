@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const emoji = require('../../../data/utilities/emoji.json');
 const { embedColor } = require('../../../data/utilities/utilities.json');
 const lang = require('../../../data/lang/lang.json');
-const { getStatus, sentErrorEmbed } = require('../../../utilities/functions/utilities');
+const { getStatus, handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -44,9 +44,14 @@ module.exports = {
 
         var url = encodeURI(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${player}&auth=${auth}`);
         fetch(url)
-            .then(res => { if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, `stats.js l.38`) })
+            .then(res => {
+                if (res.status === 200) { return res.json() } else {
+                    handleError(interaction, langOpt, res.status)
+                    return Promise.reject('Error occurred');
+                }
+            })
             .then(data => {
-                if (!data || !data.global) return sentErrorEmbed(interaction, langOpt, 'WRONG USERNAME');
+                //if (!data || !data.global) return sentErrorEmbed(interaction, langOpt);
 
                 var badge1 = data?.legends?.selected?.data[0] ?? "**-**";
                 var badge2 = data?.legends?.selected?.data[1] ?? "**-**";
@@ -106,6 +111,6 @@ module.exports = {
 
                 interaction.editReply({ embeds: [statsEmbed], ephemeral: true });
 
-            }).catch(error => { sentErrorEmbed(interaction, langOpt, error) })
+            }).catch(error => { console.error('Fetch error:', error) })
     }
 }

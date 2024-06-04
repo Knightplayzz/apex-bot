@@ -51,7 +51,7 @@ function getMapDescription(gamemode, data, langOpt) {
     }
     return { title, description, image }
 }
-function sentErrorEmbed(interaction, langOpt, error) {
+function sentErrorEmbed(interaction, langOpt) {
     var errorEmbed = new EmbedBuilder()
         .setDescription(`**${lang[langOpt].error.line_1}**` +
             "```" + lang[langOpt].error.line_2 + "```")
@@ -59,8 +59,16 @@ function sentErrorEmbed(interaction, langOpt, error) {
         .setTimestamp()
         .setColor("Red");
 
-    console.log(error);
     interaction.editReply({ embeds: [errorEmbed], ephemeral: true });
+}
+function sentLookUpError(interaction, langOpt) {
+    var lookUpError = new EmbedBuilder()
+        .setTitle(`${lang[langOpt].error.line_3}`)
+        .setDescription(`${lang[langOpt].error.line_4}` + "``" + `${interaction.options.getString('username')}` + "``.")
+        .setColor('D0342C')
+        .setTimestamp();
+
+    interaction.editReply({ embeds: [lookUpError], ephemeral: true });
 }
 function sentVoteEmbed(interaction, langOpt) {
     var voteEmbed = new EmbedBuilder()
@@ -74,7 +82,6 @@ function sentVoteEmbed(interaction, langOpt) {
     return interaction.reply({ embeds: [voteEmbed], ephemeral: true });
 }
 async function hasUserVoted(interaction, langOpt) {
-    if (1 === 1) return false //check if code it working
     var url = `https://top.gg/api/bots/1014207340188270673/check?userId=${interaction.user.id}`;
     try {
         const res = await fetch(url, {
@@ -87,4 +94,11 @@ async function hasUserVoted(interaction, langOpt) {
         return null; // Return null in case of an error
     }
 }
-module.exports = { getStatus, getMapDescription, sentErrorEmbed, sentVoteEmbed, hasUserVoted }
+function handleError(interaction, langOpt, status) {
+    console.log(`SOMETHING WENT WRONG ${status}`)
+    if (status === 400 || status === 429) sentErrorEmbed(interaction, langOpt)
+    if (status === 403 || status === 410) sentErrorEmbed(interaction, langOpt)
+    if (status === 404) sentLookUpError(interaction, langOpt);
+    if (status === 500 || status === 405) sentErrorEmbed(interaction, langOpt)
+}
+module.exports = { getStatus, getMapDescription, sentErrorEmbed, sentVoteEmbed, hasUserVoted, handleError }

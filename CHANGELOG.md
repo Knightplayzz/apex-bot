@@ -1,5 +1,23 @@
 # Changelog
 
+## V2.0.4
+
+### Premium Vote glitch removed
+
+When you voted you would not get access to the premium commands.
+
+### Moved images
+
+Moves images into image folder.
+
+### Error handling improved
+
+Added Lookup errors and overall beter handling.
+
+### Minor Security Update
+
+Made a token invisible. This token was not harmful but just to be safe.
+
 ## V2.0.3
 
 ### Added shard count for top.gg

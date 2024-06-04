@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const fetch = require('node-fetch');
-const lang = require('../../../data/lang/lang.json');
-const { getMapDescription, sentErrorEmbed } = require('../../../utilities/functions/utilities')
+const { getMapDescription, handleError } = require('../../../utilities/functions/utilities')
 const { embedColor } = require('../../../data/utilities/utilities.json')
 
 module.exports = {
@@ -35,7 +34,12 @@ module.exports = {
         var type = interaction.options.get('gamemode')?.value ?? "br";
         var url = encodeURI(`https://api.mozambiquehe.re/maprotation?version=2&auth=${auth}`);
         fetch(url)
-            .then(res => { if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, `map.js l.27`) })
+            .then(res => {
+                if (res.status === 200) { return res.json() } else {
+                    handleError(interaction, langOpt, res.status)
+                    return Promise.reject('Error occurred');
+                }
+            })
             .then(data => {
                 var mapDescr = getMapDescription(type, data, langOpt);
 
@@ -48,7 +52,7 @@ module.exports = {
                     .setColor(embedColor);
 
                 return interaction.editReply({ embeds: [mapEmbed], ephemeral: true });
-            }).catch(error => { return sentErrorEmbed(interaction, langOpt, error) })
+            }).catch(error => { console.error('Fetch error:', error) })
     }
 }
 

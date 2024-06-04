@@ -7,7 +7,7 @@ Old versions still work but don't have new functinalities and safety updates.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 2.0.1 - 2.03   | ✅ |
+| 2.0.1 - 2.04   | ✅ |
 
 ## Reporting a Vulnerability
 

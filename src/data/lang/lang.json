@@ -2,7 +2,9 @@
     "en": {
         "error": {
             "line_1": "ERROR",
-            "line_2": "Please try again later"
+            "line_2": "Please try again later",
+            "line_3": "Player Lookup Error",
+            "line_4": "We could not find a user with username:"
         },
         "map": {
             "line_1": "Legends are currently dropping into",
@@ -123,7 +125,9 @@
     "nl": {
         "error": {
             "line_1": "ERROR",
-            "line_2": "Probeer het later opnieuw"
+            "line_2": "Probeer het later opnieuw",
+            "line_3": "Player opzoek Error",
+            "line_4": "We konden niet iemand vinden met de gebruikersnaam:"
         },
         "map": {
             "line_1": "Legends droppen nu in",

@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const Canvas = require('canvas');
 const lang = require('../../../data/lang/lang.json');
 const { embedColor } = require('../../../data/utilities/utilities.json')
-const { sentErrorEmbed } = require('../../../utilities/functions/utilities')
+const { handleError } = require('../../../utilities/functions/utilities')
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -23,7 +23,12 @@ module.exports = {
 
         var url = encodeURI(`https://api.mozambiquehe.re/crafting?auth=${auth}`);
         fetch(url)
-            .then(res => { if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, `crafting.js l.24`) })
+            .then(res => {
+                if (res.status === 200) { return res.json() } else {
+                    handleError(interaction, langOpt, res.status)
+                    return Promise.reject('Error occurred');
+                }
+            })
             .then(async data => {
                 //daily
                 const daily1 = await Canvas.loadImage(data[0].bundleContent[0].itemType.asset);
@@ -59,6 +64,6 @@ module.exports = {
 
 
                 return interaction.editReply({ embeds: [craftingEmbed], files: [attachment], ephemeral: true });
-            }).catch(error => { return sentErrorEmbed(interaction, langOpt, error) })
+            }).catch(error => { console.error('Fetch error:', error) })
     }
 }

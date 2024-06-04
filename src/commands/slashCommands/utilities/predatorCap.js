@@ -1,7 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fetch = require('node-fetch');
 const { misc, logo } = require('../../../data/utilities/emoji.json');
-const { sentErrorEmbed } = require('../../../utilities/functions/utilities');
+const { handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -18,7 +18,12 @@ module.exports = {
 
         var url = encodeURI(`https://api.mozambiquehe.re/predator?auth=${auth}`);
         fetch(url)
-            .then(res => { if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, `crafting.js l.19`) })
+            .then(res => {
+                if (res.status === 200) { return res.json() } else {
+                    handleError(interaction, langOpt, res.status)
+                    return Promise.reject('Error occurred');
+                }
+            })
             .then(data => {
                 var predatorEmbed = new EmbedBuilder()
                     .setTitle('Apex Predator Ranked Point Threshold')
@@ -59,6 +64,6 @@ module.exports = {
 
                 interaction.editReply({ embeds: [predatorEmbed], ephemeral: true });
 
-            }).catch(error => { sentErrorEmbed(interaction, langOpt, error) })
+            }).catch(error => { console.error('Fetch error:', error) })
     }
 }

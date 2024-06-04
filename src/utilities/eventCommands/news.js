@@ -1,12 +1,17 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder, ButtonStyle } = require('discord.js');
 const fetch = require('node-fetch');
-const { sentErrorEmbed } = require('../functions/utilities')
+const { handleError } = require('../functions/utilities')
 
 module.exports = {
     async execute(interaction, auth) {
         var url = `https://api.mozambiquehe.re/news?auth=${auth}`
         fetch(url)
-            .then(res => { if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, 'en', 'news.js l.10') })
+            .then(res => {
+                if (res.status === 200) { return res.json() } else {
+                    handleError(interaction, langOpt, res.status)
+                    return Promise.reject('Error occurred');
+                }
+            })
             .then(async data => {
                 await interaction.deferUpdate()
 
@@ -95,6 +100,6 @@ module.exports = {
                         )
                     return interaction.message.edit({ embeds: [embed1], components: [row] })
                 }
-            }).catch(error => { console.log(error) })
+            }).catch(error => { console.error('Fetch error:', error) })
     }
 }

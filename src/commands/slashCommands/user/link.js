@@ -2,19 +2,10 @@ const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const fetch = require('node-fetch');
 const firebase = require('firebase/app');
 const { getFirestore, collection, doc, setDoc, getDoc } = require('firebase/firestore');
-const firebaseConfig = {
-    apiKey: "AIzaSyBJ12J-Q0HGEH115drMeCRKsPd_kt-Z68A",
-    authDomain: "apex-discordbot.firebaseapp.com",
-    databaseURL: "https://apex-discordbot-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "apex-discordbot",
-    storageBucket: "apex-discordbot.appspot.com",
-    messagingSenderId: "985625049043",
-    appId: "1:985625049043:web:0401c7b6c4ceea7e516126",
-    measurementId: "G-JSY0XDKC14"
-};
+const firebaseConfig = require('../../../SECURITY/firebaseConfig.json')
 
 const lang = require('../../../data/lang/lang.json');
-const { sentErrorEmbed } = require('../../../utilities/functions/utilities');
+const { handleError } = require('../../../utilities/functions/utilities');
 const { embedColor } = require('../../../data/utilities/utilities.json')
 // Initialize Firebase
 const app = firebase.initializeApp(firebaseConfig);
@@ -77,9 +68,13 @@ module.exports = {
             var url = encodeURI(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${player}&auth=${auth}`);
             fetch(url)
                 .then(res => {
-                    if (res.status === 200) { return res.json() } else return sentErrorEmbed(interaction, langOpt, `link.js l.69`)
-                }).then(async data => {
-                    if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentErrorEmbed(interaction, langOpt, `link.js l.73`);
+                    if (res.status === 200) { return res.json() } else {
+                        handleError(interaction, langOpt, res.status)
+                        return Promise.reject('Error occurred');
+                    }
+                })
+                .then(async data => {
+                    if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentLookUpError(interaction, langOpt, `link.js l.73`);
 
                     const citiesRef = collection(db, 'serverUsers', interaction.guild.id, 'users');
                     await setDoc(doc(citiesRef, interaction.user.id), {
@@ -95,7 +90,7 @@ module.exports = {
                         .setColor(embedColor);
 
                     interaction.editReply({ embeds: [linkedEmbed], ephemeral: true });
-                }).catch(error => { sentErrorEmbed(interaction, langOpt, error); })
+                }).catch(error => { console.error('Fetch error:', error) })
         }
     }
 }

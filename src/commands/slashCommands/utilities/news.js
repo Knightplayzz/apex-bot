@@ -1,5 +1,6 @@
 const { EmbedBuilder, SlashCommandBuilder, ButtonBuilder, ButtonStyle, ActionRowBuilder } = require('discord.js');
 const fetch = require('node-fetch');
+const { handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -13,7 +14,12 @@ module.exports = {
 
         var url = `https://api.mozambiquehe.re/news?auth=${auth}`;
         fetch(url)
-            .then(res => res.json())
+            .then(res => {
+                if (res.status === 200) { return res.json() } else {
+                    handleError(interaction, langOpt, res.status)
+                    return Promise.reject('Error occurred');
+                }
+            })
             .then(async data => {
                 var embed1 = new EmbedBuilder()
                     .setTitle(data[0].title)
@@ -35,6 +41,6 @@ module.exports = {
                     )
 
                 interaction.reply({ embeds: [embed1], components: [row] })
-            })
+            }).catch(error => { console.error('Fetch error:', error) })
     }
 }
