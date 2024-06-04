@@ -12,8 +12,8 @@ async function setMapData(client, auth) {
             }
         })
         .then(data => {
-            if (data.current === undefined) return //check because HUGO is to lazy to fix the issue :D. IF check at same time data is being writen data= empty
-            var timeDay = Math.round(Number(data.current.remainingMins) / 1440); //here error
+            if (data.current === undefined) return console.log('GETTING MAP, but was empty');//added sleep so issue shouldn't happen
+            var timeDay = Math.round(Number(data.current.remainingMins) / 1440);
             var hours = Number(data.current.remainingMins) / 60;
 
             if (timeDay >= 2) {

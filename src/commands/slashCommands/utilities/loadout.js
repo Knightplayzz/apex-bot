@@ -25,8 +25,8 @@ module.exports = {
             }
         }
 
-        let value1 = uniqueNumbers[0].toString()
-        let value2 = uniqueNumbers[1].toString()
+        let value1 = uniqueNumbers[0].toString();
+        let value2 = uniqueNumbers[1].toString();
 
         const select = new StringSelectMenuBuilder()
             .setCustomId('loadout')
@@ -48,8 +48,8 @@ module.exports = {
             .setDescription(`${lang[langOpt].loadout.line_2} **${weapons[uniqueNumbers[0]].name}** ${lang[langOpt].loadout.line_1} **${weapons[uniqueNumbers[1]].name}** ${lang[langOpt].loadout.line_3}!`)
             .setImage(weapons[uniqueNumbers[0]].url)
             .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
-            .setTimestamp()
+            .setTimestamp();
 
-        interaction.editReply({ embeds: [loadoutEmbed], components: [row], ephemeral: true })
+        interaction.editReply({ embeds: [loadoutEmbed], components: [row], ephemeral: true });
     }
 }

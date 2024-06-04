@@ -20,11 +20,12 @@ module.exports = {
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status)
+                    handleError(interaction, langOpt, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
             .then(data => {
+
                 var predatorEmbed = new EmbedBuilder()
                     .setTitle('Apex Predator Ranked Point Threshold')
                     .setDescription(`**Last Updated:** <t:${data.RP.PC.updateTimestamp}:R>`)
@@ -63,7 +64,6 @@ module.exports = {
                     .setColor("#2B2D31");
 
                 interaction.editReply({ embeds: [predatorEmbed], ephemeral: true });
-
-            }).catch(error => { console.error('Fetch error:', error) })
+            }).catch(error => { console.error('Fetch error:', error) });
     }
 }

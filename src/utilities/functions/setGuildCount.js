@@ -5,8 +5,8 @@ module.exports = {
 
         client.shard.fetchClientValues('guilds.cache.size')
             .then(results => {
-                var guildCount = results.reduce((acc, guildCount) => acc + guildCount, 0);
 
+                var guildCount = results.reduce((acc, guildCount) => acc + guildCount, 0);
                 try {
                     let guildApexServ = client.guilds.cache.get("1018244995792257114");
                     let guildCountChannel = guildApexServ.channels.cache.get("1024393334007009391")

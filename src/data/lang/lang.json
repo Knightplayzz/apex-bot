@@ -14,22 +14,6 @@
             "line_5": "No LTM",
             "line_6": "Sorry there is no ltm"
         },
-        "autorole": {
-            "line_1": "The bot doesn't have the permission to do this",
-            "line_2": "Invite the bot again by pressing [here]",
-            "line_3": "Changed to: disabled",
-            "line_4": "Changed to: enabled",
-            "line_5": "Currently: enabled",
-            "line_6": "Currently: disabled",
-            "line_7": "The Apex Bot role must be higher that the ranked roles",
-            "line_8": "You already have this rank",
-            "line_9": "You now have the",
-            "line_10": "rank",
-            "line_11": "This feature is off in this server",
-            "line_12": "ERROR",
-            "line_13": "SUCCES",
-            "line_14": "You are not linked"
-        },
         "crafting": {
             "line_2": "Weekly Reset"
         },
@@ -39,8 +23,8 @@
             "line_3": "Rank distribution"
         },
         "drop": {
-            "line_1": "Drop in",
-            "line_2": "this round"
+            "line_1": "Drop into",
+            "line_2": "on"
         },
         "heirloom": {
             "line_1": "Select a legend",
@@ -66,18 +50,6 @@
             "line_2": "Use the",
             "line_3": "this round"
         },
-        "report": {
-            "line_1": "What command has the issue",
-            "line_2": "What is the issue",
-            "line_3": "What is the problem? Be as detailed as possible.",
-            "line_4": "Select a command",
-            "line_5": "Bug",
-            "line_6": "You have selected",
-            "line_7": "If this is not correct you can chage it in the command field",
-            "line_8": "If you cancelled your request do ``/report`` again",
-            "line_9": "Bug reported",
-            "line_10": "Thank you for your report"
-        },
         "serverstatus": {
             "line_1": "Apex Legends Server Status",
             "line_2": "US East",
@@ -92,12 +64,6 @@
             "line_11": "EA Accounts",
             "line_12": "Lobby & MatchMaking Services",
             "line_13": "Status data provided by"
-        },
-        "comming": {
-            "line_1": "Maintenance",
-            "line_2": "This will be added very soon",
-            "line_3": "For shop click [here]",
-            "line_4": "For leaderboard click [here]"
         },
         "stats": {
             "line_1": "Coudn't delete data",
@@ -137,22 +103,6 @@
             "line_5": "Geen LTM",
             "line_6": "Sorry er is geen ltm"
         },
-        "autorole": {
-            "line_1": "De bot heeft niet je juiste permissies",
-            "line_2": "Invite de bot opnieuw, druk [hier]",
-            "line_3": "Veranderd naar: uit",
-            "line_4": "Veranderd naar: aan",
-            "line_5": "Het staat nu: aan",
-            "line_6": "Het staat nu: uit",
-            "line_7": "De Apex Bot role moet hoger zijn dan de ranked rollen",
-            "line_8": "Je hebt deze rank al",
-            "line_9": "Je hebt nu de",
-            "line_10": "rank",
-            "line_11": "Dit staat uit is deze server",
-            "line_12": "FOUT OPGETREDEN",
-            "line_13": "SUCCES",
-            "line_14": "Je bent niet gelinked"
-        },
         "crafting": {
             "line_2": "Weekelijkse Reset"
         },
@@ -163,7 +113,7 @@
         },
         "drop": {
             "line_1": "Land in",
-            "line_2": "deze ronde"
+            "line_2": "in"
         },
         "heirloom": {
             "line_1": "Kies een legend",
@@ -189,18 +139,6 @@
             "line_2": "Gebruik",
             "line_3": "deze ronde"
         },
-        "report": {
-            "line_1": "Welk command heeft een probleem",
-            "line_2": "Wat is het probleem?",
-            "line_3": "Wat is het probleem? Leg het zo goed mogelijk uit.",
-            "line_4": "Kies een command",
-            "line_5": "Bug",
-            "line_6": "Je koos",
-            "line_7": "Als je niet het juiste commando hebt gekozen, kan je het nog veranderen",
-            "line_8": "Als het heeft geannuleerd do ``/report`` opnieuw",
-            "line_9": "Bug gerapporteerd",
-            "line_10": "Dankjewel voor je melding"
-        },
         "serverstatus": {
             "line_1": "Apex Legends Server Status",
             "line_2": "VS oost",
@@ -215,12 +153,6 @@
             "line_11": "EA Accounts",
             "line_12": "Lobby & MatchMaking Services",
             "line_13": "Data komt van"
-        },
-        "comming": {
-            "line_1": "Onderhoud",
-            "line_2": "Dit wordt binnenkort toegevoed",
-            "line_3": "Voor shop druk [hier]",
-            "line_4": "Voor leaderboard druk [hier]"
         },
         "stats": {
             "line_1": "Kon data niet verwijderen",

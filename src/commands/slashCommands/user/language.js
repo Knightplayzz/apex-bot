@@ -1,15 +1,12 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const firebase = require('firebase/app');
 const { getFirestore, collection, doc, setDoc, getDoc, deleteDoc } = require('firebase/firestore');
-const firebaseConfig = require('../../../SECURITY/firebaseConfig.json')
-
-// Initialize Firebase
+const firebaseConfig = require('../../../SECURITY/firebaseConfig.json');
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const lang = require('../../../data/lang/lang.json');
-const { sentErrorEmbed } = require('../../../utilities/functions/utilities')
-const { embedColor } = require('../../../data/utilities/utilities.json')
-
+const { sentErrorEmbed } = require('../../../utilities/functions/utilities');
+const { embedColor } = require('../../../data/utilities/utilities.json');
 
 module.exports = {
     premium: true,
@@ -24,7 +21,7 @@ module.exports = {
             option.setName('language')
                 .setDescription('Select the language.')
                 .setDescriptionLocalizations({
-                    nl: 'Kies de taal.'
+                    nl: 'Kies een taal.'
                 })
                 .setRequired(true)
                 .addChoices(
@@ -53,7 +50,10 @@ module.exports = {
                         .setTimestamp()
                         .setColor("Red");
                     interaction.editReply({ embeds: [deleteEmbed], ephemeral: true });
-                }).catch(error => { sentErrorEmbed(interaction, langOpt, error) })
+                }).catch(error => {
+                    console.log(error); //FAILED TO DELETE DATA
+                    return sentErrorEmbed(interaction, langOpt);
+                })
             } else {
                 var noLangEmbed = new EmbedBuilder()
                     .setTitle("ERROR")
@@ -62,6 +62,7 @@ module.exports = {
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp()
                     .setColor("Red");
+
                 interaction.editReply({ embeds: [noLangEmbed], ephemeral: true });
             }
 

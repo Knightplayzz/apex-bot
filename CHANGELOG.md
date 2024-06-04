@@ -1,5 +1,23 @@
 # Changelog
 
+## V2.0.5
+
+### Minor big fix
+
+Removed tiny bugs.
+
+### Moved some files
+
+Moved guild files into guild folder.
+
+### Improved Activity Type
+
+Now added sleep of 500ms to fix an issue with API.
+
+### New added Drop command
+
+Random place to drop.
+
 ## V2.0.4
 
 ### Premium Vote glitch removed

@@ -2,12 +2,9 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fetch = require('node-fetch');
 const firebase = require('firebase/app');
 const { getFirestore, doc, getDoc } = require('firebase/firestore');
-const firebaseConfig = require('../../../SECURITY/firebaseConfig.json')
-
-// Initialize Firebase
+const firebaseConfig = require('../../../SECURITY/firebaseConfig.json');
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
 const lang = require('../../../data/lang/lang.json');
 const emoji = require('../../../data/utilities/emoji.json');
 const { embedColor } = require('../../../data/utilities/utilities.json');
@@ -39,7 +36,7 @@ module.exports = {
             fetch(url)
                 .then(res => {
                     if (res.status === 200) { return res.json() } else {
-                        handleError(interaction, langOpt, res.status)
+                        handleError(interaction, langOpt, res.status);
                         return Promise.reject('Error occurred');
                     }
                 })
@@ -49,7 +46,7 @@ module.exports = {
                     var badge3 = data?.legends?.selected?.data[2] ?? "**-**";
 
                     const accountCompletion = Math.floor((data.global.level / 500) * 100);
-                    var levelPrestige = data.global.levelPrestige
+                    var levelPrestige = data.global.levelPrestige;
                     var levelPrestigeProcent = Math.floor(((data.global.level + 500 * levelPrestige) / 2000) * 100);
 
                     var battlepass = data.global.battlepass?.level?.toString() ?? "1";
@@ -102,7 +99,7 @@ module.exports = {
 
                     interaction.editReply({ embeds: [statsEmbed], ephemeral: true });
 
-                }).catch(error => { console.error('Fetch error:', error) })
+                }).catch(error => { console.error('Fetch error:', error) });
         }
     }
 }

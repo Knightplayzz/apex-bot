@@ -16,16 +16,17 @@ module.exports = {
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status)
+                    handleError(interaction, langOpt, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
             .then(async data => {
+
                 var embed1 = new EmbedBuilder()
                     .setTitle(data[0].title)
                     .setDescription(data[0].short_desc)
                     .setURL(data[0].link)
-                    .setImage(data[0].img)
+                    .setImage(data[0].img);
 
                 const row = new ActionRowBuilder()
                     .addComponents(
@@ -38,9 +39,9 @@ module.exports = {
                             .setLabel(">")
                             .setCustomId('2')
                             .setStyle(ButtonStyle.Success)
-                    )
+                    );
 
-                interaction.reply({ embeds: [embed1], components: [row] })
-            }).catch(error => { console.error('Fetch error:', error) })
+                interaction.reply({ embeds: [embed1], components: [row] });
+            }).catch(error => { console.error('Fetch error:', error) });
     }
 }

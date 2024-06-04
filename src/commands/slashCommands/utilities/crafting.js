@@ -2,8 +2,8 @@ const { AttachmentBuilder, EmbedBuilder, SlashCommandBuilder } = require("discor
 const fetch = require('node-fetch');
 const Canvas = require('canvas');
 const lang = require('../../../data/lang/lang.json');
-const { embedColor } = require('../../../data/utilities/utilities.json')
-const { handleError } = require('../../../utilities/functions/utilities')
+const { embedColor } = require('../../../data/utilities/utilities.json');
+const { handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -62,8 +62,7 @@ module.exports = {
                     .setColor(embedColor)
                     .setImage(`attachment://${attachment.name}`);
 
-
                 return interaction.editReply({ embeds: [craftingEmbed], files: [attachment], ephemeral: true });
-            }).catch(error => { console.error('Fetch error:', error) })
+            }).catch(error => { console.error('Fetch error:', error) });
     }
 }

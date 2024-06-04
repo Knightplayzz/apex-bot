@@ -1,7 +1,7 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 const fetch = require('node-fetch');
 const { embedColor } = require('../../../data/utilities/utilities.json');
-const { handleError } = require('../../../utilities/functions/utilities')
+const { handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -19,7 +19,7 @@ module.exports = {
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status)
+                    handleError(interaction, langOpt, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
@@ -67,6 +67,6 @@ module.exports = {
                     .setTimestamp();
 
                 interaction.editReply({ embeds: [currentSeason], ephemeral: true });
-            }).catch(error => { console.error('Fetch error:', error) })
+            }).catch(error => { console.error('Fetch error:', error) });
     },
 };

@@ -21,7 +21,7 @@ module.exports = {
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status)
+                    handleError(interaction, langOpt, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
@@ -36,10 +36,10 @@ module.exports = {
                             colorArray.push(`${emoji.misc.Green} `);
                         }
                         if (data[type[i]][type2[y]].Status === "SLOW") {
-                            colorArray.push(`${emoji.misc.Orange} `)
+                            colorArray.push(`${emoji.misc.Orange} `);
                         }
                         if (data[type[i]][type2[y]].Status === "DOWN") {
-                            colorArray.push(`${emoji.misc.Red} `)
+                            colorArray.push(`${emoji.misc.Red} `);
                         }
                     }
                 }

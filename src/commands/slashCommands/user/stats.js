@@ -3,7 +3,7 @@ const fetch = require('node-fetch');
 const emoji = require('../../../data/utilities/emoji.json');
 const { embedColor } = require('../../../data/utilities/utilities.json');
 const lang = require('../../../data/lang/lang.json');
-const { getStatus, handleError } = require('../../../utilities/functions/utilities');
+const { getStatus, handleError, sentLookUpError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -46,19 +46,19 @@ module.exports = {
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status)
+                    handleError(interaction, langOpt, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
             .then(data => {
-                //if (!data || !data.global) return sentErrorEmbed(interaction, langOpt);
+                if (!data || !data.global) return sentLookUpError(interaction, langOpt);
 
                 var badge1 = data?.legends?.selected?.data[0] ?? "**-**";
                 var badge2 = data?.legends?.selected?.data[1] ?? "**-**";
                 var badge3 = data?.legends?.selected?.data[2] ?? "**-**";
 
                 const accountCompletion = Math.floor((data.global.level / 500) * 100);
-                var levelPrestige = data.global.levelPrestige
+                var levelPrestige = data.global.levelPrestige;
                 var levelPrestigeProcent = Math.floor(((data.global.level + 500 * levelPrestige) / 2000) * 100);
 
                 var battlepass = data.global.battlepass?.level?.toString() ?? "1";
@@ -111,6 +111,6 @@ module.exports = {
 
                 interaction.editReply({ embeds: [statsEmbed], ephemeral: true });
 
-            }).catch(error => { console.error('Fetch error:', error) })
+            }).catch(error => { console.error('Fetch error:', error) });
     }
 }

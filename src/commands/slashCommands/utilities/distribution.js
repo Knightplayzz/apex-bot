@@ -29,6 +29,7 @@ module.exports = {
                 }
             })
             .then(async data => {
+
                 const distData = data;
 
                 const distribEmbed = new EmbedBuilder()
@@ -36,7 +37,7 @@ module.exports = {
                     .setDescription(`${lang[langOpt].distribution.line_1} https://apexlegendsstatus.com\n${lang[langOpt].distribution.line_2}.`)
                     .setColor(embedColor)
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
-                    .setTimestamp()
+                    .setTimestamp();
 
                 const allCount = () => {
                     let count = 0;
@@ -48,11 +49,11 @@ module.exports = {
                 for (let i = 1; i < distData.length; i++) {
                     //makes sure that not over 25 item gets added to the embed (discords allows 25) here the value is set to 27 cuz the first 4 (rookie) are put in one field
                     if (i < 27 && i > 4) {
-                        distribEmbed.addFields({ name: distData[i].name, value: `${"```ansi\n\u001b[0;33m"}${((Number(distData[i].totalCount) / allCount() * 100).toFixed(2)).toString()}\u001b[0;37m%${"```"}`, inline: true })
+                        distribEmbed.addFields({ name: distData[i].name, value: `${"```ansi\n\u001b[0;33m"}${((Number(distData[i].totalCount) / allCount() * 100).toFixed(2)).toString()}\u001b[0;37m%${"```"}`, inline: true });
                     }
                     //put rookie all in one rank
                     if (i === 1) {
-                        distribEmbed.addFields({ name: "Rookie", value: `${"```ansi\n\u001b[0;33m"}${(((Number(distData[1].totalCount) + Number(distData[2].totalCount) + Number(distData[3].totalCount) + Number(distData[4].totalCount)) / allCount() * 100).toFixed(2)).toString()}\u001b[0;37m%${"```"}`, inline: true })
+                        distribEmbed.addFields({ name: "Rookie", value: `${"```ansi\n\u001b[0;33m"}${(((Number(distData[1].totalCount) + Number(distData[2].totalCount) + Number(distData[3].totalCount) + Number(distData[4].totalCount)) / allCount() * 100).toFixed(2)).toString()}\u001b[0;37m%${"```"}`, inline: true });
                     }
                 }
 
@@ -104,6 +105,6 @@ module.exports = {
                 distribEmbed.setImage(`attachment://${attachment.name}`)
 
                 return await interaction.editReply({ embeds: [distribEmbed], files: [attachment], ephemeral: true });
-            }).catch(error => { console.error('Fetch error:', error) })
+            }).catch(error => { console.error('Fetch error:', error) });
     }
 }

@@ -3,23 +3,27 @@ const lang = require('../../data/lang/lang.json');
 const fetch = require('node-fetch');
 require('dotenv').config();
 
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function getStatus(data) {
     var state;
     var color;
 
     if (data.isOnline === 1 && data.isInGame === 0) {
-        state = 'Online (Lobby)'
-        color = 'Green'
+        state = 'Online (Lobby)';
+        color = 'Green';
     }
     if (data.isInGame === 1 && data.isOnline === 1) {
-        state = 'In a Match'
-        color = 'Orange'
+        state = 'In a Match';
+        color = 'Orange';
     }
     if (data.isOnline === 0) {
-        state = 'Offline'
-        color = 'Black'
+        state = 'Offline';
+        color = 'Black';
     }
-    return { state, color }
+    return { state, color };
 }
 function getMapDescription(gamemode, data, langOpt) {
     var title;
@@ -49,7 +53,7 @@ function getMapDescription(gamemode, data, langOpt) {
             image = null;
         }
     }
-    return { title, description, image }
+    return { title, description, image };
 }
 function sentErrorEmbed(interaction, langOpt) {
     var errorEmbed = new EmbedBuilder()
@@ -94,11 +98,14 @@ async function hasUserVoted(interaction, langOpt) {
         return null; // Return null in case of an error
     }
 }
-function handleError(interaction, langOpt, status) {
-    console.log(`SOMETHING WENT WRONG ${status}`)
-    if (status === 400 || status === 429) sentErrorEmbed(interaction, langOpt)
-    if (status === 403 || status === 410) sentErrorEmbed(interaction, langOpt)
-    if (status === 404) sentLookUpError(interaction, langOpt);
-    if (status === 500 || status === 405) sentErrorEmbed(interaction, langOpt)
+function sent() {
+
 }
-module.exports = { getStatus, getMapDescription, sentErrorEmbed, sentVoteEmbed, hasUserVoted, handleError }
+function handleError(interaction, langOpt, status) {
+    console.log(`SOMETHING WENT WRONG ${status}`);
+    if (status === 400 || status === 429) sentErrorEmbed(interaction, langOpt); //try again later
+    if (status === 403 || status === 410) sentErrorEmbed(interaction, langOpt); //my fault
+    if (status === 404) sentLookUpError(interaction, langOpt); //lookup err
+    if (status === 500 || status === 405) sentErrorEmbed(interaction, langOpt); //api error
+}
+module.exports = { getStatus, getMapDescription, sentErrorEmbed, sentVoteEmbed, hasUserVoted, handleError, sleep, sentLookUpError };

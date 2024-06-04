@@ -1,8 +1,11 @@
 const { ActivityType } = require('discord.js');
 const { setMapData } = require('../functions/setBotStatus');
+const { sleep } = require('../../utilities/functions/utilities');
 
 module.exports = {
     async execute(client, auth) {
+
+        await sleep(500);
 
         let oldActivity = client.user.presence.activities[0];
         if (!oldActivity) return setMapData(client, auth);

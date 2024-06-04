@@ -1,6 +1,6 @@
 const { Client, GatewayIntentBits, Partials, Collection, Routes, REST } = require('discord.js');
 const fs = require("fs");
-require('dotenv').config()
+require('dotenv').config();
 
 const client = new Client({
     intents:
@@ -41,11 +41,11 @@ for (const folder of folders) {
         )
         console.log('succesfully reloaded application (/) commands.');
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 })()
 
-const auth = process.env.APEX_AUTH
+const auth = process.env.APEX_AUTH;
 const eventFolders = fs.readdirSync(`${__dirname}/events`);
 for (const folder of eventFolders) {
     const eventFiles = fs.readdirSync(`${__dirname}/events/${folder}`).filter(file => file.endsWith('.js'));

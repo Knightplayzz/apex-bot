@@ -6,9 +6,8 @@ module.exports = {
     name: "ready",
     once: true,
     async execute(client, auth) {
-
         console.log(`${client.user.username} is online.`);
-        cron.schedule('* * * * *', () => { timedInteraction1.execute(client, auth) })
+        cron.schedule('* * * * *', () => { timedInteraction1.execute(client, auth) });
         setGuildCount.execute(client, auth);
     }
 }

@@ -41,9 +41,9 @@ module.exports = {
             .setImage(`https://specter.apexstats.dev/ApexStats/Legends/${encodeURIComponent(legendFile[legend])}.png`)
             .setColor(embedColor)
             .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
-            .setTimestamp()
+            .setTimestamp();
 
-        interaction.editReply({ embeds: [legendEmbed], ephemeral: true })
+        interaction.editReply({ embeds: [legendEmbed], ephemeral: true });
     }
 }
 

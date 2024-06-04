@@ -4,9 +4,7 @@ const { getAuth, signInWithEmailAndPassword, } = require('firebase/auth');
 require('dotenv').config();
 const email = process.env.email;
 const password = process.env.password;
-const firebaseConfig = require('../../SECURITY/firebaseConfig.json')
-
-// Initialize Firebase
+const firebaseConfig = require('../../SECURITY/firebaseConfig.json');
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const fireAuth = getAuth();
