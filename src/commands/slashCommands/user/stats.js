@@ -51,7 +51,7 @@ module.exports = {
                 }
             })
             .then(data => {
-                if (!data || !data.global) return sentLookUpError(interaction, langOpt);
+                if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentLookUpError(interaction, langOpt);
 
                 var badge1 = data?.legends?.selected?.data[0] ?? "**-**";
                 var badge2 = data?.legends?.selected?.data[1] ?? "**-**";

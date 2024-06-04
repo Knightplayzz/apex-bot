@@ -74,7 +74,7 @@ module.exports = {
                     }
                 })
                 .then(async data => {
-                    if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentLookUpError(interaction, langOpt, `link.js l.73`);
+                    if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentLookUpError(interaction, langOpt);
 
                     const citiesRef = collection(db, 'serverUsers', interaction.guild.id, 'users');
                     await setDoc(doc(citiesRef, interaction.user.id), {
