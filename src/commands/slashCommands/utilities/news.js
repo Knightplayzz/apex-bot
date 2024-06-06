@@ -10,7 +10,9 @@ module.exports = {
             nl: 'Toont het laatste nieuws van EA over Apex Legends.'
         }),
 
-    async execute(interaction, auth) {
+    async execute(interaction, auth, userData) {
+
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         var url = `https://api.mozambiquehe.re/news?auth=${auth}`;
         fetch(url)
@@ -22,26 +24,45 @@ module.exports = {
             })
             .then(async data => {
 
-                var embed1 = new EmbedBuilder()
+                const frist = new ButtonBuilder()
+                    .setCustomId(`pageFirst`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setDisabled(true)
+                    .setEmoji(`⏪`);
+
+                const prev = new ButtonBuilder()
+                    .setCustomId(`prev`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setDisabled(true)
+                    .setEmoji(`⬅`);
+
+                const pageCount = new ButtonBuilder()
+                    .setCustomId(`pageCount`)
+                    .setLabel(`1/${data.length}`)
+                    .setStyle(ButtonStyle.Secondary)
+                    .setDisabled(true)
+
+                const next = new ButtonBuilder()
+                    .setCustomId(`next`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji(`➡`);
+
+                const last = new ButtonBuilder()
+                    .setCustomId(`pageLast`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji(`⏩`);
+
+                const buttons = new ActionRowBuilder().addComponents([frist, prev, pageCount, next, last]);
+
+                var pagesEmbed = new EmbedBuilder()
                     .setTitle(data[0].title)
                     .setDescription(data[0].short_desc)
+                    .setColor(userData.embedColor)
                     .setURL(data[0].link)
                     .setImage(data[0].img);
 
-                const row = new ActionRowBuilder()
-                    .addComponents(
-                        new ButtonBuilder()
-                            .setLabel("<")
-                            .setCustomId('1')
-                            .setStyle(ButtonStyle.Danger)
-                            .setDisabled(true),
-                        new ButtonBuilder()
-                            .setLabel(">")
-                            .setCustomId('2')
-                            .setStyle(ButtonStyle.Success)
-                    );
+                interaction.editReply({ embeds: [pagesEmbed], components: [buttons], ephemeral: userData.invisible });
 
-                interaction.reply({ embeds: [embed1], components: [row] });
             }).catch(error => { console.error('Fetch error:', error) });
     }
 }

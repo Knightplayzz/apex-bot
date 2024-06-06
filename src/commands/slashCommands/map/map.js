@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
 const fetch = require('node-fetch');
-const { getMapDescription, handleError } = require('../../../utilities/functions/utilities')
-const { embedColor } = require('../../../data/utilities/utilities.json')
+const { getMapDescription, handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -27,16 +26,18 @@ module.exports = {
                     { name: 'LTM', value: 'ltm' },
                 )),
 
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true });
+        var langOpt = userData.lang
+
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         var type = interaction.options.get('gamemode')?.value ?? "br";
         var url = encodeURI(`https://api.mozambiquehe.re/maprotation?version=2&auth=${auth}`);
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status)
+                    handleError(interaction, userData, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
@@ -49,9 +50,9 @@ module.exports = {
                     .setImage(mapDescr.image)
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp()
-                    .setColor(embedColor);
+                    .setColor(userData.embedColor);
 
-                return interaction.editReply({ embeds: [mapEmbed], ephemeral: true });
+                return interaction.editReply({ embeds: [mapEmbed], ephemeral: userData.invisible });
             }).catch(error => { console.error('Fetch error:', error) })
     }
 }

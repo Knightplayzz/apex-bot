@@ -2,7 +2,6 @@ const { AttachmentBuilder, EmbedBuilder, SlashCommandBuilder } = require("discor
 const fetch = require('node-fetch');
 const Canvas = require('canvas');
 const lang = require('../../../data/lang/lang.json');
-const { embedColor } = require('../../../data/utilities/utilities.json');
 const { handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
@@ -14,9 +13,11 @@ module.exports = {
             nl: 'Toont de voorwerpen die je kan craften in de replicator.'
         }),
 
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true });
+        var langOpt = userData.lang;
+
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         const canvas = Canvas.createCanvas(400, 400);
         const ctx = canvas.getContext('2d');
@@ -25,7 +26,7 @@ module.exports = {
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status)
+                    handleError(interaction, userData, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
@@ -59,10 +60,10 @@ module.exports = {
                     .setDescription(`${lang[langOpt].crafting.line_2}: <t:${data[0].end}:R>`)
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp()
-                    .setColor(embedColor)
+                    .setColor(userData.embedColor)
                     .setImage(`attachment://${attachment.name}`);
 
-                return interaction.editReply({ embeds: [craftingEmbed], files: [attachment], ephemeral: true });
+                return interaction.editReply({ embeds: [craftingEmbed], files: [attachment], ephemeral: userData.invisible });
             }).catch(error => { console.error('Fetch error:', error) });
     }
 }

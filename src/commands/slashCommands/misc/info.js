@@ -1,6 +1,7 @@
 const { EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const { version } = require('../../../../package.json');
 const { sentErrorEmbed } = require('../../../utilities/functions/utilities');
+const lang = require('../../../data/lang/lang.json');
 const os = require('os');
 require('dotenv').config();
 
@@ -13,9 +14,11 @@ module.exports = {
             nl: 'Zie informatie van de bot.'
         }),
 
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true })
+        var langOpt = userData.lang;
+
+        await interaction.deferReply({ ephemeral: userData.invisible })
 
         interaction.client.shard.fetchClientValues('guilds.cache.size')
             .then(results => {
@@ -29,8 +32,8 @@ module.exports = {
 
                 var infoEmbed = new EmbedBuilder()
                     .setTitle(`Apex Legends Bot`)
-                    .setDescription('User and ranked stats, map rotations, news, random loadout & drop locations, and more. Start by typing `/` for a list of commands!')
-                    .setColor("#2B2D31")
+                    .setDescription(`${lang[langOpt].info.line_1}`)
+                    .setColor(userData.embedColor)
                     .setThumbnail(interaction.guild.iconURL({ format: 'png' }))
                     .addFields([
                         { inline: true, name: '🌐 Servers', value: `${guildCount.toLocaleString()}` },
@@ -54,9 +57,9 @@ module.exports = {
 
 
                     ])
-                    .setFooter({ text: 'Want to add the bot to your server? Click the "Apex Bot" username and press "Add to Server".' });
+                    .setFooter({ text: `${lang[langOpt].info.line_2}` });
 
-                interaction.editReply({ embeds: [infoEmbed], ephemeral: true });
+                interaction.editReply({ embeds: [infoEmbed], ephemeral: userData.invisible });
 
             }).catch(error => { sentErrorEmbed(interaction, langOpt, error) })
     }

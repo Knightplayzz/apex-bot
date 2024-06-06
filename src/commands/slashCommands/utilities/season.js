@@ -1,6 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
 const fetch = require('node-fetch');
-const { embedColor } = require('../../../data/utilities/utilities.json');
 const { handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
@@ -11,15 +10,17 @@ module.exports = {
             nl: 'Informatie over het huidige seizoen.'
         }),
 
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true });
+        var langOpt = userData.lang;
+
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         const url = 'https://api.jumpmaster.xyz/seasons/Current?version=2';
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status);
+                    handleError(interaction, userData, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
@@ -61,12 +62,12 @@ module.exports = {
                             inline: true,
                         },
                     )
-                    .setColor(embedColor)
+                    .setColor(userData.embedColor)
                     .setImage(`${encodeURI(season.info.data.image)}?t=${Math.floor(Math.random() * 10) + 1}`)
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp();
 
-                interaction.editReply({ embeds: [currentSeason], ephemeral: true });
+                interaction.editReply({ embeds: [currentSeason], ephemeral: userData.invisible });
             }).catch(error => { console.error('Fetch error:', error) });
     },
 };

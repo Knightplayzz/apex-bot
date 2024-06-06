@@ -11,9 +11,11 @@ module.exports = {
             nl: 'Kiest een willekeurige loadout om in-game te gebruiken.'
         }),
 
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true });
+        var langOpt = userData.lang;
+
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         var y = weapons.length;
         var uniqueNumbers = [];
@@ -48,8 +50,9 @@ module.exports = {
             .setDescription(`${lang[langOpt].loadout.line_2} **${weapons[uniqueNumbers[0]].name}** ${lang[langOpt].loadout.line_1} **${weapons[uniqueNumbers[1]].name}** ${lang[langOpt].loadout.line_3}!`)
             .setImage(weapons[uniqueNumbers[0]].url)
             .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
+            .setColor(userData.embedColor)
             .setTimestamp();
 
-        interaction.editReply({ embeds: [loadoutEmbed], components: [row], ephemeral: true });
+        interaction.editReply({ embeds: [loadoutEmbed], components: [row], ephemeral: userData.invisible });
     }
 }

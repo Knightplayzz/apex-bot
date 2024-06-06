@@ -55,7 +55,8 @@ function getMapDescription(gamemode, data, langOpt) {
     }
     return { title, description, image };
 }
-function sentErrorEmbed(interaction, langOpt) {
+function sentErrorEmbed(interaction, userData) {
+    var langOpt = userData.lang;
     var errorEmbed = new EmbedBuilder()
         .setDescription(`**${lang[langOpt].error.line_1}**` +
             "```" + lang[langOpt].error.line_2 + "```")
@@ -63,18 +64,21 @@ function sentErrorEmbed(interaction, langOpt) {
         .setTimestamp()
         .setColor("Red");
 
-    interaction.editReply({ embeds: [errorEmbed], ephemeral: true });
+    interaction.editReply({ embeds: [errorEmbed], ephemeral: userData.invisible });
 }
-function sentLookUpError(interaction, langOpt) {
+function sentLookUpError(interaction, userData) {
+    var langOpt = userData.lang;
+
     var lookUpError = new EmbedBuilder()
         .setTitle(`${lang[langOpt].error.line_3}`)
         .setDescription(`${lang[langOpt].error.line_4}` + "``" + `${interaction.options.getString('username')}` + "``.")
         .setColor('D0342C')
         .setTimestamp();
 
-    interaction.editReply({ embeds: [lookUpError], ephemeral: true });
+    interaction.editReply({ embeds: [lookUpError], ephemeral: userData.invisible });
 }
-function sentVoteEmbed(interaction, langOpt) {
+function sentVoteEmbed(interaction, userData) {
+    var langOpt = userData.lang;
     var voteEmbed = new EmbedBuilder()
         .setTitle(`${lang[langOpt].vote.line_1}`)
         .setDescription(`${lang[langOpt].vote.line_2}(https://discord.com/application-directory/1014207340188270673).` +
@@ -83,9 +87,9 @@ function sentVoteEmbed(interaction, langOpt) {
         .setTimestamp()
         .setColor("Red");
 
-    return interaction.reply({ embeds: [voteEmbed], ephemeral: true });
+    return interaction.reply({ embeds: [voteEmbed], ephemeral: userData.invisible });
 }
-async function hasUserVoted(interaction, langOpt) {
+async function hasUserVoted(interaction, userData) {
     var url = `https://top.gg/api/bots/1014207340188270673/check?userId=${interaction.user.id}`;
     try {
         const res = await fetch(url, {
@@ -94,18 +98,15 @@ async function hasUserVoted(interaction, langOpt) {
         const data = await res.json();
         return data.voted === 1;
     } catch (error) {
-        sentErrorEmbed(interaction, langOpt, error);
+        sentErrorEmbed(interaction, userData, error);
         return null; // Return null in case of an error
     }
 }
-function sent() {
-
-}
-function handleError(interaction, langOpt, status) {
+function handleError(interaction, userData, status) {
     console.log(`SOMETHING WENT WRONG ${status}`);
-    if (status === 400 || status === 429) sentErrorEmbed(interaction, langOpt); //try again later
-    if (status === 403 || status === 410) sentErrorEmbed(interaction, langOpt); //my fault
-    if (status === 404) sentLookUpError(interaction, langOpt); //lookup err
-    if (status === 500 || status === 405) sentErrorEmbed(interaction, langOpt); //api error
+    if (status === 400 || status === 429) sentErrorEmbed(interaction, userData); //try again later
+    if (status === 403 || status === 410) sentErrorEmbed(interaction, userData); //my fault
+    if (status === 404) sentLookUpError(interaction, userData); //lookup err
+    if (status === 500 || status === 405) sentErrorEmbed(interaction, userData); //api error
 }
 module.exports = { getStatus, getMapDescription, sentErrorEmbed, sentVoteEmbed, hasUserVoted, handleError, sleep, sentLookUpError };

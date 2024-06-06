@@ -1,13 +1,7 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fetch = require('node-fetch');
-const firebase = require('firebase/app');
-const { getFirestore, doc, getDoc } = require('firebase/firestore');
-const firebaseConfig = require('../../../SECURITY/firebaseConfig.json');
-const app = firebase.initializeApp(firebaseConfig);
-const db = getFirestore(app);
 const lang = require('../../../data/lang/lang.json');
 const emoji = require('../../../data/utilities/emoji.json');
-const { embedColor } = require('../../../data/utilities/utilities.json');
 const { getStatus, handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
@@ -20,30 +14,28 @@ module.exports = {
             nl: 'Toont de statistieken van je gekoppelde Apex Account.'
         }),
 
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true });
+        var langOpt = userData.lang;
 
-        const docRef2 = doc(db, 'serverUsers', interaction.guild.id, 'users', interaction.user.id);
-        const docSnap = await getDoc(docRef2);
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
-        if (docSnap.exists()) {
-            const docData = docSnap.data();
-            const platform = docData.platform;
-            const player = docData.username;
+        if (userData.username && userData.platform) {
+            const platform = userData.platform;
+            const player = userData.username;
 
             var url = encodeURI(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${player}&auth=${auth}`);
             fetch(url)
                 .then(res => {
                     if (res.status === 200) { return res.json() } else {
-                        handleError(interaction, langOpt, res.status);
+                        handleError(interaction, userData, res.status);
                         return Promise.reject('Error occurred');
                     }
                 })
                 .then(data => {
-                    var badge1 = data?.legends?.selected?.data[0] ?? "**-**";
-                    var badge2 = data?.legends?.selected?.data[1] ?? "**-**";
-                    var badge3 = data?.legends?.selected?.data[2] ?? "**-**";
+                    var badge1 = data?.legends?.selected?.data?.[0];
+                    var badge2 = data?.legends?.selected?.data?.[1];
+                    var badge3 = data?.legends?.selected?.data?.[2];
 
                     const accountCompletion = Math.floor((data.global.level / 500) * 100);
                     var levelPrestige = data.global.levelPrestige;
@@ -78,28 +70,37 @@ module.exports = {
                                 inline: false,
                             },
                             {
-                                name: badge1.name,
-                                value: badge1.value.toLocaleString(),
+                                name: badge1?.name ?? "No data",
+                                value: (typeof badge1?.value === 'number') ? badge1.value.toLocaleString() : "**-**",
                                 inline: true,
                             },
                             {
-                                name: badge2.name,
-                                value: badge2.value.toLocaleString(),
+                                name: badge2?.name ?? "No data",
+                                value: (typeof badge2?.value === 'number') ? badge1.value.toLocaleString() : "**-**",
                                 inline: true,
                             },
                             {
-                                name: badge3.name,
-                                value: badge3.value.toLocaleString(),
+                                name: badge3?.name ?? "No data",
+                                value: (typeof badge3?.value === 'number') ? badge1.value.toLocaleString() : "**-**",
                                 inline: true,
                             },
                         ])
-                        .setImage(`https://cdn.jumpmaster.xyz/Bot/Legends/Banners/${data.legends.selected.LegendName}.png`)
-                        .setColor(embedColor)
+                        .setImage(`https://specter.apexstats.dev/ApexStats/Legends/${data.legends.selected.LegendName}.png`)
+                        .setColor(userData.embedColor)
                         .setFooter({ text: `${lang[langOpt].stats.line_6}!` });
 
-                    interaction.editReply({ embeds: [statsEmbed], ephemeral: true });
+                    interaction.editReply({ embeds: [statsEmbed], ephemeral: userData.invisible });
 
                 }).catch(error => { console.error('Fetch error:', error) });
+        } else {
+            var notLinkedEmbed = new EmbedBuilder()
+                .setTitle(`${lang[langOpt].stats.line_17}`)
+                .setDescription(`${lang[langOpt].stats.line_8}\n${lang[langOpt].stats.line_9}`)
+                .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
+                .setTimestamp()
+                .setColor("Red");
+
+            interaction.editReply({ embeds: [notLinkedEmbed], ephemeral: userData.invisible });
         }
     }
 }

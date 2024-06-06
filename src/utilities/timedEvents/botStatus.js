@@ -5,7 +5,7 @@ const { sleep } = require('../../utilities/functions/utilities');
 module.exports = {
     async execute(client, auth) {
 
-        await sleep(500);
+        await sleep(5000);
 
         let oldActivity = client.user.presence.activities[0];
         if (!oldActivity) return setMapData(client, auth);

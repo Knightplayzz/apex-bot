@@ -3,7 +3,6 @@ const fetch = require('node-fetch');
 const Canvas = require('canvas');
 const lang = require('../../../data/lang/lang.json');
 const { handleError } = require('../../../utilities/functions/utilities');
-const { embedColor } = require('../../../data/utilities/utilities.json');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,9 +13,11 @@ module.exports = {
             nl: 'Toont de rank distribution.'
         }),
 
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true });
+        var langOpt = userData.lang;
+
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         const canvas = Canvas.createCanvas(1200, 800);
         const ctx = canvas.getContext('2d');
@@ -24,7 +25,7 @@ module.exports = {
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status)
+                    handleError(interaction, userData, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
@@ -35,7 +36,7 @@ module.exports = {
                 const distribEmbed = new EmbedBuilder()
                     .setTitle(lang[langOpt].distribution.line_3)
                     .setDescription(`${lang[langOpt].distribution.line_1} https://apexlegendsstatus.com\n${lang[langOpt].distribution.line_2}.`)
-                    .setColor(embedColor)
+                    .setColor(userData.embedColor)
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp();
 
@@ -104,7 +105,7 @@ module.exports = {
                 var attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'distribution.png' });
                 distribEmbed.setImage(`attachment://${attachment.name}`)
 
-                return await interaction.editReply({ embeds: [distribEmbed], files: [attachment], ephemeral: true });
+                return await interaction.editReply({ embeds: [distribEmbed], files: [attachment], ephemeral: userData.invisible });
             }).catch(error => { console.error('Fetch error:', error) });
     }
 }

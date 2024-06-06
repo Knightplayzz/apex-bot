@@ -26,16 +26,18 @@ module.exports = {
                     { name: 'Broken Moon', value: 'Broken Moon' },
                 )
         ),
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true });
+        var langOpt = userData.lang;
+
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         var mapOption = interaction.options.get('map');
 
         if (mapOption != null) {
             const mapFile = require(`../../../data/maps/${mapOption.value}.json`);
             const map = Math.floor(Math.random() * mapFile.length);
-            interaction.editReply({ content: `${lang[langOpt].drop.line_1} **${mapFile[map]}** ${lang[langOpt].drop.line_2} ${mapOption.value}!` });
+            interaction.editReply({ content: `${lang[langOpt].drop.line_1} **${mapFile[map]}** ${lang[langOpt].drop.line_2} ${mapOption.value}!`, ephemeral: userData.invisible });
         } else {
             var url = `https://api.mozambiquehe.re/maprotation?auth=${auth}`;
             fetch(url)
@@ -48,7 +50,7 @@ module.exports = {
                 .then(async data => {
                     const mapFile = require(`../../../data/maps/${data.current.map}.json`);
                     const map = Math.floor(Math.random() * mapFile.length);
-                    interaction.editReply({ content: `${lang[langOpt].drop.line_1} **${mapFile[map]}** ${lang[langOpt].drop.line_2} ${data.current.map}`, embeds: [] });
+                    interaction.editReply({ content: `${lang[langOpt].drop.line_1} **${mapFile[map]}** ${lang[langOpt].drop.line_2} ${data.current.map}`, ephemeral: userData.invisible });
                 }).catch(error => { console.error('Fetch error:', error) });
         }
     }

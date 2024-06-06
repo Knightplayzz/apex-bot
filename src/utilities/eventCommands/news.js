@@ -3,7 +3,10 @@ const fetch = require('node-fetch');
 const { handleError } = require('../functions/utilities');
 
 module.exports = {
-    async execute(interaction, auth) {
+    async execute(interaction, auth, userData) {
+
+        await interaction.deferUpdate();
+
         var url = `https://api.mozambiquehe.re/news?auth=${auth}`;
         fetch(url)
             .then(res => {
@@ -14,94 +17,80 @@ module.exports = {
             })
             .then(async data => {
 
-                await interaction.deferUpdate();
+                var str = interaction.message.components[0].components[2].label;
+                var parts = str.split("/");
+                var index = parseInt(parts[0]) - 1;
 
-                if (interaction.message.components[0].components[0].data.disabled === true) {
+                const frist = new ButtonBuilder()
+                    .setCustomId(`pageFirst`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji(`⏪`);
 
-                    var embed1 = new EmbedBuilder()
-                        .setTitle(data[1].title)
-                        .setDescription(data[1].short_desc)
-                        .setURL(data[1].link)
-                        .setImage(data[1].img);
+                const prev = new ButtonBuilder()
+                    .setCustomId(`prev`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji(`⬅`);
 
-                    const row = new ActionRowBuilder()
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setLabel("<")
-                                .setCustomId('1')
-                                .setStyle(ButtonStyle.Success),
-                            new ButtonBuilder()
-                                .setLabel(">")
-                                .setCustomId('2')
-                                .setStyle(ButtonStyle.Success)
-                        );
+                const pageCount = new ButtonBuilder()
+                    .setCustomId(`pageCount`)
+                    .setStyle(ButtonStyle.Secondary)
+                    .setDisabled(true)
 
-                    return interaction.message.edit({ embeds: [embed1], components: [row] });
+                const next = new ButtonBuilder()
+                    .setCustomId(`next`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji(`➡`);
+
+                const last = new ButtonBuilder()
+                    .setCustomId(`pageLast`)
+                    .setStyle(ButtonStyle.Primary)
+                    .setEmoji(`⏩`);
+
+
+                if (interaction.customId === 'pageFirst') {
+                    index = 0;
+                    pageCount.setLabel(`${index + 1}/${data.length}`);
+
+                } else if (interaction.customId === 'prev') {
+                    if (index > 0) index--;
+                    pageCount.setLabel(`${index + 1}/${data.length}`);
+
+                } else if (interaction.customId === 'next') {
+                    if (index < data.length - 1) index++;
+                    pageCount.setLabel(`${index + 1}/${data.length}`);
+
+                } else if (interaction.customId === 'pageLast') {
+                    index = data.length - 1;
+                    pageCount.setLabel(`${index + 1}/${data.length}`);
                 }
-                if (interaction.customId === '2') {
-                    var embed1 = new EmbedBuilder()
-                        .setTitle(data[2].title)
-                        .setDescription(data[2].short_desc)
-                        .setURL(data[2].link)
-                        .setImage(data[2].img);
 
-                    const row = new ActionRowBuilder()
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setLabel("<")
-                                .setCustomId('1')
-                                .setStyle(ButtonStyle.Success),
-                            new ButtonBuilder()
-                                .setLabel(">")
-                                .setCustomId('2')
-                                .setStyle(ButtonStyle.Danger)
-                                .setDisabled(true)
-                        );
-
-                    return interaction.message.edit({ embeds: [embed1], components: [row] });
-                }
-                if (interaction.message.components[0].components[1].data.disabled === true) {
-                    var embed1 = new EmbedBuilder()
-                        .setTitle(data[1].title)
-                        .setDescription(data[1].short_desc)
-                        .setURL(data[1].link)
-                        .setImage(data[1].img);
-
-                    const row = new ActionRowBuilder()
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setLabel("<")
-                                .setCustomId('1')
-                                .setStyle(ButtonStyle.Success),
-                            new ButtonBuilder()
-                                .setLabel(">")
-                                .setCustomId('2')
-                                .setStyle(ButtonStyle.Success)
-                        );
-
-                    return interaction.message.edit({ embeds: [embed1], components: [row] });
+                if (index === 0) {
+                    frist.setDisabled(true);
+                    prev.setDisabled(true);
                 } else {
-                    var embed1 = new EmbedBuilder()
-                        .setTitle(data[0].title)
-                        .setDescription(data[0].short_desc)
-                        .setURL(data[0].link)
-                        .setImage(data[0].img);
-
-                    const row = new ActionRowBuilder()
-                        .addComponents(
-                            new ButtonBuilder()
-                                .setLabel("<")
-                                .setCustomId('1')
-                                .setStyle(ButtonStyle.Danger)
-                                .setDisabled(true),
-                            new ButtonBuilder()
-                                .setLabel(">")
-                                .setCustomId('2')
-                                .setStyle(ButtonStyle.Success)
-                        );
-
-                    return interaction.message.edit({ embeds: [embed1], components: [row] });
+                    frist.setDisabled(false);
+                    prev.setDisabled(false);
                 }
+                if (index === data.length - 1) {
+                    last.setDisabled(true);
+                    next.setDisabled(true);
+                } else {
+                    last.setDisabled(false);
+                    next.setDisabled(false);
+                }
+
+                const buttons = new ActionRowBuilder().addComponents([frist, prev, pageCount, next, last]);
+
+                var pagesEmbed = new EmbedBuilder()
+                    .setTitle(data[index].title)
+                    .setDescription(data[index].short_desc)
+                    .setColor(userData.embedColor)
+                    .setURL(data[index].link)
+                    .setImage(data[index].img);
+
+
+                return interaction.editReply({ embeds: [pagesEmbed], components: [buttons], empheral: userData.invisible });
+
             }).catch(error => { console.error('Fetch error:', error) });
     }
 }

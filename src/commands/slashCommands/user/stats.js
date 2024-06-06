@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fetch = require('node-fetch');
 const emoji = require('../../../data/utilities/emoji.json');
-const { embedColor } = require('../../../data/utilities/utilities.json');
 const lang = require('../../../data/lang/lang.json');
 const { getStatus, handleError, sentLookUpError } = require('../../../utilities/functions/utilities');
 
@@ -34,9 +33,11 @@ module.exports = {
                 .setRequired(true)
         ),
 
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true });
+        var langOpt = userData.lang;
+
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         const platform = interaction.options.get('platform').value;
         const player = interaction.options.getString('username');
@@ -46,16 +47,16 @@ module.exports = {
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status);
+                    handleError(interaction, userData, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
             .then(data => {
-                if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentLookUpError(interaction, langOpt);
+                if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentLookUpError(interaction, userData);
 
-                var badge1 = data?.legends?.selected?.data[0] ?? "**-**";
-                var badge2 = data?.legends?.selected?.data[1] ?? "**-**";
-                var badge3 = data?.legends?.selected?.data[2] ?? "**-**";
+                var badge1 = data?.legends?.selected?.data?.[0];
+                var badge2 = data?.legends?.selected?.data?.[1];
+                var badge3 = data?.legends?.selected?.data?.[2];
 
                 const accountCompletion = Math.floor((data.global.level / 500) * 100);
                 var levelPrestige = data.global.levelPrestige;
@@ -90,26 +91,26 @@ module.exports = {
                             inline: false,
                         },
                         {
-                            name: badge1.name,
-                            value: badge1.value.toLocaleString(),
+                            name: badge1?.name ?? "No data",
+                            value: (typeof badge1?.value === 'number') ? badge1.value.toLocaleString() : "**-**",
                             inline: true,
                         },
                         {
-                            name: badge2.name,
-                            value: badge2.value.toLocaleString(),
+                            name: badge2?.name ?? "No data",
+                            value: (typeof badge2?.value === 'number') ? badge1.value.toLocaleString() : "**-**",
                             inline: true,
                         },
                         {
-                            name: badge3.name,
-                            value: badge3.value.toLocaleString(),
+                            name: badge3?.name ?? "No data",
+                            value: (typeof badge3?.value === 'number') ? badge1.value.toLocaleString() : "**-**",
                             inline: true,
                         },
                     ])
-                    .setImage(`https://cdn.jumpmaster.xyz/Bot/Legends/Banners/${data.legends.selected.LegendName}.png`)
-                    .setColor(embedColor)
+                    .setImage(`https://specter.apexstats.dev/ApexStats/Legends/${data.legends.selected.LegendName}.png`)
+                    .setColor(userData.embedColor)
                     .setFooter({ text: `${lang[langOpt].stats.line_6}!` });
 
-                interaction.editReply({ embeds: [statsEmbed], ephemeral: true });
+                interaction.editReply({ embeds: [statsEmbed], ephemeral: userData.invisible });
 
             }).catch(error => { console.error('Fetch error:', error) });
     }

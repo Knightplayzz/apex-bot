@@ -1,5 +1,35 @@
 # Changelog
 
+## V2.0.6
+
+### Update News commands
+
+From 3 pages to unlimited. Added a new button system. Auto removes buttons after 15sec of not using.
+
+### Changed Privacy Policy
+
+Check PRIVACY.md.
+
+### Added visible messages
+
+Choose if your message is visible or not.
+
+### Added color embeds
+
+Change the color of the embed.
+
+### Moved some command to settings commands
+
+Moved link, unlink, languages.
+
+### Database resture
+
+Restuctured database.
+
+### New settings command
+
+Added new settings command.
+
 ## V2.0.5
 
 ### Minor big fix

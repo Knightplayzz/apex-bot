@@ -13,15 +13,15 @@ module.exports = {
             nl: 'Toont huidige in-game server status.'
         }),
 
-    async execute(interaction, auth, langOpt) {
+    async execute(interaction, auth, userData) {
 
-        await interaction.deferReply({ ephemeral: true });
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         var url = encodeURI(`https://api.mozambiquehe.re/servers?auth=${auth}`);
         fetch(url)
             .then(res => {
                 if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status);
+                    handleError(interaction, userData, res.status);
                     return Promise.reject('Error occurred');
                 }
             })
@@ -116,7 +116,7 @@ module.exports = {
                 if (x1 > 4 && x2 <= 4) serverStatusEmbed.setColor('Yellow');
                 if (x1 <= 4 && x2 <= 4) serverStatusEmbed.setColor('Green');
 
-                interaction.editReply({ embeds: [serverStatusEmbed], ephemeral: true });
+                interaction.editReply({ embeds: [serverStatusEmbed], ephemeral: userData.invisible });
 
             }).catch(error => { console.error('Fetch error:', error) })
     }

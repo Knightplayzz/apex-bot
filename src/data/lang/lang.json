@@ -1,5 +1,16 @@
 {
     "en": {
+        "predator": {
+            "line_1": "Apex Predator Ranked Point Threshold",
+            "line_2": "Last Updated",
+            "line_3": "Threshold",
+            "line_4": "Player Count",
+            "line_5": "RP Threshold data provided by"
+        },
+        "info": {
+            "line_1": "User and ranked stats, map rotations, news, random loadout & drop locations, and more. Start by typing `/` for a list of commands!",
+            "line_2": "Want to add the bot to your server? Click the 'Apex Bot' username and press 'Add to Server'."
+        },
         "error": {
             "line_1": "ERROR",
             "line_2": "Please try again later",
@@ -86,9 +97,31 @@
         "who": {
             "line_1": "Play",
             "line_2": "this round"
+        },
+        "settings": {
+            "line_1": "Setting Saved",
+            "line_2": "Changed visibility to:",
+            "line_3": "Color changed to:",
+            "line_4": "Are you sure?",
+            "line_5": "Yes",
+            "line_6": "No",
+            "line_7": "SUCCES DELETED DATA",
+            "line_8": "Cancelled",
+            "line_9": "You did not awnser the button."
         }
     },
     "nl": {
+        "predator": {
+            "line_1": "Apex Predator Ranked Point grens",
+            "line_2": "Laatst geupdated",
+            "line_3": "Grens",
+            "line_4": "Speler aantal",
+            "line_5": "RP grenswaarde data geleverd door"
+        },
+        "info": {
+            "line_1": "Gebruiker en rank stats, map veranderingen, nieuws, willikeurige loadout & drop locaties, en meer. Start en doe `/` voor een lijst commando's!",
+            "line_2": "Wil je de bot toevoegen aan je server? Click op 'Apex Bot' en click op 'Voeg toe aan Server'."
+        },
         "error": {
             "line_1": "ERROR",
             "line_2": "Probeer het later opnieuw",
@@ -120,7 +153,7 @@
             "line_2": "Inactief do /heirloom opnieuw"
         },
         "invite": {
-            "line_1": "Dankje dat je de bo hebt geinvite",
+            "line_1": "Dankje dat je de bot hebt geinvite",
             "line_2": "Druk [hier]",
             "line_3": "om de bot te inviten"
         },
@@ -175,6 +208,17 @@
         "who": {
             "line_1": "Speel",
             "line_2": "deze ronde"
+        },
+        "settings": {
+            "line_1": "Instelling opgelagen",
+            "line_2": "Zichtbaarheid veranderd naar:",
+            "line_3": "Kleur veranderd naar:",
+            "line_4": "Weet je het zeker?",
+            "line_5": "Ja",
+            "line_6": "Nee",
+            "line_7": "DATA succesvol verwijderd",
+            "line_8": "Gecancelled",
+            "line_9": "Je hebt niet gerageerd."
         }
     }
 }
