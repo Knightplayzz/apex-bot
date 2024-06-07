@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const lang = require('../../../data/lang/lang.json');
+require('dotenv').config()
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -39,7 +40,7 @@ module.exports = {
 
         var legendEmbed = new EmbedBuilder()
             .setDescription(`${lang[langOpt].who.line_1} **${legendFile[legend]}** ${lang[langOpt].who.line_2}!`)
-            .setImage(`https://specter.apexstats.dev/ApexStats/Legends/${encodeURIComponent(legendFile[legend])}.png`)
+            .setImage(`https://specter.apexstats.dev/ApexStats/Legends/${encodeURIComponent(legendFile[legend])}.png?t=9&key=${process.env.messageToken}`)
             .setColor(userData.embedColor)
             .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
             .setTimestamp();

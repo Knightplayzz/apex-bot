@@ -33,7 +33,7 @@ const unlinkSubFunction = async (interaction, auth, userData) => {
                         `\n**${userData.username}** [${userData.platform}]`)
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp()
-                    .setColor("Red");
+                    .setColor("Green");
 
                 interaction.editReply({ embeds: [unlinkedEmbed], ephemeral: userData.invisible });
             }).catch(error => { return sentErrorEmbed(interaction, langOpt, error) })

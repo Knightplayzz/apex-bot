@@ -33,20 +33,20 @@ function getMapDescription(gamemode, data, langOpt) {
         title = `${lang[langOpt].map.line_1} ${data.battle_royale.current.map}`;
         description = `**${data.battle_royale.current.map}** ${lang[langOpt].map.line_2} <t:${data.battle_royale.current.end}:R> ${lang[langOpt].map.line_3} <t:${data.battle_royale.current.end}:t>.` +
             `\n**${lang[langOpt].map.line_4}:** ${data.battle_royale.next.map}`
-        image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data.battle_royale.current.map.replace(/[\s']/g, ''))}.png`;
+        image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data.battle_royale.current.map.replace(/[\s']/g, ''))}.png?t=9&key=${process.env.messageToken}`;
     }
     if (gamemode === 'ranked') {
         title = `${lang[langOpt].map.line_1} ${data.ranked.current.map}`;
         description = `**${data.ranked.current.map}** ${lang[langOpt].map.line_2} <t:${data.ranked.current.end}:R> ${lang[langOpt].map.line_3} <t:${data.ranked.current.end}:t>.` +
             `\n**${lang[langOpt].map.line_4}:** ${data.ranked.next.map}`
-        image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data.ranked.current.map.replace(/[\s']/g, ''))}.png`;
+        image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data.ranked.current.map.replace(/[\s']/g, ''))}.png?t=9&key=${process.env.messageToken}`;
     }
     if (gamemode === 'ltm') {
         if (data.ltm.current.isActive === true) {
             title = `${lang[langOpt].map.line_1} ${data.ltm.current.map}`;
             description = `**${data.ltm.current.map}** ${lang[langOpt].map.line_2} <t:${data.ltm.current.end}:R> ${lang[langOpt].map.line_3} <t:${data.ltm.current.end}:t>.` +
                 `\n**${lang[langOpt].map.line_4}:** ${data.ltm.next.map}`
-            image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data.ltm.current.map.replace(/[\s']/g, ''))}.png`;
+            image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data.ltm.current.map.replace(/[\s']/g, ''))}.png?t=9&key=${process.env.messageToken}`;
         } else {
             title = `${lang[langOpt].map.line_5}`;
             description = `${lang[langOpt].map.line_6}`;

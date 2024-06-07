@@ -40,14 +40,14 @@ module.exports = {
                     .setColor('Red');
 
                 if (interaction.isCommand() && hasUserPremiumVar === true) {
-                    if (interaction.options.getSubcommand(false) === 'delete') return console.log('DELETE')//timers[interaction.id] = setTimeout(() => { interaction.editReply({ embeds: [cancelledEmbed], components: [], ephemeral: userData.invisible }) }, 15 * 1000);
+                    if (interaction.options.getSubcommand(false) === 'delete') return timers[interaction.id] = setTimeout(() => { interaction.editReply({ embeds: [cancelledEmbed], components: [], ephemeral: userData.invisible }) }, 15 * 1000);
                 }
-                if (interaction.commandName === 'news') timers[interaction.id] = setTimeout(() => { interaction.editReply({ embeds: [cancelledEmbed], components: [], ephemeral: userData.invisible }) }, 15 * 1000);
+                if (interaction.commandName === 'news') timers[interaction.id] = setTimeout(() => { interaction.editReply({ components: [], ephemeral: userData.invisible }) }, 15 * 1000);
 
                 if (!interaction.isButton()) return
                 if (interaction.message.interaction.commandName === 'news') {
                     if (timers[interaction.message.interaction.id]) clearTimeout(timers[interaction.message.interaction.id]);
-                    timers[interaction.message.interaction.id] = setTimeout(async () => { interaction.editReply({ embeds: [cancelledEmbed], components: [], ephemeral: userData.invisible }) }, 15 * 1000);
+                    timers[interaction.message.interaction.id] = setTimeout(async () => { interaction.editReply({ components: [], ephemeral: userData.invisible }) }, 15 * 1000);
                 }
                 if (interaction.user.id !== interaction.message.interaction.user.id) return interaction.reply({ content: "Not your button!", ephemeral: true })
 

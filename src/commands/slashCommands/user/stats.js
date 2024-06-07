@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 const emoji = require('../../../data/utilities/emoji.json');
 const lang = require('../../../data/lang/lang.json');
 const { getStatus, handleError, sentLookUpError } = require('../../../utilities/functions/utilities');
+require('dotenv').config();
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -66,6 +67,13 @@ module.exports = {
                 var battlepassCompletion = Math.floor((battlepass / 110) * 100);
 
                 var status = getStatus(data.realtime);
+                var rank = data.global.rank.rankName;
+                var rankDiv = data.global.rank.rankDiv;
+                if (rank === "Unranked") {
+                    rank = "Rookie";
+                    rankDiv = "4";
+                }
+
 
                 var statsEmbed = new EmbedBuilder()
                     .setTitle(`${emoji.logo[data.global.platform]} ${data.global.name}`)
@@ -76,7 +84,7 @@ module.exports = {
                             value: `${emoji.misc.grey_dot} Level ${data.global.level} (${accountCompletion}%)` +
                                 `\n${emoji.misc.grey_dot} Prestige ${levelPrestige} (${levelPrestigeProcent}%)` +
                                 `\n\n ** Battle Royale Ranked**` +
-                                `\n${emoji.ranked[data.global.rank.rankName]} **${data.global.rank.rankName} ${data.global.rank.rankDiv}**` +
+                                `\n${emoji.ranked[rank]} **${rank} ${rankDiv}**` +
                                 `\n${emoji.misc.grey_dot} ${data.global.rank.rankScore} RP`,
                             inline: true,
                         },
@@ -106,7 +114,7 @@ module.exports = {
                             inline: true,
                         },
                     ])
-                    .setImage(`https://specter.apexstats.dev/ApexStats/Legends/${data.legends.selected.LegendName}.png`)
+                    .setImage(`https://specter.apexstats.dev/ApexStats/Legends/${data.legends.selected.LegendName}.png?t=9&key=${process.env.messageToken}`)
                     .setColor(userData.embedColor)
                     .setFooter({ text: `${lang[langOpt].stats.line_6}!` });
 

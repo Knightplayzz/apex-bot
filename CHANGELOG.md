@@ -1,6 +1,40 @@
 # Changelog
 
+## V2.0.7
+
+### Updated language
+
+There was a small issue.
+
+### Fix /news
+
+Removed components and not change embed.
+
+### Embed color green /link
+
+From set color to green.
+
+### Fixed /settings delete
+
+Added auto delete message after 15sec of no interaction.
+
+### Fixed images
+
+Images got locked away not added a work around.
+
+### Made Sucessfull embeds green
+
+Embed like delete data are now green.
+
+### Fixed /me and /stats
+
+If person had rank "unranked" there would be not emoji and would state undefined. Now set to Rookie 4.
+
 ## V2.0.6
+
+### Fixed glitch /me and /stats
+
+Badges fix.
 
 ### Update News commands
 

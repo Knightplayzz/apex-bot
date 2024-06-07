@@ -79,7 +79,7 @@ const linkSubFunction = async (interaction, auth, userData) => {
                         `\n**${data.global.name}** [${platform}]`)
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp()
-                    .setColor(userData.embedColor);
+                    .setColor("Green");
 
                 interaction.editReply({ embeds: [linkedEmbed], ephemeral: userData.invisible });
             }).catch(error => { console.error('Fetch error:', error) })
