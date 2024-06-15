@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="src/data/utilities/pfp-png.png" alt="Alt Text" width="200">
+  <img src="src/data/utilities/images/pfp-png.png" alt="Alt Text" width="200">
 </p>
 <p align="center">
   <a href="https://top.gg/bot/1014207340188270673">
