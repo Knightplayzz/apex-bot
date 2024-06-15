@@ -2,6 +2,18 @@
 
 ## V2.0.8
 
+### Updated CRON
+
+Updated to latest version.
+
+### Removed package MS
+
+removed it. Was not used.
+
+### Change @types/node to dev
+
+Changed to dev.
+
 ### Update firebase
 
 Updated to latest firebase package for security reasons.

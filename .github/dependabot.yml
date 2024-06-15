@@ -1,0 +1,19 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/" # Location of the package.json file
+    schedule:
+      interval: "daily" # Check for updates daily
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 10
+    allow:
+      - dependency-name: "canvas"
+      - dependency-name: "cron"
+      - dependency-name: "discord.js"
+      - dependency-name: "dotenv"
+      - dependency-name: "firebase"
+      - dependency-name: "ms"
+      - dependency-name: "node-cron"
