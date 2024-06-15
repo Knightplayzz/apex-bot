@@ -6,6 +6,6 @@ module.exports = {
     async execute(guildDelete, auth) {
 
         console.log(`${guildDelete.client.user.username} REMOVED: ${guildDelete.name} (${guildDelete.id})\nCount: Is being set.`);
-        setGuildCount.execute(guild.client, auth);
+        setGuildCount.execute(guildDelete.client, auth);
     }
 }

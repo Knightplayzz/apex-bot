@@ -2,12 +2,13 @@
 
 ## Supported Versions
 
-All versions are suppored. But we highly recommend useing the latest version.
+We highly recommend useing the latest version.
 Old versions still work but don't have new functinalities and safety updates.
+Potential security issues in versions before V2.0.8 with firebase.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 2.0.1 - 2.06   | ✅ |
+| 2.0.8  | ✅ |
 
 ## Reporting a Vulnerability
 

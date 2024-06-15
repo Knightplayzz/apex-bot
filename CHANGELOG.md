@@ -1,5 +1,19 @@
 # Changelog
 
+## V2.0.8
+
+### Update firebase
+
+Updated to latest firebase package for security reasons.
+
+### Update ESLINT
+
+New version.
+
+### Bug Fix
+
+On guildDelete there was a small error.
+
 ## V2.0.7
 
 ### Updated language
