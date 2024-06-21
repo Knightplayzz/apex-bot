@@ -31,7 +31,6 @@
     "node-fetch": "^2.7.0"
   },
   "devDependencies": {
-    "@types/node": "^20.14.2",
     "eslint": "^9.3.0"
   }
 }
