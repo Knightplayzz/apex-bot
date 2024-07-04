@@ -26,7 +26,7 @@
     "cron": "^2.4.4",
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.1",
-    "firebase": "^10.12.2",
+    "firebase": "^10.12.3",
     "node-cron": "^3.0.3",
     "node-fetch": "^2.7.0"
   },
