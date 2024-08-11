@@ -15,5 +15,4 @@ updates:
       - dependency-name: "discord.js"
       - dependency-name: "dotenv"
       - dependency-name: "firebase"
-      - dependency-name: "ms"
       - dependency-name: "node-cron"

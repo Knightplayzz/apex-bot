@@ -1,5 +1,19 @@
 # Changelog
 
+## V2.0.9
+
+### NPM Update
+
+Upgraded from 9.8.1 -> 10.8.2
+
+### Eslint Update
+
+Upgraded from 9.5.0 -> 9.9.0
+
+### Firebase Update
+
+Upgraded from 10.12.2 -> 10.12.5
+
 ## V2.0.8
 
 ### Updated CRON
