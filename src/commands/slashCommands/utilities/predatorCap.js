@@ -9,14 +9,11 @@ module.exports = {
         .setName('predator')
         .setDMPermission(true)
         .setDescription('See how many points you need to reach Apex Predator on each platform.')
-        .setDescriptionLocalizations({
-            nl: 'Zie hoeveel punten je nodig hebt om Apex Predator te bereiken op elk platform.'
-        }),
+        .setDescriptionLocalizations({ nl: 'Zie hoeveel punten je nodig hebt om Apex Predator te bereiken op elk platform.' }),
 
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         var url = encodeURI(`https://api.mozambiquehe.re/predator?auth=${auth}`);

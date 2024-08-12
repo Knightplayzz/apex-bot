@@ -9,16 +9,12 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('stats')
         .setDescription('Shows legends stats, account and rank info, and online status.')
-        .setDescriptionLocalizations({
-            nl: 'Toont de statistieken, account rank informatie en online status.'
-        })
+        .setDescriptionLocalizations({ nl: 'Toont de statistieken, account rank informatie en online status.' })
         .setDMPermission(true)
         .addStringOption(option =>
             option.setName('platform')
                 .setDescription('The platform you play Apex on.')
-                .setDescriptionLocalizations({
-                    nl: 'Het platform waarop je Apex speelt.'
-                })
+                .setDescriptionLocalizations({ nl: 'Het platform waarop je Apex speelt.' })
                 .setRequired(true)
                 .addChoices(
                     { name: 'PC(Steam/Origin)', value: 'PC' },
@@ -28,21 +24,17 @@ module.exports = {
         .addStringOption(option =>
             option.setName('username')
                 .setDescription('Your in-game username.')
-                .setDescriptionLocalizations({
-                    nl: 'Je in-game gebruikersnaam.'
-                })
+                .setDescriptionLocalizations({ nl: 'Je in-game gebruikersnaam.' })
                 .setRequired(true)
         ),
 
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         const platform = interaction.options.get('platform').value;
         const player = interaction.options.getString('username');
-
 
         var url = encodeURI(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${player}&auth=${auth}`);
         fetch(url)
@@ -73,7 +65,6 @@ module.exports = {
                     rank = "Rookie";
                     rankDiv = "4";
                 }
-
 
                 var statsEmbed = new EmbedBuilder()
                     .setTitle(`${emoji.logo[data.global.platform]} ${data.global.name}`)

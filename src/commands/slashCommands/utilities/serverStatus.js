@@ -9,9 +9,7 @@ module.exports = {
         .setName('status')
         .setDMPermission(true)
         .setDescription('Shows current in-game server status.')
-        .setDescriptionLocalizations({
-            nl: 'Toont huidige in-game server status.'
-        }),
+        .setDescriptionLocalizations({ nl: 'Toont huidige in-game server status.' }),
 
     async execute(interaction, auth, userData) {
 

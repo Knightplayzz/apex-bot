@@ -11,11 +11,9 @@ module.exports = {
     async execute(interaction, userData, timers) {
 
         await interaction.deferUpdate();
-
         var langOpt = userData.lang;
 
         if (timers[interaction.message.interaction.id]) clearTimeout(timers[interaction.message.interaction.id]);
-
         if (interaction.customId === "1") {
             await deleteDoc(doc(db, 'users', interaction.user.id))
                 .then(() => {

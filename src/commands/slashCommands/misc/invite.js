@@ -6,14 +6,11 @@ module.exports = {
         .setName('invite')
         .setDMPermission(true)
         .setDescription('Provides an invite link for the bot.')
-        .setDescriptionLocalizations({
-            nl: 'Toont een invite link van de bot.'
-        }),
+        .setDescriptionLocalizations({ nl: 'Toont een invite link van de bot.' }),
 
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         var inviteEmbed = new EmbedBuilder()

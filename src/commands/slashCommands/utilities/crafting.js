@@ -9,14 +9,11 @@ module.exports = {
         .setName('crafting')
         .setDMPermission(true)
         .setDescription('Show current items that can be crafted at the replicator.')
-        .setDescriptionLocalizations({
-            nl: 'Toont de voorwerpen die je kan craften in de replicator.'
-        }),
+        .setDescriptionLocalizations({ nl: 'Toont de voorwerpen die je kan craften in de replicator.' }),
 
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         const canvas = Canvas.createCanvas(400, 400);

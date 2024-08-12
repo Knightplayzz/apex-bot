@@ -9,14 +9,11 @@ module.exports = {
         .setName('distribution')
         .setDMPermission(true)
         .setDescription('Shows the rank distribution.')
-        .setDescriptionLocalizations({
-            nl: 'Toont de rank distribution.'
-        }),
+        .setDescriptionLocalizations({ nl: 'Toont de rank distribution.' }),
 
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         const canvas = Canvas.createCanvas(1200, 800);

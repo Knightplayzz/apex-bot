@@ -26,7 +26,6 @@ const deleteSubFunction = async (interaction, auth, userData) => {
                 .setCustomId('2')
                 .setStyle(ButtonStyle.Success)
         );
-    //add buttons
 
     interaction.editReply({ embeds: [embed], components: [row], ephemeral: userData.invisible });
 }

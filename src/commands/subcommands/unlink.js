@@ -1,17 +1,14 @@
 const { EmbedBuilder } = require('discord.js');
 const firebase = require('firebase/app');
 const { getFirestore, updateDoc, deleteField, doc } = require('firebase/firestore');
-const firebaseConfig = require('../../SECURITY/firebaseConfig.json')
+const firebaseConfig = require('../../SECURITY/firebaseConfig.json');
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const lang = require('../../data/lang/lang.json');
 
-
 const unlinkSubCommand = (subCommand) => subCommand.setName('unlink')
     .setDescription('Unlink your Discord account from your Apex username.')
-    .setDescriptionLocalizations({
-        nl: 'Ontkoppel je Discord account van je Apex gebruikersnaam.'
-    });
+    .setDescriptionLocalizations({ nl: 'Ontkoppel je Discord account van je Apex gebruikersnaam.' });
 
 const unlinkSubFunction = async (interaction, auth, userData) => {
 

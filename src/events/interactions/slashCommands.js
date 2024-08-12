@@ -13,12 +13,6 @@ const { sentVoteEmbed } = require('../../utilities/functions/utilities');
 const { embedColor } = require('../../data/utilities/utilities.json');
 const { hasUserPremium } = require('../../utilities/functions/hasUserPremium');
 
-
-// let skus = await interaction.client.application.fetchSKUs();
-// console.log(skus);
-// interaction.client.application.entitlements.createTest({ guild: interaction.guild, sku: skus.get('1246772758541631518') })
-
-
 module.exports = {
     name: "interactionCreate",
     once: false,

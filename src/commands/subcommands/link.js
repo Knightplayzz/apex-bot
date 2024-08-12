@@ -2,7 +2,7 @@ const { EmbedBuilder } = require("discord.js");
 const fetch = require('node-fetch');
 const firebase = require('firebase/app');
 const { getFirestore, doc, setDoc } = require('firebase/firestore');
-const firebaseConfig = require('../../SECURITY/firebaseConfig.json')
+const firebaseConfig = require('../../SECURITY/firebaseConfig.json');
 const lang = require('../../data/lang/lang.json');
 const { handleError } = require('../../utilities/functions/utilities');
 const app = firebase.initializeApp(firebaseConfig);
@@ -11,15 +11,11 @@ const db = getFirestore(app);
 const linkSubCommand = (subCommand) => subCommand
     .setName('link')
     .setDescription('Link your Discord account to your Apex Legends username.')
-    .setDescriptionLocalizations({
-        nl: 'Koppel je Discord account aan je Apex Legends gebruikersnaam.'
-    })
+    .setDescriptionLocalizations({ nl: 'Koppel je Discord account aan je Apex Legends gebruikersnaam.' })
     .addStringOption(option =>
         option.setName('platform')
             .setDescription('The platform you play Apex on.')
-            .setDescriptionLocalizations({
-                nl: 'Het platform waarop je Apex speelt.'
-            })
+            .setDescriptionLocalizations({ nl: 'Het platform waarop je Apex speelt.' })
             .setRequired(true)
             .addChoices(
                 { name: 'PC(Steam/Origin)', value: 'PC' },
@@ -29,16 +25,12 @@ const linkSubCommand = (subCommand) => subCommand
     .addStringOption(option =>
         option.setName('username')
             .setDescription('Your in-game username.')
-            .setDescriptionLocalizations({
-                nl: 'Je in-game gebruikersnaam.'
-            })
+            .setDescriptionLocalizations({ nl: 'Je in-game gebruikersnaam.' })
             .setRequired(true))
-
 
 const linkSubFunction = async (interaction, auth, userData) => {
 
     var langOpt = userData.lang;
-
     await interaction.deferReply({ ephemeral: userData.invisible });
 
     var platform = interaction.options.get('platform').value
@@ -57,7 +49,6 @@ const linkSubFunction = async (interaction, auth, userData) => {
 
         return interaction.editReply({ embeds: [alreadyLinkedEmbed], ephemeral: userData.invisible });
     } else {
-
         var url = encodeURI(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${player}&auth=${auth}`);
         fetch(url)
             .then(res => {
@@ -73,6 +64,7 @@ const linkSubFunction = async (interaction, auth, userData) => {
                     platform: platform,
                     username: data.global.name
                 }, { merge: true });
+
                 var linkedEmbed = new EmbedBuilder()
                     .setTitle(`${lang[langOpt].link.line_3}`)
                     .setDescription(`${lang[langOpt].link.line_4}:` +
@@ -90,5 +82,3 @@ module.exports = {
     linkSubCommand: linkSubCommand,
     linkSubFunction: linkSubFunction
 };
-
-

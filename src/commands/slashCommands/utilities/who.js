@@ -1,21 +1,17 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const lang = require('../../../data/lang/lang.json');
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('who')
         .setDMPermission(true)
         .setDescription('Picks a random legend to play in-game.')
-        .setDescriptionLocalizations({
-            nl: 'Kiest een willekeurige legend om in-game te gebruiken.'
-        })
+        .setDescriptionLocalizations({ nl: 'Kiest een willekeurige legend om in-game te gebruiken.' })
         .addStringOption(option =>
             option.setName('class')
                 .setDescription('Category of legends to choose from.')
-                .setDescriptionLocalizations({
-                    nl: 'Categorie aan legends om van te kiezen.'
-                })
+                .setDescriptionLocalizations({ nl: 'Categorie aan legends om van te kiezen.' })
                 .setRequired(false)
                 .addChoices(
                     { name: 'Assault', value: 'assault' },
@@ -28,7 +24,6 @@ module.exports = {
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         const type = interaction.options.getString('type');
@@ -48,4 +43,3 @@ module.exports = {
         interaction.editReply({ embeds: [legendEmbed], ephemeral: userData.invisible });
     }
 }
-

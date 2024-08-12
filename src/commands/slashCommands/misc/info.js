@@ -10,14 +10,11 @@ module.exports = {
         .setName('info')
         .setDMPermission(true)
         .setDescription('Shows info about the bot.')
-        .setDescriptionLocalizations({
-            nl: 'Zie informatie van de bot.'
-        }),
+        .setDescriptionLocalizations({ nl: 'Zie informatie van de bot.' }),
 
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-
         await interaction.deferReply({ ephemeral: userData.invisible })
 
         interaction.client.shard.fetchClientValues('guilds.cache.size')
@@ -54,13 +51,10 @@ module.exports = {
                             value: `${days}d, ${hours}h, ${minutes}m, ${seconds}s`,
                             inline: true,
                         },
-
-
                     ])
                     .setFooter({ text: `${lang[langOpt].info.line_2}` });
 
                 interaction.editReply({ embeds: [infoEmbed], ephemeral: userData.invisible });
-
             }).catch(error => { sentErrorEmbed(interaction, langOpt, error) })
     }
 }

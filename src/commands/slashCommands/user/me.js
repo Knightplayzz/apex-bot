@@ -11,14 +11,11 @@ module.exports = {
         .setName('me')
         .setDMPermission(false)
         .setDescription('Shows the stats of your linked Apex account.')
-        .setDescriptionLocalizations({
-            nl: 'Toont de statistieken van je gekoppelde Apex Account.'
-        }),
+        .setDescriptionLocalizations({ nl: 'Toont de statistieken van je gekoppelde Apex Account.' }),
 
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         if (userData.username && userData.platform) {

@@ -10,15 +10,11 @@ const lang = require('../../data/lang/lang.json');
 const languageSubCommand = (subCommand) => subCommand
     .setName('language')
     .setDescription('Change the language of the bot.')
-    .setDescriptionLocalizations({
-        nl: 'Verander de taal van de bot.'
-    })
+    .setDescriptionLocalizations({ nl: 'Verander de taal van de bot.' })
     .addStringOption(option =>
         option.setName('language')
             .setDescription('Select the language.')
-            .setDescriptionLocalizations({
-                nl: 'Kies een taal.'
-            })
+            .setDescriptionLocalizations({ nl: 'Kies een taal.' })
             .setRequired(true)
             .addChoices(
                 { name: 'English (Default)', value: 'en' },
@@ -29,7 +25,6 @@ const languageSubCommand = (subCommand) => subCommand
 const languageSubFunction = async (interaction, auth, userData) => {
 
     await interaction.deferReply({ ephemeral: userData.invisible });
-
     var selecLang = interaction.options.get('language').value;
 
     await setDoc(doc(db, 'users', interaction.user.id), { lang: selecLang }, { merge: true });
@@ -42,7 +37,6 @@ const languageSubFunction = async (interaction, auth, userData) => {
         .setColor(userData.embedColor);
 
     interaction.editReply({ embeds: [langEmbed], ephemeral: userData.invisible });
-
 }
 
 module.exports = {

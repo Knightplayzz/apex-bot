@@ -6,13 +6,9 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('season')
         .setDescription('Information about the current season.')
-        .setDescriptionLocalizations({
-            nl: 'Informatie over het huidige seizoen.'
-        }),
+        .setDescriptionLocalizations({ nl: 'Informatie over het huidige seizoen.' }),
 
     async execute(interaction, auth, userData) {
-
-        var langOpt = userData.lang;
 
         await interaction.deferReply({ ephemeral: userData.invisible });
 
@@ -63,11 +59,10 @@ module.exports = {
                         },
                     )
                     .setColor(userData.embedColor)
-                    .setImage(`${encodeURI(season.info.data.image)}?t=${Math.floor(Math.random() * 10) + 1}`)
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp();
 
                 interaction.editReply({ embeds: [currentSeason], ephemeral: userData.invisible });
             }).catch(error => { console.error('Fetch error:', error) });
-    },
+    }
 };

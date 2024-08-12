@@ -1,11 +1,11 @@
 const { EmbedBuilder } = require("discord.js");
 const firebase = require('firebase/app');
 const { getFirestore, doc, setDoc } = require('firebase/firestore');
-const firebaseConfig = require('../../SECURITY/firebaseConfig.json')
+const firebaseConfig = require('../../SECURITY/firebaseConfig.json');
 const lang = require('../../data/lang/lang.json');
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const { embedColor } = require('../../data/utilities/utilities.json')
+const { embedColor } = require('../../data/utilities/utilities.json');
 
 const embedColorSubComand = (subCommand) => subCommand
     .setName('embedcolor')

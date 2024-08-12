@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 
 module.exports = {
-    async execute(client, auth) {
+    async execute(client) {
 
         client.shard.fetchClientValues('guilds.cache.size')
             .then(results => {

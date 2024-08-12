@@ -1,7 +1,7 @@
 const { EmbedBuilder } = require("discord.js");
 const firebase = require('firebase/app');
 const { getFirestore, doc, setDoc } = require('firebase/firestore');
-const firebaseConfig = require('../../SECURITY/firebaseConfig.json')
+const firebaseConfig = require('../../SECURITY/firebaseConfig.json');
 const lang = require('../../data/lang/lang.json');
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -22,9 +22,10 @@ const messageSubCommand = (subCommand) => subCommand
 const messageSubFunction = async (interaction, auth, userData) => {
 
     var langOpt = userData.lang;
-    var isInvisibleBoolean = false;
+
     var option = interaction.options.get('option').value;
-    if (option === "invisible") isInvisibleBoolean = true;
+    var isInvisibleBoolean = (option === "invisible");
+
     await interaction.deferReply({ ephemeral: isInvisibleBoolean });
     await setDoc(doc(db, 'users', interaction.user.id), { invisible: isInvisibleBoolean }, { merge: true });
 

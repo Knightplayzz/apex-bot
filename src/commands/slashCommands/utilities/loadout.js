@@ -7,14 +7,11 @@ module.exports = {
         .setName('loadout')
         .setDMPermission(true)
         .setDescription('Picks a random loadout to use in-game.')
-        .setDescriptionLocalizations({
-            nl: 'Kiest een willekeurige loadout om in-game te gebruiken.'
-        }),
+        .setDescriptionLocalizations({ nl: 'Kiest een willekeurige loadout om in-game te gebruiken.' }),
 
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         var y = weapons.length;

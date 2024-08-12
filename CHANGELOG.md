@@ -2,6 +2,18 @@
 
 ## V2.0.9
 
+### New Season
+
+Fixed commands to work for the new season.
+
+### Edited files
+
+Edited multiple files to be more compact.
+
+### Season Bug Fix
+
+Removed Image causing error.
+
 ### NPM Update
 
 Upgraded from 9.8.1 -> 10.8.2
