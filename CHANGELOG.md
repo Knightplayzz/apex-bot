@@ -1,5 +1,11 @@
 # Changelog
 
+## V2.1.0
+
+### Update Firebase
+
+Updated firebase V10.12.5 -> V10.13.0
+
 ## V2.0.9
 
 ### New Season
