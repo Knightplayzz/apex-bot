@@ -2,6 +2,15 @@
 
 ## V2.1.0
 
+### Downgraded Firebase
+
+Downgraded Firebase  V10.13.0 -> V10.12.5
+This is because a heartbeats console.log error. This will be removed in the next firebase update this thursday (29-08-2024).
+
+### Updated Eslint
+
+Updated Eslint V9.9.0 -> V9.9.1
+
 ### Update Firebase
 
 Updated firebase V10.12.5 -> V10.13.0

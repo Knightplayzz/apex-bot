@@ -2,7 +2,6 @@ const { hasUserVoted } = require('./utilities');
 const { embedColor } = require('../../data/utilities/utilities.json');
 
 async function hasUserPremium(interaction) {
-    if (1 === 1) return true
     var isServerPremium, isUserPremium;
     const entitlements = await interaction.client.application.entitlements.fetch(interaction.guild);
     const userEntitlements = await interaction.client.application.entitlements.fetch(interaction.user);
