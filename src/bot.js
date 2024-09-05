@@ -43,5 +43,4 @@ for (const folder of eventFolders) {
     }
 }
 
-
 client.login(process.env.TOKEN);

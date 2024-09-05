@@ -1,6 +1,24 @@
 # Changelog
 
+## V2.1.1
+
+### Heatbeat error fix
+
+Because the firebase package has had an update the heartbeat error is now fixed. Previously the package was downgraded to mitigate this issue.
+
+### Update Discord.js
+
+Updated Discord.js V14.15.3 -> V14.16.1
+
+### Update Firebase
+
+Updated Firebase V10.12.5 -> V10.13.1
+
 ## V2.1.0
+
+### Changed Bot.js
+
+Removed auto updating commands on every startup.
 
 ### Downgraded Firebase
 
