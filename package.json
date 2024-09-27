@@ -1,6 +1,6 @@
 {
   "name": "apexbot",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "The Best Apex Bot for Discord!",
   "main": "src/Shard.js",
   "type": "commonjs",

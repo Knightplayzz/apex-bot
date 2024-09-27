@@ -1,5 +1,19 @@
 # Changelog
 
+### V2.1.2
+
+## Update discord.js
+
+Updated Discord.js V14.16.1 -> V14.16.2
+
+## Update eslint
+
+Updated eslint V9.9.1 -> V9.11.1
+
+## Update firebase
+
+Updated firebase V10.13.1 -> V10.13.2
+
 ## V2.1.1
 
 ### Heatbeat error fix
