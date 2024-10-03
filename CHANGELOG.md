@@ -1,5 +1,15 @@
 # Changelog
 
+### V2.1.3
+
+## Update discord.js
+
+Updated Discord.js V14.16.2 -> V14.16.3
+
+## Update firebase
+
+Updated Firebase v10.13.2 -> V10.14.0
+
 ### V2.1.2
 
 ## Update discord.js
