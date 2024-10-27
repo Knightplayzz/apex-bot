@@ -5,7 +5,6 @@ require('dotenv').config();
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('who')
-        .setDMPermission(true)
         .setDescription('Picks a random legend to play in-game.')
         .setDescriptionLocalizations({ nl: 'Kiest een willekeurige legend om in-game te gebruiken.' })
         .addStringOption(option =>

@@ -1,5 +1,27 @@
 # Changelog
 
+### V2.1.4
+
+## Update firebase
+
+Updated Firebase V10.14.0 -> V10.14.1
+
+## Update eslint
+
+Updated eslint V9.11.1 -> V9.13.0
+
+## Update .setDMPermission() (outdated)
+
+Updated all command to follow the new syntax.
+
+## Added Team command
+
+Added Team command to get a team to use.
+
+## Updated Crafting command
+
+Update with new season added the permanent item and removed the weekly/daily.
+
 ### V2.1.3
 
 ## Update discord.js

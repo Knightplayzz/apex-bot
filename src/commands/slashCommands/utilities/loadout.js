@@ -5,7 +5,6 @@ const weapons = require("../../../data/weapons/allWeapons.json");
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('loadout')
-        .setDMPermission(true)
         .setDescription('Picks a random loadout to use in-game.')
         .setDescriptionLocalizations({ nl: 'Kiest een willekeurige loadout om in-game te gebruiken.' }),
 

@@ -7,7 +7,6 @@ const { handleError } = require('../../../utilities/functions/utilities');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('distribution')
-        .setDMPermission(true)
         .setDescription('Shows the rank distribution.')
         .setDescriptionLocalizations({ nl: 'Toont de rank distribution.' }),
 

@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, InteractionContextType } = require('discord.js');
 const fetch = require('node-fetch');
 const lang = require('../../../data/lang/lang.json');
 const emoji = require('../../../data/utilities/emoji.json');
@@ -9,7 +9,7 @@ module.exports = {
     premium: true,
     data: new SlashCommandBuilder()
         .setName('me')
-        .setDMPermission(false)
+        .setContexts(InteractionContextType.Guild)
         .setDescription('Shows the stats of your linked Apex account.')
         .setDescriptionLocalizations({ nl: 'Toont de statistieken van je gekoppelde Apex Account.' }),
 

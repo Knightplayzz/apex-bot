@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("discord.js");
+const { SlashCommandBuilder, InteractionContextType } = require("discord.js");
 const fetch = require('node-fetch');
 const lang = require('../../../data/lang/lang.json');
 const { handleError } = require('../../../utilities/functions/utilities');
@@ -6,9 +6,9 @@ const { handleError } = require('../../../utilities/functions/utilities');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('drop')
+        .setContexts(InteractionContextType.BotDM)
         .setDescription('Select a random drop location from the current map, or select a specific map to choose from.')
         .setDescriptionLocalizations({ nl: 'Kies een willekeurige plek om te droppen in de huidige map, of selecteer een specifieke map.' })
-        .setDMPermission(true)
         .addStringOption(option =>
             option.setName('map')
                 .setDescription('Manually pick a map.')

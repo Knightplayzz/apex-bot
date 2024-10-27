@@ -10,7 +10,6 @@ module.exports = {
         .setName('stats')
         .setDescription('Shows legends stats, account and rank info, and online status.')
         .setDescriptionLocalizations({ nl: 'Toont de statistieken, account rank informatie en online status.' })
-        .setDMPermission(true)
         .addStringOption(option =>
             option.setName('platform')
                 .setDescription('The platform you play Apex on.')

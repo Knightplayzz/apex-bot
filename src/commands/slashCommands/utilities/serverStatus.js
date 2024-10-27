@@ -7,7 +7,6 @@ module.exports = {
     premium: true,
     data: new SlashCommandBuilder()
         .setName('status')
-        .setDMPermission(true)
         .setDescription('Shows current in-game server status.')
         .setDescriptionLocalizations({ nl: 'Toont huidige in-game server status.' }),
 

@@ -5,7 +5,7 @@
     },
     {
         "name": "Ash",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-ash.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-ash.png.adapt.crop16x9.png"
     },
     {
         "name": "Ballistic",
@@ -13,11 +13,11 @@
     },
     {
         "name": "Bangalore",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-bangalore.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-bangalore.png.adapt.crop16x9.png"
     },
     {
         "name": "Bloodhound",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-bloodhound.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-bloodhound.png.adapt.crop16x9.png"
     },
     {
         "name": "Catalyst",
@@ -25,7 +25,7 @@
     },
     {
         "name": "Caustic",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-caustic.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-caustic.png.adapt.crop16x9.png"
     },
     {
         "name": "Conduit",
@@ -33,7 +33,7 @@
     },
     {
         "name": "Crypto",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-crypto.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-crypto.png.adapt.crop16x9.png"
     },
     {
         "name": "Fuse",
@@ -41,7 +41,7 @@
     },
     {
         "name": "Gibraltar",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-gibraltar.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-gibraltar.png.adapt.crop16x9.png"
     },
     {
         "name": "Horizon",
@@ -49,7 +49,7 @@
     },
     {
         "name": "Lifeline",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-lifeline.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-lifeline.png.adapt.crop16x9.png"
     },
     {
         "name": "Loba",
@@ -61,7 +61,7 @@
     },
     {
         "name": "Mirage",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-mirage.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-mirage.png.adapt.crop16x9.png"
     },
     {
         "name": "Newcastle",
@@ -69,11 +69,11 @@
     },
     {
         "name": "Octane",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-octane.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-octane.png.adapt.crop16x9.png"
     },
     {
         "name": "Pathfinder",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-pathfinder.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-pathfinder.png.adapt.crop16x9.png"
     },
     {
         "name": "Rampart",
@@ -97,10 +97,10 @@
     },
     {
         "name": "Wattson",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-wattson.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-wattson.png.adapt.crop16x9.png"
     },
     {
         "name": "Wraith",
-        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/images/2019/01/legends-character-tiles/apex-grid-tile-legends-wraith.png.adapt.crop16x9.png"
+        "url": "https://media.contentapi.ea.com/content/dam/apex-legends/common/legends/apex-grid-tile-legends-wraith.png.adapt.crop16x9.png"
     }
 ]
