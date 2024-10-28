@@ -9,12 +9,7 @@ module.exports = {
 
         var url = `https://api.mozambiquehe.re/news?auth=${auth}`;
         fetch(url)
-            .then(res => {
-                if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, langOpt, res.status);
-                    return Promise.reject('Error occurred');
-                }
-            })
+            .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(async data => {
 
                 var str = interaction.message.components[0].components[2].label;
@@ -34,7 +29,7 @@ module.exports = {
                 const pageCount = new ButtonBuilder()
                     .setCustomId(`pageCount`)
                     .setStyle(ButtonStyle.Secondary)
-                    .setDisabled(true)
+                    .setDisabled(true);
 
                 const next = new ButtonBuilder()
                     .setCustomId(`next`)

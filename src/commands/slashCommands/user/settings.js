@@ -29,4 +29,3 @@ module.exports = {
         if (subCommand === 'language') return languageSubFunction(interaction, auth, userData);
     }
 }
-

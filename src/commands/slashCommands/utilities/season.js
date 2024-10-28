@@ -14,12 +14,7 @@ module.exports = {
 
         const url = 'https://api.jumpmaster.xyz/seasons/Current?version=2';
         fetch(url)
-            .then(res => {
-                if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, userData, res.status);
-                    return Promise.reject('Error occurred');
-                }
-            })
+            .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(async data => {
                 const season = data;
                 const currentSeason = new EmbedBuilder()

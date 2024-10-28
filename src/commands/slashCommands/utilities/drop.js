@@ -36,12 +36,7 @@ module.exports = {
         } else {
             var url = `https://api.mozambiquehe.re/maprotation?auth=${auth}`;
             fetch(url)
-                .then(res => {
-                    if (res.status === 200) { return res.json() } else {
-                        handleError(interaction, langOpt, res.status);
-                        return Promise.reject('Error occurred');
-                    }
-                })
+                .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
                 .then(async data => {
                     const mapFile = require(`../../../data/maps/${data.current.map}.json`);
                     const map = Math.floor(Math.random() * mapFile.length);

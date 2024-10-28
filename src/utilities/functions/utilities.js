@@ -89,5 +89,9 @@ function handleError(interaction, userData, status) {
     if (status === 403 || status === 410) sentErrorEmbed(interaction, userData); //my fault
     if (status === 404) sentLookUpError(interaction, userData); //lookup err
     if (status === 500 || status === 405) sentErrorEmbed(interaction, userData); //api error
+    return Promise.reject('Error occurred');
 }
-module.exports = { getStatus, getMapDescription, sentErrorEmbed, sentVoteEmbed, hasUserVoted, handleError, sleep, sentLookUpError };
+function checkData(data, interaction, userData) {
+    if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentLookUpError(interaction, userData);
+}
+module.exports = { getStatus, getMapDescription, sentErrorEmbed, sentVoteEmbed, hasUserVoted, handleError, sleep, sentLookUpError, checkData };

@@ -17,12 +17,7 @@ module.exports = {
 
         var url = encodeURI(`https://api.mozambiquehe.re/predator?auth=${auth}`);
         fetch(url)
-            .then(res => {
-                if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, userData, res.status);
-                    return Promise.reject('Error occurred');
-                }
-            })
+            .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(data => {
 
                 var predatorEmbed = new EmbedBuilder()

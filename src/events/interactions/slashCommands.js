@@ -8,7 +8,6 @@ const firebaseConfig = require('../../SECURITY/firebaseConfig.json');
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const fireAuth = getAuth();
-
 const { sentVoteEmbed } = require('../../utilities/functions/utilities');
 const { embedColor } = require('../../data/utilities/utilities.json');
 const { hasUserPremium } = require('../../utilities/functions/hasUserPremium');
@@ -17,7 +16,9 @@ module.exports = {
     name: "interactionCreate",
     once: false,
     async execute(interaction, auth) {
+
         if (!interaction.isChatInputCommand()) return;
+
         const slashCommand = interaction.client.slashCommands.get(interaction.commandName);
         if (!slashCommand) return;
 

@@ -19,12 +19,7 @@ module.exports = {
         const ctx = canvas.getContext('2d');
         const url = "https://apexlegendsstatus.com/lib/php/rankdistrib.php?unranked=yes";
         fetch(url)
-            .then(res => {
-                if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, userData, res.status);
-                    return Promise.reject('Error occurred');
-                }
-            })
+            .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(async data => {
 
                 const distData = data;

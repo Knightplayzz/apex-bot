@@ -1,12 +1,30 @@
 # Changelog
 
+### V2.1.7
+
+## Improved activity of the client
+
+Better speeds.
+
+## Improved the SKU's for premium users
+
+Removed subscription based models.
+
+## Overall better quality and readability of code
+
+Made minor changes to code for better speeds and readability.
+
+## Updated error handling
+
+Improved error handling.
+
 ### V2.1.6
 
 ## Updated settings embed color
 
 Added custom colors as well as new basic colors.
 
-## Overall beter quality and readability of code
+## Overall better quality and readability of code
 
 Made minor changes to code for better speeds and readability.
 

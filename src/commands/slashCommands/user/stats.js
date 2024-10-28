@@ -2,7 +2,7 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 const fetch = require('node-fetch');
 const emoji = require('../../../data/utilities/emoji.json');
 const lang = require('../../../data/lang/lang.json');
-const { getStatus, handleError, sentLookUpError } = require('../../../utilities/functions/utilities');
+const { getStatus, handleError, checkData } = require('../../../utilities/functions/utilities');
 require('dotenv').config();
 
 module.exports = {
@@ -37,14 +37,9 @@ module.exports = {
 
         var url = encodeURI(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${player}&auth=${auth}`);
         fetch(url)
-            .then(res => {
-                if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, userData, res.status);
-                    return Promise.reject('Error occurred');
-                }
-            })
+            .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(data => {
-                if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentLookUpError(interaction, userData);
+                checkData(data, interaction, userData);
 
                 var badge1 = data?.legends?.selected?.data?.[0];
                 var badge2 = data?.legends?.selected?.data?.[1];

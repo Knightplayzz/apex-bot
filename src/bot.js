@@ -13,10 +13,8 @@ const client = new Client({
     partials: [Partials.Channel]
 });
 
-
 client.slashCommands = new Collection();
 client.contextCommands = new Collection();
-
 
 const folders = fs.readdirSync(path.join(__dirname, 'commands/slashCommands'));
 for (const folder of folders) {

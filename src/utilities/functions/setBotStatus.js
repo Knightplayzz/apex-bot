@@ -5,30 +5,25 @@ const { handleError } = require('../functions/utilities');
 async function setMapData(client, auth) {
     var url = encodeURI(`https://api.mozambiquehe.re/maprotation?auth=${auth}`);
     fetch(url)
-        .then(res => {
-            if (res.status === 200) { return res.json() } else {
-                handleError(interaction, langOpt, res.status)
-                return Promise.reject('Error occurred');
-            }
-        })
+        .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
         .then(data => {
-            if (data.current === undefined) return console.log('GETTING MAP, but was empty');//added sleep so issue shouldn't happen
-            var timeDay = Math.round(Number(data.current.remainingMins) / 1440);
-            var hours = Number(data.current.remainingMins) / 60;
 
-            if (timeDay >= 2) {
-                const time2 = Number(data.current.remainingMins) / 1440;
-                const time3 = Math.round(time2);
-                client.user.setActivity(`${data.current.map} [${time3} days]`, { type: ActivityType.Custom });
+            if (data.current === undefined) return console.log('error retrieving map for status');
+
+            const days = Math.round(Number(data.current.remainingMins) / 1440);
+            const hours = Number(data.current.remainingMins) / 60;
+            var activityMessage;
+
+            if (days >= 2) {
+                activityMessage = `${data.current.map} [${days} days]`;
+            } else if (days === 1 || hours >= 2) {
+                activityMessage = `${data.current.map} [${hours} hours]`;
+            } else {
+                activityMessage = `${data.current.map} [${data.current.remainingMins} min]`;
             }
-            if (timeDay <= 1 && hours >= 2) {
-                let time = data.current.remainingMins / 60;
-                let time2 = Math.round(time);
-                client.user.setActivity(`${data.current.map} [${time2} hours]`, { type: ActivityType.Custom });
-            }
-            if (hours < 2) {
-                client.user.setActivity(`${data.current.map} [${data.current.remainingMins} min]`, { type: ActivityType.Custom });
-            }
-        }).catch(error => { console.error('Fetch error:', error) })
+
+            client.user.setActivity(activityMessage, { type: ActivityType.Custom });
+
+        }).catch(error => { console.error('Fetch error:', error) });
 }
 module.exports = { setMapData };

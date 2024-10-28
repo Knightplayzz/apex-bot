@@ -16,12 +16,7 @@ module.exports = {
 
         var url = encodeURI(`https://api.mozambiquehe.re/servers?auth=${auth}`);
         fetch(url)
-            .then(res => {
-                if (res.status === 200) { return res.json() } else {
-                    handleError(interaction, userData, res.status);
-                    return Promise.reject('Error occurred');
-                }
-            })
+            .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(data => {
                 let colorArray = [];
                 const type = ["ApexOauth_Crossplay", "Origin_login", "EA_accounts", "EA_novafusion"];
