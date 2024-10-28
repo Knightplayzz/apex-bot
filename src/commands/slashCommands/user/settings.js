@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, InteractionContextType } = require('discord.js');
 const { linkSubCommand, linkSubFunction } = require('../../subcommands/link');
 const { messageSubCommand, messageSubFunction } = require('../../subcommands/message');
 const { embedColorSubComand, embedColorSubFunction } = require('../../subcommands/embedColor');
@@ -10,6 +10,7 @@ module.exports = {
     premium: true,
     data: new SlashCommandBuilder()
         .setName('settings')
+        .setContexts(InteractionContextType.Guild)
         .setDescription('Select a setting to change it.')
         .setDescriptionLocalizations({ nl: 'Kies een setting om hem te veranderen.' })
         .addSubcommand(linkSubCommand)

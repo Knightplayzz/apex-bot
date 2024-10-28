@@ -9,7 +9,7 @@ const { embedColor } = require('../../data/utilities/utilities.json');
 
 const embedColorSubComand = (subCommand) => subCommand
     .setName('embedcolor')
-    .setDescription('select a collor for an embed')
+    .setDescription('select a color for an embed')
     .addStringOption(option =>
         option.setName('option')
             .setDescription('Select a option.')
