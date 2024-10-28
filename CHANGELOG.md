@@ -1,5 +1,15 @@
 # Changelog
 
+#### V2.1.5
+
+## Fix crash on DM
+
+Fixed the issue.
+
+## Update firebase
+
+Updated firebase V10.14.1 -> V11.0.1
+
 ### V2.1.4
 
 ## Update firebase
