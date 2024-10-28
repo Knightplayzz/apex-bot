@@ -17,29 +17,63 @@ const embedColorSubComand = (subCommand) => subCommand
             .setRequired(true)
             .addChoices(
                 { name: 'Default', value: embedColor },
+                { name: "White", value: "White" },
                 { name: 'Yellow', value: 'Yellow' },
+                { name: 'Orange', value: 'orange' },
                 { name: 'Red', value: 'Red' },
                 { name: 'Green', value: 'Green' },
                 { name: 'Blue', value: 'Blue' },
                 { name: 'Random', value: 'Random' },
-            ));
+                { name: 'Custom', value: 'Custom' }
+            ))
+    .addStringOption(option =>
+        option.setName('color')
+            .setDescription('Choose your color in hex.')
+            .setDescriptionLocalizations({ nl: 'kies je kleur in hex.' })
+            .setRequired(false));
 
 const embedColorSubFunction = async (interaction, auth, userData) => {
 
+    const langOpt = userData.lang;
+
     await interaction.deferReply({ ephemeral: userData.invisible });
 
-    var option = interaction.options.get('option').value;
-    var langOpt = userData.lang;
-    await setDoc(doc(db, 'users', interaction.user.id), { embedColor: option }, { merge: true });
-
-    var embed = new EmbedBuilder()
+    var colorEmbed = new EmbedBuilder()
         .setTitle(`${lang[langOpt].settings.line_1}`)
-        .setDescription(lang[langOpt].settings.line_3 + "``" + option + "``.")
         .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
         .setTimestamp()
-        .setColor(option);
 
-    interaction.editReply({ embeds: [embed], ephemeral: userData.invisible });
+    var option = interaction.options.get('option').value;
+    var customColor = interaction.options?.getString('color');
+    if (customColor && !customColor.startsWith('#')) customColor = '#' + customColor;
+
+    if (option === "Custom") {
+        if (isHexColor(customColor) == true) {
+            await setDoc(doc(db, 'users', interaction.user.id), { embedColor: customColor }, { merge: true });
+            colorEmbed.setDescription(lang[langOpt].settings.line_3 + "``" + customColor + "``.")
+                .setColor(customColor);
+        } else {
+            var errorEmbed = new EmbedBuilder()
+                .setTitle('ERROR')
+                .setDescription(lang[langOpt].settings.line_10)
+                .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
+                .setColor('Red')
+                .setTimestamp()
+
+            return interaction.editReply({ embeds: [errorEmbed], ephemeral: userData.invisible });
+        }
+    } else {
+        await setDoc(doc(db, 'users', interaction.user.id), { embedColor: option }, { merge: true });
+        colorEmbed.setDescription(lang[langOpt].settings.line_3 + "``" + option + "``.")
+            .setColor(option);
+    }
+
+    interaction.editReply({ embeds: [colorEmbed], ephemeral: userData.invisible });
+}
+
+function isHexColor(str) {
+    const hexColorPattern = /^#([0-9A-Fa-f]{6}|[0-9A-Fa-f]{3})$/;
+    return hexColorPattern.test(str);
 }
 
 module.exports = {

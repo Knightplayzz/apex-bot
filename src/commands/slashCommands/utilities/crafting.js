@@ -1,7 +1,6 @@
 const { AttachmentBuilder, EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const fetch = require('node-fetch');
 const Canvas = require('canvas');
-// const lang = require('../../../data/lang/lang.json');
 const { handleError } = require('../../../utilities/functions/utilities');
 
 module.exports = {
@@ -12,7 +11,6 @@ module.exports = {
 
     async execute(interaction, auth, userData) {
 
-        //var langOpt = userData.lang;
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         const canvas = Canvas.createCanvas(400, 400);
@@ -27,36 +25,26 @@ module.exports = {
                 }
             })
             .then(async data => {
-
                 //top lef
                 const daily1 = await Canvas.loadImage(data[4].bundleContent[0].itemType.asset);
-                var daily_x_1 = 200;
-                var daily_y_1 = 0;
-                ctx.drawImage(daily1, daily_x_1, daily_y_1);
+                ctx.drawImage(daily1, 200, 0);
 
                 //bottom left
                 const daily2 = await Canvas.loadImage(data[3].bundleContent[0].itemType.asset);
-                var daily_x_2 = 0;
-                var daily_y_2 = 0;
-                ctx.drawImage(daily2, daily_x_2, daily_y_2);
+                ctx.drawImage(daily2, 0, 0);
 
                 //top right
                 const weekly1 = await Canvas.loadImage(data[6].bundleContent[0].itemType.asset);
-                w_x1 = 0;
-                w_y1 = 200;
-                ctx.drawImage(weekly1, w_x1, w_y1);
+                ctx.drawImage(weekly1, 0, 200);
 
                 //bottom right
                 const weekly2 = await Canvas.loadImage(data[5].bundleContent[0].itemType.asset);
-                w_x2 = 200;
-                w_y2 = 200;
-                ctx.drawImage(weekly2, w_x2, w_y2);
+                ctx.drawImage(weekly2, 200, 200);
 
                 var attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'crafting.png' });
 
                 var craftingEmbed = new EmbedBuilder()
                     .setTitle("Crafting Cycle")
-                    //.setDescription(`${lang[langOpt].crafting.line_2}: <t:${data[0].end}:R>`)
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp()
                     .setColor(userData.embedColor)

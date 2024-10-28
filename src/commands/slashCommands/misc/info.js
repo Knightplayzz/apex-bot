@@ -8,14 +8,13 @@ require('dotenv').config();
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('info')
-        .setDMPermission(true)
         .setDescription('Shows info about the bot.')
         .setDescriptionLocalizations({ nl: 'Zie informatie van de bot.' }),
 
     async execute(interaction, auth, userData) {
 
         var langOpt = userData.lang;
-        await interaction.deferReply({ ephemeral: userData.invisible })
+        await interaction.deferReply({ ephemeral: userData.invisible });
 
         interaction.client.shard.fetchClientValues('guilds.cache.size')
             .then(results => {
@@ -26,6 +25,8 @@ module.exports = {
                 const minutes = Math.floor((uptime % (60 * 60)) / 60);
                 const hours = Math.floor(uptime / (60 * 60)) % 24;
                 const days = Math.floor(uptime / 86400);
+
+                const commandAmount = 50;
 
                 var infoEmbed = new EmbedBuilder()
                     .setTitle(`Apex Legends Bot`)
@@ -43,7 +44,7 @@ module.exports = {
                         },
                         {
                             name: 'Bot Info',
-                            value: `Shard ${interaction.client.shard.ids[0] + 1}/${interaction.client.shard.count}\nVersion ${version}\n 50+ Commands`,
+                            value: `Shard ${interaction.client.shard.ids[0] + 1}/${interaction.client.shard.count}\nVersion ${version}\n ${commandAmount}+ Commands`,
                             inline: true,
                         },
                         {
@@ -55,6 +56,6 @@ module.exports = {
                     .setFooter({ text: `${lang[langOpt].info.line_2}` });
 
                 interaction.editReply({ embeds: [infoEmbed], ephemeral: userData.invisible });
-            }).catch(error => { sentErrorEmbed(interaction, langOpt, error) })
+            }).catch(error => { sentErrorEmbed(interaction, langOpt, error) });
     }
 }

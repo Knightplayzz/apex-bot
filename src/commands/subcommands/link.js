@@ -26,7 +26,7 @@ const linkSubCommand = (subCommand) => subCommand
         option.setName('username')
             .setDescription('Your in-game username.')
             .setDescriptionLocalizations({ nl: 'Je in-game gebruikersnaam.' })
-            .setRequired(true))
+            .setRequired(true));
 
 const linkSubFunction = async (interaction, auth, userData) => {
 
@@ -36,7 +36,7 @@ const linkSubFunction = async (interaction, auth, userData) => {
     var platform = interaction.options.get('platform').value
     const player = interaction.options.getString('username');
 
-    if (userData.platform && userData.username) { //already linked
+    if (userData.platform && userData.username) {
 
         var alreadyLinkedEmbed = new EmbedBuilder()
             .setTitle(`${lang[langOpt].link.line_1}`)

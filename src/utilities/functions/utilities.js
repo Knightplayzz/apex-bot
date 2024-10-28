@@ -26,32 +26,15 @@ function getStatus(data) {
     return { state, color };
 }
 function getMapDescription(gamemode, data, langOpt) {
-    var title;
-    var description;
-    var image;
-    if (gamemode === 'br') {
-        title = `${lang[langOpt].map.line_1} ${data.battle_royale.current.map}`;
-        description = `**${data.battle_royale.current.map}** ${lang[langOpt].map.line_2} <t:${data.battle_royale.current.end}:R> ${lang[langOpt].map.line_3} <t:${data.battle_royale.current.end}:t>.` +
-            `\n**${lang[langOpt].map.line_4}:** ${data.battle_royale.next.map}`
-        image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data.battle_royale.current.map.replace(/[\s']/g, ''))}.png?t=9&key=${process.env.messageToken}`;
-    }
-    if (gamemode === 'ranked') {
-        title = `${lang[langOpt].map.line_1} ${data.ranked.current.map}`;
-        description = `**${data.ranked.current.map}** ${lang[langOpt].map.line_2} <t:${data.ranked.current.end}:R> ${lang[langOpt].map.line_3} <t:${data.ranked.current.end}:t>.` +
-            `\n**${lang[langOpt].map.line_4}:** ${data.ranked.next.map}`
-        image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data.ranked.current.map.replace(/[\s']/g, ''))}.png?t=9&key=${process.env.messageToken}`;
-    }
-    if (gamemode === 'ltm') {
-        if (data.ltm.current.isActive === true) {
-            title = `${lang[langOpt].map.line_1} ${data.ltm.current.map}`;
-            description = `**${data.ltm.current.map}** ${lang[langOpt].map.line_2} <t:${data.ltm.current.end}:R> ${lang[langOpt].map.line_3} <t:${data.ltm.current.end}:t>.` +
-                `\n**${lang[langOpt].map.line_4}:** ${data.ltm.next.map}`
-            image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data.ltm.current.map.replace(/[\s']/g, ''))}.png?t=9&key=${process.env.messageToken}`;
-        } else {
-            title = `${lang[langOpt].map.line_5}`;
-            description = `${lang[langOpt].map.line_6}`;
-            image = null;
-        }
+    var title = `${lang[langOpt].map.line_1} ${data[gamemode].current.map}`;
+    var description = `**${data[gamemode].current.map}** ${lang[langOpt].map.line_2} <t:${data[gamemode].current.end}:R> ${lang[langOpt].map.line_3} <t:${data[gamemode].current.end}:t>.` +
+        `\n**${lang[langOpt].map.line_4}:** ${data[gamemode].next.map}`
+    var image = `https://specter.apexstats.dev/ApexStats/Maps/${encodeURIComponent(data[gamemode].current.map.replace(/[\s']/g, ''))}.png?t=9&key=${process.env.messageToken}`;
+
+    if (gamemode === 'ltm' && data?.ltm?.current?.isActive === false) {
+        title = `${lang[langOpt].map.line_5}`;
+        description = `${lang[langOpt].map.line_6}`;
+        image = null;
     }
     return { title, description, image };
 }
@@ -92,14 +75,12 @@ function sentVoteEmbed(interaction, userData) {
 async function hasUserVoted(interaction, userData) {
     var url = `https://top.gg/api/bots/1014207340188270673/check?userId=${interaction.user.id}`;
     try {
-        const res = await fetch(url, {
-            headers: { "Authorization": process.env.topgg_AUTH }
-        });
+        const res = await fetch(url, { headers: { "Authorization": process.env.topgg_AUTH } });
         const data = await res.json();
         return data.voted === 1;
     } catch (error) {
         sentErrorEmbed(interaction, userData, error);
-        return null; // Return null in case of an error
+        return false; // Return false in case of an error
     }
 }
 function handleError(interaction, userData, status) {

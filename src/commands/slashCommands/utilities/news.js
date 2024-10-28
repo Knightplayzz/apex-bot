@@ -38,7 +38,7 @@ module.exports = {
                     .setCustomId(`pageCount`)
                     .setLabel(`1/${data.length}`)
                     .setStyle(ButtonStyle.Secondary)
-                    .setDisabled(true)
+                    .setDisabled(true);
 
                 const next = new ButtonBuilder()
                     .setCustomId(`next`)

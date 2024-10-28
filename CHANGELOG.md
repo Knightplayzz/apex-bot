@@ -1,5 +1,31 @@
 # Changelog
 
+### V2.1.6
+
+## Updated settings embed color
+
+Added custom colors as well as new basic colors.
+
+## Overall beter quality and readability of code
+
+Made minor changes to code for better speeds and readability.
+
+## Fixed loadout.js
+
+Added new weapons.
+
+## Fixed invite.js
+
+Fixed the outdated DM Permissions.
+
+## Fixed info.js
+
+Fixed the oudated DM permissions.
+
+## Updated map.js
+
+Improved code.
+
 #### V2.1.5
 
 ## Fix crash on DM

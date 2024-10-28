@@ -11,7 +11,6 @@ const fireAuth = getAuth();
 const { embedColor } = require('../../data/utilities/utilities.json');
 const timers = {};
 const lang = require('../../data/lang/lang.json');
-//const shopFile = require('../../utilities/eventCommands/shop.js');
 const newsFile = require('../../utilities/eventCommands/news.js');
 const settingsDelete = require('../../utilities/eventCommands/settings-delete.js');
 const { hasUserPremium } = require('../../utilities/functions/hasUserPremium.js');
@@ -38,10 +37,11 @@ module.exports = {
                     .setDescription(`${lang[langOpt].settings.line_9}`)
                     .setColor('Red');
 
-                if (interaction.isCommand() && hasUserPremiumVar === true) {
+                if (interaction.isCommand()) {
+                    if (interaction.commandName === 'news') timers[interaction.id] = setTimeout(() => { interaction.editReply({ components: [], ephemeral: userData.invisible }) }, 15 * 1000);
                     if (interaction.options.getSubcommand(false) === 'delete') return timers[interaction.id] = setTimeout(() => { interaction.editReply({ embeds: [cancelledEmbed], components: [], ephemeral: userData.invisible }) }, 15 * 1000);
                 }
-                if (interaction.commandName === 'news') timers[interaction.id] = setTimeout(() => { interaction.editReply({ components: [], ephemeral: userData.invisible }) }, 15 * 1000);
+
                 if (!interaction.isButton()) return
                 if (interaction.message.interaction.commandName === 'news') {
                     if (timers[interaction.message.interaction.id]) clearTimeout(timers[interaction.message.interaction.id]);
@@ -50,7 +50,6 @@ module.exports = {
                 if (interaction.user.id !== interaction.message.interaction.user.id) return interaction.reply({ content: "Not your button!", ephemeral: true });
                 if (interaction.message.interaction.commandName === "settings delete") settingsDelete.execute(interaction, userData, timers);
                 if (interaction.message.interaction.commandName === 'news') newsFile.execute(interaction, auth, userData);
-                //if (interaction.message.interaction.commandName === 'shop') shopFile.execute(interaction, auth, userData);
             })
     }
 }

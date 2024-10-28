@@ -27,8 +27,6 @@ module.exports = {
         if (subCommand === 'delete') return deleteSubFunction(interaction, auth, userData);
         if (subCommand === 'unlink') return unlinkSubFunction(interaction, auth, userData);
         if (subCommand === 'language') return languageSubFunction(interaction, auth, userData);
-
-        return interaction.reply({ content: "Hey we are currently updating. Check back in a few hours" });
     }
 }
 

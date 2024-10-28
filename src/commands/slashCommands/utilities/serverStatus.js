@@ -115,6 +115,6 @@ module.exports = {
 
                 interaction.editReply({ embeds: [serverStatusEmbed], ephemeral: userData.invisible });
 
-            }).catch(error => { console.error('Fetch error:', error) })
+            }).catch(error => { console.error('Fetch error:', error) });
     }
 }

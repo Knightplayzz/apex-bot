@@ -107,7 +107,8 @@
             "line_6": "No",
             "line_7": "SUCCES DELETED DATA",
             "line_8": "Cancelled",
-            "line_9": "You did not awnser the button."
+            "line_9": "You did not awnser the button.",
+            "line_10": "The color provided is not a correct hex color."
         }
     },
     "nl": {
@@ -218,7 +219,8 @@
             "line_6": "Nee",
             "line_7": "DATA succesvol verwijderd",
             "line_8": "Gecancelled",
-            "line_9": "Je hebt niet gerageerd."
+            "line_9": "Je hebt niet gerageerd.",
+            "line_10": "Dit is niet een goede hex kleur."
         }
     }
 }

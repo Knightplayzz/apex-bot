@@ -4,7 +4,6 @@ const lang = require('../../../data/lang/lang.json');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('invite')
-        .setDMPermission(true)
         .setDescription('Provides an invite link for the bot.')
         .setDescriptionLocalizations({ nl: 'Toont een invite link van de bot.' }),
 
