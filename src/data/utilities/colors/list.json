@@ -1,0 +1,130 @@
+[
+    {
+        "name": "default",
+        "value": "Default"
+    },
+    {
+        "name": "white",
+        "value": "White"
+    },
+    {
+        "name": "aqua",
+        "value": "Aqua"
+    },
+    {
+        "name": "green",
+        "value": "Green"
+    },
+    {
+        "name": "blue",
+        "value": "Blue"
+    },
+    {
+        "name": "yellow",
+        "value": "Yellow"
+    },
+    {
+        "name": "purple",
+        "value": "Purple"
+    },
+    {
+        "name": "luminous vivid pink",
+        "value": "LuminousVividPink"
+    },
+    {
+        "name": "fuchsia",
+        "value": "Fuchsia"
+    },
+    {
+        "name": "gold",
+        "value": "Gold"
+    },
+    {
+        "name": "orange",
+        "value": "Orange"
+    },
+    {
+        "name": "red",
+        "value": "Red"
+    },
+    {
+        "name": "grey",
+        "value": "Grey"
+    },
+    {
+        "name": "navy",
+        "value": "Navy"
+    },
+    {
+        "name": "dark aqua",
+        "value": "DarkAqua"
+    },
+    {
+        "name": "dark green",
+        "value": "DarkGreen"
+    },
+    {
+        "name": "dark blue",
+        "value": "DarkBlue"
+    },
+    {
+        "name": "dark purple",
+        "value": "DarkPurple"
+    },
+    {
+        "name": "dark vivid pink",
+        "value": "DarkVividPink"
+    },
+    {
+        "name": "dark gold",
+        "value": "DarkGold"
+    },
+    {
+        "name": "dark orange",
+        "value": "DarkOrange"
+    },
+    {
+        "name": "dark red",
+        "value": "DarkRed"
+    },
+    {
+        "name": "dark grey",
+        "value": "DarkGrey"
+    },
+    {
+        "name": "darker grey",
+        "value": "DarkerGrey"
+    },
+    {
+        "name": "light grey",
+        "value": "LightGrey"
+    },
+    {
+        "name": "dark navy",
+        "value": "DarkNavy"
+    },
+    {
+        "name": "blue purple",
+        "value": "Blurple"
+    },
+    {
+        "name": "grey purple",
+        "value": "Greyple"
+    },
+    {
+        "name": "dark",
+        "value": "DarkButNotBlack"
+    },
+    {
+        "name": "black",
+        "value": "NotQuiteBlack"
+    },
+    {
+        "name": "invisible",
+        "value": "2B2D31"
+    },
+    {
+        "name": "random",
+        "value": "Random"
+    }
+]

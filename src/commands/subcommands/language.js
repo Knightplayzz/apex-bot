@@ -22,7 +22,7 @@ const languageSubCommand = (subCommand) => subCommand
             ));
 
 
-const languageSubFunction = async (interaction, auth, userData) => {
+const languageSubFunction = async (interaction, userData) => {
 
     await interaction.deferReply({ ephemeral: userData.invisible });
     var selecLang = interaction.options.get('language').value;

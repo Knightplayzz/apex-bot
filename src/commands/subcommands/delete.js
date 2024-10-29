@@ -5,7 +5,7 @@ const deleteSubCommand = (subCommand) => subCommand
     .setName('delete')
     .setDescription('delete all settings.');
 
-const deleteSubFunction = async (interaction, auth, userData) => {
+const deleteSubFunction = async (interaction, userData) => {
     var langOpt = userData.lang;
     await interaction.deferReply({ ephemeral: userData.invisible });
 

@@ -19,7 +19,7 @@ const messageSubCommand = (subCommand) => subCommand
                 { name: 'invisible', value: 'invisible' },
             ));
 
-const messageSubFunction = async (interaction, auth, userData) => {
+const messageSubFunction = async (interaction, userData) => {
 
     var langOpt = userData.lang;
 

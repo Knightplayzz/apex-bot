@@ -10,7 +10,7 @@ const unlinkSubCommand = (subCommand) => subCommand.setName('unlink')
     .setDescription('Unlink your Discord account from your Apex username.')
     .setDescriptionLocalizations({ nl: 'Ontkoppel je Discord account van je Apex gebruikersnaam.' });
 
-const unlinkSubFunction = async (interaction, auth, userData) => {
+const unlinkSubFunction = async (interaction, userData) => {
 
     var langOpt = userData.lang;
 

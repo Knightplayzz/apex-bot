@@ -1,5 +1,15 @@
 # Changelog
 
+### Changed embed color picker
+
+Now uses autofill and supports all know discord colors including hex.
+
+### V2.1.8
+
+## Bug fix
+
+Removed DM permissions for the settings commands.
+
 ### V2.1.7
 
 ## Improved activity of the client
