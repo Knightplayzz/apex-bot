@@ -25,16 +25,17 @@ module.exports = {
         ),
     async execute(interaction, auth, userData) {
 
-        var langOpt = userData.lang;
+        const langOpt = userData.lang;
         await interaction.deferReply({ ephemeral: userData.invisible });
 
-        var mapOption = interaction.options.get('map');
+        const mapOption = interaction.options.get('map');
+
         if (mapOption != null) {
             const mapFile = require(`../../../data/maps/${mapOption.value}.json`);
             const map = Math.floor(Math.random() * mapFile.length);
             interaction.editReply({ content: `${lang[langOpt].drop.line_1} **${mapFile[map]}** ${lang[langOpt].drop.line_2} ${mapOption.value}!`, ephemeral: userData.invisible });
         } else {
-            var url = `https://api.mozambiquehe.re/maprotation?auth=${auth}`;
+            const url = `https://api.mozambiquehe.re/maprotation?auth=${auth}`;
             fetch(url)
                 .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
                 .then(async data => {

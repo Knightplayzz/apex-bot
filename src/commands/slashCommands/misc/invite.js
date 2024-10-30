@@ -9,10 +9,10 @@ module.exports = {
 
     async execute(interaction, auth, userData) {
 
-        var langOpt = userData.lang;
+        const langOpt = userData.lang;
         await interaction.deferReply({ ephemeral: userData.invisible });
 
-        var inviteEmbed = new EmbedBuilder()
+        const inviteEmbed = new EmbedBuilder()
             .setTitle(`${interaction.client.user.username} :heart: `)
             .setDescription(
                 `${lang[langOpt].invite.line_1} ${interaction.client.user.username}` +

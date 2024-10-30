@@ -26,7 +26,7 @@ module.exports = {
 
     async execute(interaction, auth, userData) {
 
-        let subCommand = interaction.options.getSubcommand();
+        const subCommand = interaction.options.getSubcommand();
 
         const subCommandMap = {
             link: (interaction, userData) => linkSubFunction(interaction, auth, userData),
@@ -39,10 +39,11 @@ module.exports = {
 
         const subCommandFunction = subCommandMap[subCommand];
         if (subCommandFunction) {
+            if (subCommand !== "message") await interaction.deferReply({ ephemeral: userData.invisible });
             return subCommandFunction(interaction, userData);
         } else {
             console.error(`Unknown subcommand: ${subCommand}`);
-            return interaction.reply({ content: 'Unknown subcommand', ephemeral: true });
+            return interaction.editReply({ content: 'Unknown subcommand', ephemeral: true });
         }
     },
 

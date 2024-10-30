@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 const { handleError } = require('../functions/utilities');
 
 async function setMapData(client, auth) {
-    var url = encodeURI(`https://api.mozambiquehe.re/maprotation?auth=${auth}`);
+    const url = encodeURI(`https://api.mozambiquehe.re/maprotation?auth=${auth}`);
     fetch(url)
         .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
         .then(data => {

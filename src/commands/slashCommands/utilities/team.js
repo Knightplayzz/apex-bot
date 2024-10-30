@@ -15,7 +15,7 @@ module.exports = {
         const canvas = Canvas.createCanvas(1300, 500);
         const ctx = canvas.getContext('2d');
 
-        var y = array.length;
+        const y = array.length;
         var uniqueNumbers = [];
 
         while (uniqueNumbers.length < 3) {
@@ -37,8 +37,8 @@ module.exports = {
         //if image is outdated log it
         if (!player1 || !player2 || !player3) console.log(`${array[uniqueNumbers[0]]}, ${array[uniqueNumbers[1]]}, ${array[uniqueNumbers[2]]}`);
 
-        var attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'team.png' });
-        var teamEmbed = new EmbedBuilder()
+        const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'team.png' });
+        const teamEmbed = new EmbedBuilder()
             .setTitle('Team')
             .setColor(userData.embedColor)
             .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })

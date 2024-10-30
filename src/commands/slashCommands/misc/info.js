@@ -13,7 +13,7 @@ module.exports = {
 
     async execute(interaction, auth, userData) {
 
-        var langOpt = userData.lang;
+        const langOpt = userData.lang;
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         interaction.client.shard.fetchClientValues('guilds.cache.size')
@@ -28,7 +28,7 @@ module.exports = {
 
                 const commandAmount = 50;
 
-                var infoEmbed = new EmbedBuilder()
+                const infoEmbed = new EmbedBuilder()
                     .setTitle(`Apex Legends Bot`)
                     .setDescription(`${lang[langOpt].info.line_1}`)
                     .setColor(userData.embedColor)

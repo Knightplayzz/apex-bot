@@ -12,7 +12,7 @@ module.exports = {
 
     async execute(interaction, auth, userData) {
 
-        var langOpt = userData.lang;
+        const langOpt = userData.lang;
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         const canvas = Canvas.createCanvas(1200, 800);

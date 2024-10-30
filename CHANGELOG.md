@@ -1,5 +1,11 @@
 # Changelog
 
+## V2.2.0
+
+### Code stability update
+
+Improved overall code.
+
 ## V2.1.9
 
 ### Small fix

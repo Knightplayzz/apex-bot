@@ -30,14 +30,11 @@ const linkSubCommand = (subCommand) => subCommand
 
 const linkSubFunction = async (interaction, auth, userData) => {
 
-    var langOpt = userData.lang;
-    await interaction.deferReply({ ephemeral: userData.invisible });
-
-    var platform = interaction.options.get('platform').value;
+    const langOpt = userData.lang;
+    const platform = interaction.options.get('platform').value;
     const player = interaction.options.getString('username');
 
-    //already linked
-    var alreadyLinkedEmbed = new EmbedBuilder()
+    const alreadyLinkedEmbed = new EmbedBuilder()
         .setTitle(`${lang[langOpt].link.line_1}`)
         .setDescription(
             `${lang[langOpt].link.line_2}:` +
@@ -48,14 +45,13 @@ const linkSubFunction = async (interaction, auth, userData) => {
 
     if (userData.platform && userData.username) return interaction.editReply({ embeds: [alreadyLinkedEmbed], ephemeral: userData.invisible });
 
-    var url = encodeURI(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${player}&auth=${auth}`);
+    const url = encodeURI(`https://api.mozambiquehe.re/bridge?version=5&platform=${platform}&player=${player}&auth=${auth}`);
     fetch(url)
         .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
         .then(async data => {
             checkData(data, interaction, userData);
 
-            //succesfully linked
-            var linkedEmbed = new EmbedBuilder()
+            const linkedEmbed = new EmbedBuilder()
                 .setTitle(`${lang[langOpt].link.line_3}`)
                 .setDescription(`${lang[langOpt].link.line_4}:` +
                     `\n**${data.global.name}** [${platform}]`)

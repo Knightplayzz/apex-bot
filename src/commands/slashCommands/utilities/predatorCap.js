@@ -12,15 +12,15 @@ module.exports = {
 
     async execute(interaction, auth, userData) {
 
-        var langOpt = userData.lang;
+        const langOpt = userData.lang;
         await interaction.deferReply({ ephemeral: userData.invisible });
 
-        var url = encodeURI(`https://api.mozambiquehe.re/predator?auth=${auth}`);
+        const url = encodeURI(`https://api.mozambiquehe.re/predator?auth=${auth}`);
         fetch(url)
             .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(data => {
 
-                var predatorEmbed = new EmbedBuilder()
+                const predatorEmbed = new EmbedBuilder()
                     .setTitle(`${lang[langOpt].predator.line_1}`)
                     .setDescription(`**${lang[langOpt].predator.line_2}:** <t:${data.RP.PC.updateTimestamp}:R>`)
                     .addFields([

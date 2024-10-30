@@ -11,13 +11,13 @@ module.exports = {
     async execute(interaction, userData, timers) {
 
         await interaction.deferUpdate();
-        var langOpt = userData.lang;
+        const langOpt = userData.lang;
 
         if (timers[interaction.message.interaction.id]) clearTimeout(timers[interaction.message.interaction.id]);
         if (interaction.customId === "1") {
             await deleteDoc(doc(db, 'users', interaction.user.id))
                 .then(() => {
-                    var succesEmbed = new EmbedBuilder()
+                    const succesEmbed = new EmbedBuilder()
                         .setTitle(`${lang[langOpt].settings.line_7}`)
                         .setColor('Green')
 
@@ -28,7 +28,7 @@ module.exports = {
                     return console.log(error)
                 });
         } else {
-            var cancelledEmbed = new EmbedBuilder()
+            const cancelledEmbed = new EmbedBuilder()
                 .setTitle(`${lang[langOpt].settings.line_8}`)
                 .setColor('Red')
             interaction.editReply({ embeds: [cancelledEmbed], components: [], ephemeral: userData.invisible });

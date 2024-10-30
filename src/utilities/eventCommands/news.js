@@ -7,13 +7,13 @@ module.exports = {
 
         await interaction.deferUpdate();
 
-        var url = `https://api.mozambiquehe.re/news?auth=${auth}`;
+        const url = `https://api.mozambiquehe.re/news?auth=${auth}`;
         fetch(url)
             .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(async data => {
 
-                var str = interaction.message.components[0].components[2].label;
-                var parts = str.split("/");
+                const str = interaction.message.components[0].components[2].label;
+                const parts = str.split("/");
                 var index = parseInt(parts[0]) - 1;
 
                 const frist = new ButtonBuilder()
@@ -76,7 +76,7 @@ module.exports = {
 
                 const buttons = new ActionRowBuilder().addComponents([frist, prev, pageCount, next, last]);
 
-                var pagesEmbed = new EmbedBuilder()
+                const pagesEmbed = new EmbedBuilder()
                     .setTitle(data[index].title)
                     .setDescription(data[index].short_desc)
                     .setColor(userData.embedColor)

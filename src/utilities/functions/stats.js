@@ -12,25 +12,25 @@ function sendStats(interaction, auth, userData, username, platform) {
         .then(data => {
             checkData(data, interaction, userData);
 
-            var badge1 = data?.legends?.selected?.data?.[0];
-            var badge2 = data?.legends?.selected?.data?.[1];
-            var badge3 = data?.legends?.selected?.data?.[2];
+            const badge1 = data?.legends?.selected?.data?.[0];
+            const badge2 = data?.legends?.selected?.data?.[1];
+            const badge3 = data?.legends?.selected?.data?.[2];
 
             const accountCompletion = Math.floor((data.global.level / 500) * 100);
-            var levelPrestige = data.global.levelPrestige;
-            var levelPrestigeProcent = Math.floor(((data.global.level + 500 * levelPrestige) / 2000) * 100);
+            const levelPrestige = data.global.levelPrestige;
+            const levelPrestigeProcent = Math.floor(((data.global.level + 500 * levelPrestige) / 2000) * 100);
 
-            var battlepass = data.global.battlepass?.level?.toString() ?? "1";
-            var battlepassCompletion = Math.floor((battlepass / 110) * 100);
+            const battlepass = data.global.battlepass?.level?.toString() ?? "1";
+            const battlepassCompletion = Math.floor((battlepass / 110) * 100);
 
-            var status = getStatus(data.realtime);
+            const status = getStatus(data.realtime);
             var rank = data.global.rank.rankName;
             var rankDiv = data.global.rank.rankDiv;
             if (rank === "Unranked") {
                 rank = "Rookie";
                 rankDiv = "4";
             }
-            var statsEmbed = new EmbedBuilder()
+            const statsEmbed = new EmbedBuilder()
                 .setTitle(`${emoji.logo[data.global.platform]} ${data.global.name}`)
                 .setDescription(`**Status:**${emoji.misc[status.color]}${status.state}`)
                 .addFields([

@@ -16,7 +16,7 @@ module.exports = {
         const canvas = Canvas.createCanvas(400, 400);
         const ctx = canvas.getContext('2d');
 
-        var url = encodeURI(`https://api.mozambiquehe.re/crafting?auth=${auth}`);
+        const url = encodeURI(`https://api.mozambiquehe.re/crafting?auth=${auth}`);
         fetch(url)
             .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(async data => {
@@ -36,9 +36,9 @@ module.exports = {
                 const weekly2 = await Canvas.loadImage(data[5].bundleContent[0].itemType.asset);
                 ctx.drawImage(weekly2, 200, 200);
 
-                var attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'crafting.png' });
+                const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'crafting.png' });
 
-                var craftingEmbed = new EmbedBuilder()
+                const craftingEmbed = new EmbedBuilder()
                     .setTitle("Crafting Cycle")
                     .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
                     .setTimestamp()

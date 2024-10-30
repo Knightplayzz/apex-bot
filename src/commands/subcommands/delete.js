@@ -6,10 +6,10 @@ const deleteSubCommand = (subCommand) => subCommand
     .setDescription('delete all settings.');
 
 const deleteSubFunction = async (interaction, userData) => {
-    var langOpt = userData.lang;
-    await interaction.deferReply({ ephemeral: userData.invisible });
 
-    var embed = new EmbedBuilder()
+    const langOpt = userData.lang;
+
+    const embed = new EmbedBuilder()
         .setTitle(`${lang[langOpt].settings.line_4}`)
         .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
         .setTimestamp()

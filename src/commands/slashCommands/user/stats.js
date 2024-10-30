@@ -27,7 +27,6 @@ module.exports = {
     async execute(interaction, auth, userData) {
 
         await interaction.deferReply({ ephemeral: userData.invisible });
-
         const platform = interaction.options.get('platform').value;
         const username = interaction.options.getString('username');
         sendStats(interaction, auth, userData, username, platform);

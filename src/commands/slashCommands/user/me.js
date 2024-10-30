@@ -13,10 +13,10 @@ module.exports = {
 
     async execute(interaction, auth, userData) {
 
-        var langOpt = userData.lang;
+        const langOpt = userData.lang;
         await interaction.deferReply({ ephemeral: userData.invisible });
 
-        var notLinkedEmbed = new EmbedBuilder()
+        const notLinkedEmbed = new EmbedBuilder()
             .setTitle(`${lang[langOpt].stats.line_17}`)
             .setDescription(`${lang[langOpt].stats.line_8}\n${lang[langOpt].stats.line_9}`)
             .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })

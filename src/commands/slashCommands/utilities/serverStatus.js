@@ -14,7 +14,7 @@ module.exports = {
 
         await interaction.deferReply({ ephemeral: userData.invisible });
 
-        var url = encodeURI(`https://api.mozambiquehe.re/servers?auth=${auth}`);
+        const url = encodeURI(`https://api.mozambiquehe.re/servers?auth=${auth}`);
         fetch(url)
             .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(data => {
@@ -101,8 +101,8 @@ module.exports = {
                     .setTimestamp();
 
 
-                let x1 = colorArray.filter(str => str === ':yellow_circle: ').length;
-                let x2 = colorArray.filter(str => str === ':red_circle: ').length;
+                const x1 = colorArray.filter(str => str === ':yellow_circle: ').length;
+                const x2 = colorArray.filter(str => str === ':red_circle: ').length;
 
                 if (x2 > 4) serverStatusEmbed.setColor('Red');
                 if (x1 > 4 && x2 <= 4) serverStatusEmbed.setColor('Yellow');

@@ -22,7 +22,7 @@ module.exports = {
 
     async execute(interaction, auth, userData) {
 
-        var langOpt = userData.lang;
+        const langOpt = userData.lang;
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         const type = interaction.options.getString('type');
@@ -32,7 +32,7 @@ module.exports = {
 
         const legend = Math.floor(Math.random() * legendFile.length);
 
-        var legendEmbed = new EmbedBuilder()
+        const legendEmbed = new EmbedBuilder()
             .setDescription(`${lang[langOpt].who.line_1} **${legendFile[legend]}** ${lang[langOpt].who.line_2}!`)
             .setImage(`https://specter.apexstats.dev/ApexStats/Legends/${encodeURIComponent(legendFile[legend])}.png?t=9&key=${process.env.messageToken}`)
             .setColor(userData.embedColor)

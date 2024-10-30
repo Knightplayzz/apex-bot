@@ -47,7 +47,7 @@ module.exports = {
 
                 const buttons = new ActionRowBuilder().addComponents([frist, prev, pageCount, next, last]);
 
-                var pagesEmbed = new EmbedBuilder()
+                const pagesEmbed = new EmbedBuilder()
                     .setTitle(data[0].title)
                     .setDescription(data[0].short_desc)
                     .setColor(userData.embedColor)

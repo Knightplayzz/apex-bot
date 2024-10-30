@@ -31,8 +31,8 @@ module.exports = {
                 const data = docSnap.data()
                 if (docSnap.exists() && hasUserPremiumVar === true) userData = { invisible: data?.invisible ?? true, embedColor: data?.embedColor ?? embedColor, lang: data?.lang ?? 'en', username: data?.username ?? null, platform: data?.platform ?? null };
 
-                var langOpt = userData.lang;
-                var cancelledEmbed = new EmbedBuilder()
+                const langOpt = userData.lang;
+                const cancelledEmbed = new EmbedBuilder()
                     .setTitle(`${lang[langOpt].settings.line_8}`)
                     .setDescription(`${lang[langOpt].settings.line_9}`)
                     .setColor('Red');

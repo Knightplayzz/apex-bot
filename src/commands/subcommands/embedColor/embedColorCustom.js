@@ -31,9 +31,7 @@ const embedColorCustomSubFunction = async (interaction, userData) => {
 
     const langOpt = userData.lang;
 
-    await interaction.deferReply({ ephemeral: userData.invisible });
-
-    const colorEmbed = new EmbedBuilder()
+    var colorEmbed = new EmbedBuilder()
         .setTitle(lang[langOpt].settings.line_1)
         .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
         .setTimestamp();
@@ -42,21 +40,20 @@ const embedColorCustomSubFunction = async (interaction, userData) => {
 
     const validColors = colorList.map(choice => choice.value);
 
-    var errorEmbed = new EmbedBuilder()
+    const errorEmbed = new EmbedBuilder()
         .setTitle('ERROR')
         .setDescription(lang[langOpt].settings.line_10)
         .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
         .setColor('Red')
         .setTimestamp();
 
-    var hexString = option.startsWith('#') ? option : '#' + option;
+    const hexString = option.startsWith('#') ? option : '#' + option;
     if (isHexColor(hexString)) { option = hexString }
     else if (!validColors.includes(option)) return interaction.editReply({ embeds: [errorEmbed], ephemeral: userData.invisible });
 
     await setDoc(doc(db, 'users', interaction.user.id), { embedColor: option }, { merge: true });
 
     const colorName = getColorName(option);
-
     colorEmbed
         .setDescription(`${lang[langOpt].settings.line_3} \`${colorName}\`.`)
         .setColor(option);

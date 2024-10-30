@@ -21,17 +21,15 @@ const messageSubCommand = (subCommand) => subCommand
 
 const messageSubFunction = async (interaction, userData) => {
 
-    var langOpt = userData.lang;
-
-    var option = interaction.options.get('option').value;
-    var isInvisibleBoolean = (option === "invisible");
-
+    const langOpt = userData.lang;
+    const option = interaction.options.get('option').value;
+    const isInvisibleBoolean = (option === "invisible");
     await interaction.deferReply({ ephemeral: isInvisibleBoolean });
     await setDoc(doc(db, 'users', interaction.user.id), { invisible: isInvisibleBoolean }, { merge: true });
 
-    var embed = new EmbedBuilder()
+    const embed = new EmbedBuilder()
         .setTitle(`${lang[langOpt].settings.line_1}`)
-        .setDescription(lang[langOpt].settings.line_2 + "``" + option + "``.")
+        .setDescription(lang[langOpt].settings.line_2 + " ``" + option + "``.")
         .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
         .setTimestamp()
         .setColor(userData.embedColor);

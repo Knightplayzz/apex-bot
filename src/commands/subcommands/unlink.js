@@ -12,9 +12,7 @@ const unlinkSubCommand = (subCommand) => subCommand.setName('unlink')
 
 const unlinkSubFunction = async (interaction, userData) => {
 
-    var langOpt = userData.lang;
-
-    await interaction.deferReply({ ephemeral: userData.invisible });
+    const langOpt = userData.lang;
 
     if (userData.platform && userData.username) {
 
@@ -23,7 +21,7 @@ const unlinkSubFunction = async (interaction, userData) => {
                 'platform': deleteField(),
                 'username': deleteField()
             }).then(() => {
-                var unlinkedEmbed = new EmbedBuilder()
+                const unlinkedEmbed = new EmbedBuilder()
                     .setTitle(lang[langOpt].stats.line_5)
                     .setDescription(
                         `${lang[langOpt].stats.line_18}` +
@@ -36,7 +34,7 @@ const unlinkSubFunction = async (interaction, userData) => {
             }).catch(error => { return sendErrorEmbed(interaction, langOpt, error) });
     } else {
 
-        var notLinkedEmbed = new EmbedBuilder()
+        const notLinkedEmbed = new EmbedBuilder()
             .setTitle(lang[langOpt].stats.line_1)
             .setDescription(`${lang[langOpt].stats.line_17}!`)
             .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })

@@ -6,15 +6,15 @@ module.exports = {
         client.shard.fetchClientValues('guilds.cache.size')
             .then(results => {
 
-                var guildCount = results.reduce((acc, guildCount) => acc + guildCount, 0);
+                const guildCount = results.reduce((acc, guildCount) => acc + guildCount, 0);
 
                 try {
-                    let guildApexServ = client.guilds.cache.get("1018244995792257114");
-                    let guildCountChannel = guildApexServ.channels.cache.get("1024393334007009391")
+                    const guildApexServ = client.guilds.cache.get("1018244995792257114");
+                    const guildCountChannel = guildApexServ.channels.cache.get("1024393334007009391")
                     guildCountChannel.setName("Servers Active: " + guildCount.toString())
                 } catch (error) { console.log(error) }
 
-                let data = {
+                const data = {
                     "server_count": guildCount,
                     "shard_count": client.shard.count
                 };

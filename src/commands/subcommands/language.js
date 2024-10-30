@@ -24,12 +24,11 @@ const languageSubCommand = (subCommand) => subCommand
 
 const languageSubFunction = async (interaction, userData) => {
 
-    await interaction.deferReply({ ephemeral: userData.invisible });
-    var selecLang = interaction.options.get('language').value;
+    const selecLang = interaction.options.get('language').value;
 
     await setDoc(doc(db, 'users', interaction.user.id), { lang: selecLang }, { merge: true });
 
-    var langEmbed = new EmbedBuilder()
+    const langEmbed = new EmbedBuilder()
         .setTitle(`${lang[selecLang].lang.line_1}`)
         .setDescription(lang[selecLang].lang.line_2)
         .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })

@@ -10,10 +10,10 @@ module.exports = {
 
     async execute(interaction, auth, userData) {
 
-        var langOpt = userData.lang;
+        const langOpt = userData.lang;
         await interaction.deferReply({ ephemeral: userData.invisible });
 
-        var y = weapons.length;
+        const y = weapons.length;
         var uniqueNumbers = [];
 
         while (uniqueNumbers.length < 3) {
@@ -23,8 +23,8 @@ module.exports = {
             }
         }
 
-        let value1 = uniqueNumbers[0].toString();
-        let value2 = uniqueNumbers[1].toString();
+        const value1 = uniqueNumbers[0].toString();
+        const value2 = uniqueNumbers[1].toString();
 
         const select = new StringSelectMenuBuilder()
             .setCustomId('loadout')
@@ -42,7 +42,7 @@ module.exports = {
         const row = new ActionRowBuilder()
             .addComponents(select);
 
-        var loadoutEmbed = new EmbedBuilder()
+        const loadoutEmbed = new EmbedBuilder()
             .setDescription(`${lang[langOpt].loadout.line_2} **${weapons[uniqueNumbers[0]].name}** ${lang[langOpt].loadout.line_1} **${weapons[uniqueNumbers[1]].name}** ${lang[langOpt].loadout.line_3}!`)
             .setImage(weapons[uniqueNumbers[0]].url)
             .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
