@@ -1,6 +1,6 @@
 # Changelog
 
-## V2.1.8
+## V2.1.9
 
 ### Update cron
 
@@ -10,109 +10,109 @@ Updated cron V2.4.4 -> V3.1.8
 
 Now uses autofill and supports all know discord colors including hex.
 
-### V2.1.8
+## V2.1.8
 
-## Bug fix
+### Bug fix
 
 Removed DM permissions for the settings commands.
 
-### V2.1.7
+## V2.1.7
 
-## Improved activity of the client
+### Improved activity of the client
 
 Better speeds.
 
-## Improved the SKU's for premium users
+### Improved the SKU's for premium users
 
 Removed subscription based models.
 
-## Overall better quality and readability of code
+### Overall better quality and readability of code
 
 Made minor changes to code for better speeds and readability.
 
-## Updated error handling
+### Updated error handling
 
 Improved error handling.
 
-### V2.1.6
+## V2.1.6
 
-## Updated settings embed color
+### Updated settings embed color
 
 Added custom colors as well as new basic colors.
 
-## Overall better quality and readability of code
+### Overall better quality and readability of code
 
 Made minor changes to code for better speeds and readability.
 
-## Fixed loadout.js
+### Fixed loadout.js
 
 Added new weapons.
 
-## Fixed invite.js
+### Fixed invite.js
 
 Fixed the outdated DM Permissions.
 
-## Fixed info.js
+### Fixed info.js
 
 Fixed the oudated DM permissions.
 
-## Updated map.js
+### Updated map.js
 
 Improved code.
 
-#### V2.1.5
+## V2.1.5
 
-## Fix crash on DM
+### Fix crash on DM
 
 Fixed the issue.
 
-## Update firebase
+### Update firebase
 
 Updated firebase V10.14.1 -> V11.0.1
 
-### V2.1.4
+## V2.1.4
 
-## Update firebase
+### Update firebase
 
 Updated Firebase V10.14.0 -> V10.14.1
 
-## Update eslint
+### Update eslint
 
 Updated eslint V9.11.1 -> V9.13.0
 
-## Update .setDMPermission() (outdated)
+### Update .setDMPermission() (outdated)
 
 Updated all command to follow the new syntax.
 
-## Added Team command
+### Added Team command
 
 Added Team command to get a team to use.
 
-## Updated Crafting command
+### Updated Crafting command
 
 Update with new season added the permanent item and removed the weekly/daily.
 
-### V2.1.3
+## V2.1.3
 
-## Update discord.js
+### Update discord.js
 
 Updated Discord.js V14.16.2 -> V14.16.3
 
-## Update firebase
+### Update firebase
 
 Updated Firebase v10.13.2 -> V10.14.0
 
-### V2.1.2
+## V2.1.2
 
-## Update discord.js
+### Update discord.js
 
 Updated Discord.js V14.16.1 -> V14.16.2
 
-## Update eslint
+### Update eslint
 
 Updated eslint V9.9.1 -> V9.11.1
 
-## Update firebase
+### Update firebase
 
 Updated firebase V10.13.1 -> V10.13.2
 
