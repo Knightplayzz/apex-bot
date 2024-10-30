@@ -1,5 +1,11 @@
 # Changelog
 
+## V2.1.8
+
+### Update cron
+
+Updated cron V2.4.4 -> V3.1.8
+
 ### Changed embed color picker
 
 Now uses autofill and supports all know discord colors including hex.
