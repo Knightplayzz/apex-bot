@@ -5,7 +5,7 @@ const firebaseConfig = require('../../SECURITY/firebaseConfig.json');
 const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const lang = require('../../data/lang/lang.json');
-const { sentErrorEmbed } = require('../../utilities/functions/utilities');
+const { sendErrorEmbed } = require('../../utilities/functions/utilities');
 
 module.exports = {
     async execute(interaction, userData, timers) {
@@ -24,7 +24,7 @@ module.exports = {
                     interaction.editReply({ embeds: [succesEmbed], components: [], ephemeral: userData.invisible })
                 })
                 .catch((error) => {
-                    sentErrorEmbed(interaction, userData)
+                    sendErrorEmbed(interaction, userData)
                     return console.log(error)
                 });
         } else {

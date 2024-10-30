@@ -1,6 +1,6 @@
 const { EmbedBuilder, SlashCommandBuilder } = require("discord.js");
 const { version } = require('../../../../package.json');
-const { sentErrorEmbed } = require('../../../utilities/functions/utilities');
+const { sendErrorEmbed } = require('../../../utilities/functions/utilities');
 const lang = require('../../../data/lang/lang.json');
 const os = require('os');
 require('dotenv').config();
@@ -56,6 +56,6 @@ module.exports = {
                     .setFooter({ text: `${lang[langOpt].info.line_2}` });
 
                 interaction.editReply({ embeds: [infoEmbed], ephemeral: userData.invisible });
-            }).catch(error => { sentErrorEmbed(interaction, langOpt, error) });
+            }).catch(error => { sendErrorEmbed(interaction, langOpt, error) });
     }
 }

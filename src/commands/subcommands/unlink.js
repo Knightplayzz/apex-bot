@@ -33,7 +33,7 @@ const unlinkSubFunction = async (interaction, userData) => {
                     .setColor("Green");
 
                 interaction.editReply({ embeds: [unlinkedEmbed], ephemeral: userData.invisible });
-            }).catch(error => { return sentErrorEmbed(interaction, langOpt, error) });
+            }).catch(error => { return sendErrorEmbed(interaction, langOpt, error) });
     } else {
 
         var notLinkedEmbed = new EmbedBuilder()

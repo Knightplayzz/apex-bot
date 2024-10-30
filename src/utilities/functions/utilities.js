@@ -6,24 +6,16 @@ require('dotenv').config();
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+function sendLookUpError(interaction, userData) {
+    var langOpt = userData.lang;
 
-function getStatus(data) {
-    var state;
-    var color;
+    var lookUpError = new EmbedBuilder()
+        .setTitle(`${lang[langOpt].error.line_3}`)
+        .setDescription(`${lang[langOpt].error.line_4}` + "``" + `${interaction.options.getString('username')}` + "``.")
+        .setColor('D0342C')
+        .setTimestamp();
 
-    if (data.isOnline === 1 && data.isInGame === 0) {
-        state = 'Online (Lobby)';
-        color = 'Green';
-    }
-    if (data.isInGame === 1 && data.isOnline === 1) {
-        state = 'In a Match';
-        color = 'Orange';
-    }
-    if (data.isOnline === 0) {
-        state = 'Offline';
-        color = 'Black';
-    }
-    return { state, color };
+    interaction.editReply({ embeds: [lookUpError], ephemeral: userData.invisible });
 }
 function getMapDescription(gamemode, data, langOpt) {
     var title = `${lang[langOpt].map.line_1} ${data[gamemode].current.map}`;
@@ -38,7 +30,7 @@ function getMapDescription(gamemode, data, langOpt) {
     }
     return { title, description, image };
 }
-function sentErrorEmbed(interaction, userData) {
+function sendErrorEmbed(interaction, userData) {
     var langOpt = userData.lang;
     var errorEmbed = new EmbedBuilder()
         .setDescription(`**${lang[langOpt].error.line_1}**` +
@@ -49,18 +41,8 @@ function sentErrorEmbed(interaction, userData) {
 
     interaction.editReply({ embeds: [errorEmbed], ephemeral: userData.invisible });
 }
-function sentLookUpError(interaction, userData) {
-    var langOpt = userData.lang;
 
-    var lookUpError = new EmbedBuilder()
-        .setTitle(`${lang[langOpt].error.line_3}`)
-        .setDescription(`${lang[langOpt].error.line_4}` + "``" + `${interaction.options.getString('username')}` + "``.")
-        .setColor('D0342C')
-        .setTimestamp();
-
-    interaction.editReply({ embeds: [lookUpError], ephemeral: userData.invisible });
-}
-function sentVoteEmbed(interaction, userData) {
+function sendVoteEmbed(interaction, userData) {
     var langOpt = userData.lang;
     var voteEmbed = new EmbedBuilder()
         .setTitle(`${lang[langOpt].vote.line_1}`)
@@ -79,19 +61,22 @@ async function hasUserVoted(interaction, userData) {
         const data = await res.json();
         return data.voted === 1;
     } catch (error) {
-        sentErrorEmbed(interaction, userData, error);
+        sendErrorEmbed(interaction, userData, error);
         return false; // Return false in case of an error
     }
 }
 function handleError(interaction, userData, status) {
-    console.log(`SOMETHING WENT WRONG ${status}`);
-    if (status === 400 || status === 429) sentErrorEmbed(interaction, userData); //try again later
-    if (status === 403 || status === 410) sentErrorEmbed(interaction, userData); //my fault
-    if (status === 404) sentLookUpError(interaction, userData); //lookup err
-    if (status === 500 || status === 405) sentErrorEmbed(interaction, userData); //api error
-    return Promise.reject('Error occurred');
+    if (status === 400 || status === 429) sendErrorEmbed(interaction, userData); //try again later
+    if (status === 403 || status === 410) sendErrorEmbed(interaction, userData); //my fault
+    if (status === 404) sendLookUpError(interaction, userData); //lookup err
+    if (status === 500 || status === 405) sendErrorEmbed(interaction, userData); //api error
+    if (status !== 404) {
+        console.log(`SOMETHING WENT WRONG ${status}`);
+        return Promise.reject('Error occurred');
+    }
 }
+
 function checkData(data, interaction, userData) {
-    if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sentLookUpError(interaction, userData);
+    if (!data || !data?.global || !data?.global?.name || data?.global?.name === '') return sendLookUpError(interaction, userData);
 }
-module.exports = { getStatus, getMapDescription, sentErrorEmbed, sentVoteEmbed, hasUserVoted, handleError, sleep, sentLookUpError, checkData };
+module.exports = { getMapDescription, sendErrorEmbed, sendVoteEmbed, hasUserVoted, handleError, sleep, sendLookUpError, checkData };

@@ -2,6 +2,14 @@
 
 ## V2.1.9
 
+### Small fix
+
+Corrected files spelling mistakes.
+
+### Updated /me and /stats
+
+Improved command speed and layout.
+
 ### Update cron
 
 Updated cron V2.4.4 -> V3.1.8
