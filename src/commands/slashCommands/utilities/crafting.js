@@ -2,6 +2,8 @@ const { AttachmentBuilder, EmbedBuilder, SlashCommandBuilder } = require("discor
 const fetch = require('node-fetch');
 const Canvas = require('canvas');
 const { handleError } = require('../../../utilities/functions/utilities');
+const path = require('path');
+const bannerPath = path.join(__dirname, '../../../data/utilities/images/other/banner-back.png');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -20,16 +22,17 @@ module.exports = {
         fetch(url)
             .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(async data => {
-                //top lef
+
+                //top right
                 const daily1 = await Canvas.loadImage(data[4].bundleContent[0].itemType.asset);
                 ctx.drawImage(daily1, 200, 0);
 
-                //bottom left
+                //top left
                 const daily2 = await Canvas.loadImage(data[3].bundleContent[0].itemType.asset);
                 ctx.drawImage(daily2, 0, 0);
 
-                //top right
-                const weekly1 = await Canvas.loadImage(data[6].bundleContent[0].itemType.asset);
+                //bottom left
+                const weekly1 = await Canvas.loadImage(bannerPath);
                 ctx.drawImage(weekly1, 0, 200);
 
                 //bottom right

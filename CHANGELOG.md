@@ -1,5 +1,15 @@
 # Changelog
 
+## V2.2.1
+
+### Fixed /craft
+
+Added banner crafting image.
+
+### Restructured files
+
+Reorganised image files.
+
 ## V2.2.0
 
 ### Code stability update
