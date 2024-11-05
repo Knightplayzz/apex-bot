@@ -1,11 +1,5 @@
 <p align="center">
-  <img src="src/data/utilities/images/pfp-png.png" alt="Alt Text" width="200">
-</p>
-<p align="center">
-  <a href="https://top.gg/bot/1014207340188270673">
-    <img src="https://top.gg/api/widget/servers/1014207340188270673.svg">
-    <img src="https://top.gg/api/widget/upvotes/1014207340188270673.svg">
-  </a>
+  <img src="src/data/utilities/images/account/pfp-png.png" alt="Alt Text" width="200">
 </p>
 <p align="center">
   <img src="https://repobeats.axiom.co/api/embed/1655dd98d3517f93b6d246c98f3a1dd134f37595.svg">
