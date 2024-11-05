@@ -11,7 +11,6 @@ module.exports = {
         .addStringOption(option =>
             option.setName('gamemode')
                 .setDescription('Select Gamemode.')
-                .setNameLocalizations({ nl: 'gamemode' })
                 .setDescriptionLocalizations({ nl: 'Kies een Gamemode.' })
                 .setRequired(false)
                 .addChoices(

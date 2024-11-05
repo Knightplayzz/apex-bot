@@ -24,13 +24,14 @@ module.exports = {
 
         var userData = { invisible: true, lang: 'en', embedColor: embedColor };
         const hasUserPremiumVar = await hasUserPremium(interaction);
+        if (hasUserPremiumVar !== true && slashCommand.premium == true) return sendVoteEmbed(interaction, { invisible: true, lang: 'en', embedColor: embedColor });
+        if (hasUserPremiumVar !== true) return slashCommand.execute(interaction, auth, userData);
 
         signInWithEmailAndPassword(fireAuth, email, password)
             .then(async (cred) => {
                 const docSnap = await getDoc(doc(db, 'users', interaction.user.id))
                 const data = docSnap.data()
-                if (docSnap.exists() && hasUserPremiumVar === true) userData = { invisible: data?.invisible ?? true, embedColor: data?.embedColor ?? embedColor, lang: data?.lang ?? 'en', username: data?.username ?? null, platform: data?.platform ?? null };
-                if (hasUserPremiumVar == false && slashCommand.premium == true) return sendVoteEmbed(interaction, { invisible: true, lang: 'en', embedColor: embedColor });
+                if (docSnap.exists()) userData = { invisible: data?.invisible ?? true, embedColor: data?.embedColor ?? embedColor, lang: data?.lang ?? 'en', username: data?.username ?? null, platform: data?.platform ?? null };
                 slashCommand.execute(interaction, auth, userData);
             })
     }

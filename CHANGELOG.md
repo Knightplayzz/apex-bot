@@ -1,5 +1,11 @@
 # Changelog
 
+## V2.2.2
+
+### Update eslint
+
+Updated eslint V9.13.0 -> V9.14.0
+
 ## V2.2.1
 
 ### Fixed /craft

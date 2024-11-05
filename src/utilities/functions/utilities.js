@@ -6,6 +6,7 @@ require('dotenv').config();
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
 function sendLookUpError(interaction, userData) {
     const langOpt = userData.lang;
     const lookUpError = new EmbedBuilder()
@@ -16,6 +17,7 @@ function sendLookUpError(interaction, userData) {
 
     interaction.editReply({ embeds: [lookUpError], ephemeral: userData.invisible });
 }
+
 function sendErrorEmbed(interaction, userData) {
     const langOpt = userData.lang;
     const errorEmbed = new EmbedBuilder()
@@ -40,17 +42,16 @@ function sendVoteEmbed(interaction, userData) {
 
     return interaction.reply({ embeds: [voteEmbed], ephemeral: userData.invisible });
 }
+
 async function hasUserVoted(interaction, userData) {
     const url = `https://top.gg/api/bots/1014207340188270673/check?userId=${interaction.user.id}`;
     try {
         const res = await fetch(url, { headers: { "Authorization": process.env.topgg_AUTH } });
         const data = await res.json();
         return data.voted === 1;
-    } catch (error) {
-        sendErrorEmbed(interaction, userData, error);
-        return false; // Return false in case of an error
-    }
+    } catch (error) { return null };
 }
+
 function handleError(interaction, userData, status) {
     if (status === 400 || status === 429) sendErrorEmbed(interaction, userData); //try again later
     if (status === 403 || status === 410) sendErrorEmbed(interaction, userData); //my fault
