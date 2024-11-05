@@ -83,7 +83,7 @@ For more information, please review our [Privacy Policy](PRIVACY).
 
 ## Security
 
-At [Your Bot's Name], we take security seriously. We are committed to ensuring the safety and privacy of our users' data. Our security measures include:- Encryption of sensitive information- Regular security audits and assessments- Implementation of best practices for data protection- Prompt response to security incidentsFor more detailed information about our security practices, please refer to our [Security Policy](SECURITY) document.
+At Apex Bot, we take security seriously. We are committed to ensuring the safety and privacy of our users' data. Our security measures include:- Encryption of sensitive information- Regular security audits and assessments- Implementation of best practices for data protection- Prompt response to security incidentsFor more detailed information about our security practices, please refer to our [Security Policy](SECURITY) document.
 
 We continuously monitor our systems and update our security measures to mitigate any potential risks. If you have any security concerns or would like to report a security issue, please contact us at [philippesmeets@icloud.com](mailto:philippesmeets@icloud.com).
 
