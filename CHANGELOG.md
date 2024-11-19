@@ -1,5 +1,19 @@
 # Changelog
 
+## V2.2.3
+
+### Update cron
+
+Updated cron V3.1.9 -> V3.2.1
+
+### Update eslint
+
+Updated eslint V9.14.0 -> V9.15.0
+
+### Update firebase
+
+Updated firebase V11.0.1 -> V11.0.2
+
 ## V2.2.2
 
 ### Update eslint
