@@ -25,7 +25,7 @@
     "canvas": "^2.11.2",
     "cron": "^3.2.1",
     "discord.js": "^14.15.3",
-    "dotenv": "^16.4.1",
+    "dotenv": "^16.4.7",
     "firebase": "^11.0.1",
     "node-cron": "^3.0.3",
     "node-fetch": "^2.7.0"
