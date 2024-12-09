@@ -1,5 +1,15 @@
 # Changelog
 
+## V2.2.4
+
+### Update dotenv
+
+Updated dotenv V16.4.5 -> V16.4.7
+
+### Update eslint
+
+Updated eslint V9.15.9 -> V9.16.0
+
 ## V2.2.3
 
 ### Update cron
