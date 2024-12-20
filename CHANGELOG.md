@@ -1,5 +1,27 @@
 # Changelog
 
+## V2.2.5
+
+### NEW Engine
+
+Node V20.14.0 -> V22.12.0
+
+### Update NPM
+
+Updated npm V10.8.2 -> V11.0.0
+
+### Update firebase
+
+Updated Firebase V11.0.2 -> V11.1.0
+
+### Update eslint
+
+Updated Eslint V9.16.0 -> V9.17.0
+
+### Update cron
+
+Updated Cron V3.2.1 -> V3.3.1
+
 ## V2.2.4
 
 ### Update dotenv
