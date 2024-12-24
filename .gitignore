@@ -4,3 +4,4 @@ src/SECURITY/
 .env
 todo.txt
 .VSCodeCounter
+.eslintrc.json

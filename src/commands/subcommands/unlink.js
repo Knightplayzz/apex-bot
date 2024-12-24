@@ -14,36 +14,29 @@ const unlinkSubFunction = async (interaction, userData) => {
 
     const langOpt = userData.lang;
 
+    const unlinkedEmbed = new EmbedBuilder()
+        .setTitle(lang[langOpt].stats.line_5)
+        .setDescription(
+            `${lang[langOpt].stats.line_18}` +
+            `\n**${userData.username}** [${userData.platform}]`)
+        .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
+        .setTimestamp()
+        .setColor("Green");
+
+    const notLinkedEmbed = new EmbedBuilder()
+        .setTitle(lang[langOpt].stats.line_1)
+        .setDescription(`${lang[langOpt].stats.line_17}!`)
+        .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
+        .setTimestamp()
+        .setColor("Red");
+
     if (userData.platform && userData.username) {
-
-        await updateDoc(doc(db, 'users', interaction.user.id),
-            {
-                'platform': deleteField(),
-                'username': deleteField()
-            }).then(() => {
-                const unlinkedEmbed = new EmbedBuilder()
-                    .setTitle(lang[langOpt].stats.line_5)
-                    .setDescription(
-                        `${lang[langOpt].stats.line_18}` +
-                        `\n**${userData.username}** [${userData.platform}]`)
-                    .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
-                    .setTimestamp()
-                    .setColor("Green");
-
-                interaction.editReply({ embeds: [unlinkedEmbed], ephemeral: userData.invisible });
-            }).catch(error => { return sendErrorEmbed(interaction, langOpt, error) });
-    } else {
-
-        const notLinkedEmbed = new EmbedBuilder()
-            .setTitle(lang[langOpt].stats.line_1)
-            .setDescription(`${lang[langOpt].stats.line_17}!`)
-            .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
-            .setTimestamp()
-            .setColor("Red");
-
-        interaction.editReply({ embeds: [notLinkedEmbed], ephemeral: userData.invisible });
-    }
+        await updateDoc(doc(db, 'users', interaction.user.id), { 'platform': deleteField(), 'username': deleteField() })
+            .then(interaction.editReply({ embeds: [unlinkedEmbed], ephemeral: userData.invisible })) //Check of deze activeerd
+            .catch(error => { return sendErrorEmbed(interaction, langOpt, error) });
+    } else return interaction.editReply({ embeds: [notLinkedEmbed], ephemeral: userData.invisible });
 }
+
 module.exports = {
     unlinkSubCommand: unlinkSubCommand,
     unlinkSubFunction: unlinkSubFunction

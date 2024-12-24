@@ -94,7 +94,7 @@ module.exports = {
                 ctx.fillRect(1070, 750, 100, -diff_pred);
 
                 var attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'distribution.png' });
-                distribEmbed.setImage(`attachment://${attachment.name}`)
+                distribEmbed.setImage(`attachment://${attachment.name}`);
 
                 return await interaction.editReply({ embeds: [distribEmbed], files: [attachment], ephemeral: userData.invisible });
             }).catch(error => { console.error('Fetch error:', error) });

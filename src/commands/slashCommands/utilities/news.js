@@ -12,7 +12,7 @@ module.exports = {
 
         await interaction.deferReply({ ephemeral: userData.invisible });
 
-        var url = `https://api.mozambiquehe.re/news?auth=${auth}`;
+        const url = `https://api.mozambiquehe.re/news?auth=${auth}`;
         fetch(url)
             .then(res => res.status === 200 ? res.json() : handleError(interaction, userData, res.status))
             .then(async data => {

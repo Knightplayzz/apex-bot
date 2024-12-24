@@ -1,5 +1,11 @@
 # Changelog
 
+## V2.2.6
+
+### Update canvas
+
+Updated Canvas V2.11.2 -> V3.0.0
+
 ## V2.2.5
 
 ### NEW Engine
