@@ -1,5 +1,11 @@
 # Changelog
 
+## V2.2.7
+
+### Update cron
+
+Updated Cron V3.3.1 -> V3.3.2
+
 ## V2.2.6
 
 ### Update canvas
