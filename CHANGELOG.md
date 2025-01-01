@@ -2,6 +2,14 @@
 
 ## V2.2.7
 
+### Update discord.js
+
+Updated Discord.js V14.16.3 -> V14.17.0
+
+### Update canvas
+
+Updated Canvas V3.0.0 -> V3.0.1
+
 ### Update cron
 
 Updated Cron V3.3.1 -> V3.3.2
