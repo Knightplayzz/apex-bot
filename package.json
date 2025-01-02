@@ -24,7 +24,7 @@
   "dependencies": {
     "canvas": "^3.0.0",
     "cron": "^3.2.1",
-    "discord.js": "^14.15.3",
+    "discord.js": "^14.17.2",
     "dotenv": "^16.4.7",
     "firebase": "^11.0.1",
     "node-cron": "^3.0.3",
