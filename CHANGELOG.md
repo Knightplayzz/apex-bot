@@ -4,7 +4,7 @@
 
 ### Update discord.js
 
-Updated Discord.js V14.16.3 -> V14.17.2
+Updated Discord.js V14.16.3 -> V14.17.3
 
 ### Update canvas
 
