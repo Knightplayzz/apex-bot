@@ -23,7 +23,7 @@
   "homepage": "https://github.com/Knightplayzz/apex-bot#readme",
   "dependencies": {
     "canvas": "^3.0.0",
-    "cron": "^3.2.1",
+    "cron": "^3.4.0",
     "discord.js": "^14.17.2",
     "dotenv": "^16.4.7",
     "firebase": "^11.0.1",
