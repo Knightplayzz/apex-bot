@@ -2,6 +2,10 @@
 
 ## V2.2.7
 
+### Update eslint
+
+Updated Eslint V9.17.0 -> V9.18.0
+
 ### Update discord.js
 
 Updated Discord.js V14.16.3 -> V14.17.3
@@ -12,7 +16,7 @@ Updated Canvas V3.0.0 -> V3.0.1
 
 ### Update cron
 
-Updated Cron V3.3.1 -> V3.3.2
+Updated Cron V3.3.1 -> V3.5.0
 
 ## V2.2.6
 
