@@ -1,5 +1,27 @@
 # Changelog
 
+## V2.2.8
+
+### Update node
+
+Updated Node V22.14.0 -> V22.13.1
+
+### Update canvas
+
+Updated Canvas V3.0.1 -> V3.1.0
+
+### Update discord.js
+
+Updated Discord.js V14.17.3 -> V14.18.0
+
+### Update eslint
+
+Updated Eslint V9.18.0 -> V9.22.0
+
+### Update firebase
+
+Updated Firebase V11.1.0 -> V11.4.0
+
 ## V2.2.7
 
 ### Update eslint

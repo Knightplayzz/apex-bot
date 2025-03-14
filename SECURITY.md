@@ -8,7 +8,7 @@ Potential security issues in versions before V2.0.8 with firebase.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 2.2.7  | ✅ |
+| 2.2.8  | ✅ |
 
 ## Reporting a Vulnerability
 
