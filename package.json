@@ -15,7 +15,7 @@
   "author": "Philippe Smeets",
   "license": "CC BY-NC",
   "engines": {
-    "node": "20.14.0"
+    "node": "22.19.0"
   },
   "bugs": {
     "url": "https://github.com/Knightplayzz/apex-bot/issues"
