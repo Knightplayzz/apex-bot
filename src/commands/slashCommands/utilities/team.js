@@ -1,7 +1,7 @@
-const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require("discord.js");
+const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const Canvas = require('canvas');
-const array = require("../../../data/legends/misc/banners.json");
-///from https://www.ea.com/games/apex-legends/about/characters
+const legends = require('../../../data/legends/misc/banners.json');
+const logger = require('../../../utilities/functions/logger').child({ module: 'teamCommand' });
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -9,42 +9,54 @@ module.exports = {
         .setDescription('Pick a random team to play in-game.'),
 
     async execute(interaction, auth, userData) {
-
         await interaction.deferReply({ ephemeral: userData.invisible });
 
         const canvas = Canvas.createCanvas(1300, 500);
         const ctx = canvas.getContext('2d');
+        const uniqueNumbers = pickUniqueIndexes(legends.length, 3);
+        const images = await Promise.all(uniqueNumbers.map(index => loadLegendImage(index)));
 
-        const y = array.length;
-        var uniqueNumbers = [];
-
-        while (uniqueNumbers.length < 3) {
-            var randomNumber = Math.floor(Math.random() * y);
-            if (!uniqueNumbers.includes(randomNumber)) {
-                uniqueNumbers.push(randomNumber);
-            }
-        }
-
-        const player1 = await Canvas.loadImage(array[uniqueNumbers[0]].url);
-        const player2 = await Canvas.loadImage(array[uniqueNumbers[1]].url);
-        const player3 = await Canvas.loadImage(array[uniqueNumbers[2]].url);
-
-        //if image is outdated the thing wont crash
-        if (player1) ctx.drawImage(player1, -100, -100);
-        if (player2) ctx.drawImage(player2, 330, -100);
-        if (player3) ctx.drawImage(player3, 760, -100);
-
-        //if image is outdated log it
-        if (!player1 || !player2 || !player3) console.log(`${array[uniqueNumbers[0]]}, ${array[uniqueNumbers[1]]}, ${array[uniqueNumbers[2]]}`);
+        const positions = [-100, 330, 760];
+        images.forEach((image, index) => {
+            if (image) ctx.drawImage(image, positions[index], -100);
+        });
 
         const attachment = new AttachmentBuilder(canvas.toBuffer(), { name: 'team.png' });
         const teamEmbed = new EmbedBuilder()
             .setTitle('Team')
             .setColor(userData.embedColor)
-            .setFooter({ text: `${interaction.client.user.username} ❤️`, iconURL: interaction.client.user.displayAvatarURL() })
+            .setFooter({
+                text: `${interaction.client.user.username} :heart:`,
+                iconURL: interaction.client.user.displayAvatarURL(),
+            })
             .setTimestamp()
             .setImage(`attachment://${attachment.name}`);
 
-        return interaction.editReply({ embeds: [teamEmbed], files: [attachment], ephemeral: userData.invisible });
+        return interaction.editReply({
+            embeds: [teamEmbed],
+            files: [attachment],
+            ephemeral: userData.invisible,
+        });
+    },
+};
+
+function pickUniqueIndexes(max, count) {
+    const indexes = new Set();
+    while (indexes.size < count) {
+        indexes.add(Math.floor(Math.random() * max));
+    }
+    return [...indexes];
+}
+
+async function loadLegendImage(index) {
+    try {
+        return await Canvas.loadImage(legends[index].url);
+    } catch (error) {
+        logger.warn('Failed to load legend banner', {
+            error,
+            legend: legends[index]?.name,
+            url: legends[index]?.url,
+        });
+        return null;
     }
 }

@@ -4,7 +4,13 @@ const { messageSubCommand, messageSubFunction } = require('../../subcommands/mes
 const { deleteSubCommand, deleteSubFunction } = require('../../subcommands/delete');
 const { unlinkSubCommand, unlinkSubFunction } = require('../../subcommands/unlink');
 const { languageSubCommand, languageSubFunction } = require('../../subcommands/language');
-const { embedColorCustomSubCommand, embedColorCustomSubFunction, autocomplete: embedColorCustomAutocomplete } = require('../../subcommands/embedColor/embedColorCustom');
+const {
+    embedColorCustomSubCommand,
+    embedColorCustomSubFunction,
+    autocomplete: embedColorCustomAutocomplete,
+} = require('../../subcommands/embedColor/embedColorCustom');
+const { safeRespond } = require('../../../utilities/functions/interactions');
+const logger = require('../../../utilities/functions/logger').child({ module: 'settingsCommand' });
 
 module.exports = {
     premium: true,
@@ -18,18 +24,19 @@ module.exports = {
         .addSubcommand(deleteSubCommand)
         .addSubcommand(unlinkSubCommand)
         .addSubcommand(languageSubCommand)
-        .addSubcommandGroup(group => group
-            .setName('embedcolor')
-            .setDescription('Adjust embed color settings')
-            .addSubcommand(embedColorCustomSubCommand)
+        .addSubcommandGroup(group =>
+            group
+                .setName('embedcolor')
+                .setDescription('Adjust embed color settings')
+                .addSubcommand(embedColorCustomSubCommand)
         ),
 
     async execute(interaction, auth, userData) {
-
         const subCommand = interaction.options.getSubcommand();
 
         const subCommandMap = {
-            link: (interaction, userData) => linkSubFunction(interaction, auth, userData),
+            link: (subInteraction, subUserData) =>
+                linkSubFunction(subInteraction, auth, subUserData),
             message: messageSubFunction,
             delete: deleteSubFunction,
             unlink: unlinkSubFunction,
@@ -39,12 +46,13 @@ module.exports = {
 
         const subCommandFunction = subCommandMap[subCommand];
         if (subCommandFunction) {
-            if (subCommand !== "message") await interaction.deferReply({ ephemeral: userData.invisible });
+            if (subCommand !== 'message')
+                await interaction.deferReply({ ephemeral: userData.invisible });
             return subCommandFunction(interaction, userData);
-        } else {
-            console.error(`Unknown subcommand: ${subCommand}`);
-            return interaction.editReply({ content: 'Unknown subcommand', ephemeral: true });
         }
+
+        logger.warn('Unknown settings subcommand', { subCommand, userId: interaction.user.id });
+        return safeRespond(interaction, { content: 'Unknown subcommand', ephemeral: true });
     },
 
     autocomplete(interaction) {
@@ -52,5 +60,6 @@ module.exports = {
         if (subCommand === 'custom') {
             return embedColorCustomAutocomplete(interaction);
         }
-    }
-}
+        return null;
+    },
+};

@@ -6,9 +6,9 @@ We highly recommend useing the latest version.
 Old versions still work but don't have new functinalities and safety updates.
 Potential security issues in versions before V2.0.8 with firebase.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 2.2.8  | ✅ |
+| Version | Supported |
+| ------- | --------- |
+| 2.2.8   | ✅        |
 
 ## Reporting a Vulnerability
 
@@ -20,8 +20,8 @@ If there is an safety issue it will be our priority to resolve that issue.
 
 ## For more information please contact us
 
-| Type | Information |
-|------|-------------|
-| Mail |<Philippesmeets@icloud.com> |
-| Github | Knightplayzz |
+| Type    | Information                    |
+| ------- | ------------------------------ |
+| Mail    | <Philippesmeets@icloud.com>    |
+| Github  | Knightplayzz                   |
 | Discord | philippesmeets (philippe#0354) |

@@ -1,35 +1,66 @@
-const { EmbedBuilder } = require("discord.js");
-const firebase = require('firebase/app');
-const { getFirestore, doc, getDoc } = require('firebase/firestore');
-const { getAuth, signInWithEmailAndPassword, } = require('firebase/auth');
-const email = process.env.email;
-const password = process.env.password;
-const firebaseConfig = require('../../SECURITY/firebaseConfig.json');
-const app = firebase.initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const fireAuth = getAuth();
+const { EmbedBuilder } = require('discord.js');
+const {
+    DEFAULT_USER_DATA,
+    getUserData,
+    normalizeUserData,
+} = require('../../utilities/functions/firebase');
+const { safeEdit, safeRespond } = require('../../utilities/functions/interactions');
+const { handleCommandError } = require('../../utilities/functions/utilities');
 const { embedColor } = require('../../data/utilities/utilities.json');
-const timers = {};
+const { hasUserPremium } = require('../../utilities/functions/hasUserPremium.js');
 const lang = require('../../data/lang/lang.json');
 const newsFile = require('../../utilities/eventCommands/news.js');
 const settingsDelete = require('../../utilities/eventCommands/settings-delete.js');
-const { hasUserPremium } = require('../../utilities/functions/hasUserPremium.js');
+const logger = require('../../utilities/functions/logger').child({ module: 'buttons' });
+
+const timers = {};
+const NEWS_BUTTONS = new Set(['pageFirst', 'prev', 'next', 'pageLast']);
+const SETTINGS_DELETE_BUTTONS = new Set(['settings-delete-confirm', 'settings-delete-cancel']);
+
+function getSourceInteraction(interaction) {
+    return interaction.message?.interactionMetadata || interaction.message?.interaction;
+}
+
+async function getInteractionUserContext(interaction) {
+    const hasPremiumAccess = await hasUserPremium(interaction);
+    return {
+        hasPremiumAccess,
+        userData: hasPremiumAccess
+            ? await getUserData(interaction.user.id)
+            : normalizeUserData({ embedColor }),
+    };
+}
+
+function setInteractionTimer(key, callback) {
+    if (!key) return;
+    if (timers[key]) clearTimeout(timers[key]);
+    timers[key] = setTimeout(() => {
+        delete timers[key];
+        callback();
+    }, 15 * 1000);
+}
 
 module.exports = {
-    name: "interactionCreate",
+    name: 'interactionCreate',
     once: false,
     async execute(interaction, auth) {
+        if (interaction.isChatInputCommand()) {
+            const isNewsCommand = interaction.commandName === 'news';
+            const isSettingsDelete =
+                interaction.commandName === 'settings' &&
+                interaction.options.getSubcommand(false) === 'delete';
+            if (!isNewsCommand && !isSettingsDelete) return;
 
-        if (!interaction.isCommand() && !interaction.isButton()) return;
+            try {
+                const { hasPremiumAccess, userData } = await getInteractionUserContext(interaction);
 
-        var userData = { invisible: true, lang: 'en', embedColor: embedColor };
-        const hasUserPremiumVar = await hasUserPremium(interaction);
+                if (isSettingsDelete && !hasPremiumAccess) return;
 
-        signInWithEmailAndPassword(fireAuth, email, password)
-            .then(async (cred) => {
-                const docSnap = await getDoc(doc(db, 'users', interaction.user.id))
-                const data = docSnap.data()
-                if (docSnap.exists() && hasUserPremiumVar === true) userData = { invisible: data?.invisible ?? true, embedColor: data?.embedColor ?? embedColor, lang: data?.lang ?? 'en', username: data?.username ?? null, platform: data?.platform ?? null };
+                if (isNewsCommand) {
+                    return setInteractionTimer(interaction.id, () => {
+                        safeEdit(interaction, { components: [], ephemeral: userData.invisible });
+                    });
+                }
 
                 const langOpt = userData.lang;
                 const cancelledEmbed = new EmbedBuilder()
@@ -37,19 +68,53 @@ module.exports = {
                     .setDescription(`${lang[langOpt].settings.line_9}`)
                     .setColor('Red');
 
-                if (interaction.isCommand()) {
-                    if (interaction.commandName === 'news') timers[interaction.id] = setTimeout(() => { interaction.editReply({ components: [], ephemeral: userData.invisible }) }, 15 * 1000);
-                    if (interaction.options.getSubcommand(false) === 'delete') return timers[interaction.id] = setTimeout(() => { interaction.editReply({ embeds: [cancelledEmbed], components: [], ephemeral: userData.invisible }) }, 15 * 1000);
-                }
+                return setInteractionTimer(interaction.id, () => {
+                    safeEdit(interaction, {
+                        embeds: [cancelledEmbed],
+                        components: [],
+                        ephemeral: userData.invisible,
+                    });
+                });
+            } catch (error) {
+                logger.warn('Failed to create interaction timer', {
+                    command: interaction.commandName,
+                    error,
+                    interactionId: interaction.id,
+                });
+            }
+        }
 
-                if (!interaction.isButton()) return
-                if (interaction.message.interaction.commandName === 'news') {
-                    if (timers[interaction.message.interaction.id]) clearTimeout(timers[interaction.message.interaction.id]);
-                    timers[interaction.message.interaction.id] = setTimeout(async () => { interaction.editReply({ components: [], ephemeral: userData.invisible }) }, 15 * 1000);
-                }
-                if (interaction.user.id !== interaction.message.interaction.user.id) return interaction.reply({ content: "Not your button!", ephemeral: true });
-                if (interaction.message.interaction.commandName === "settings delete") settingsDelete.execute(interaction, userData, timers);
-                if (interaction.message.interaction.commandName === 'news') newsFile.execute(interaction, auth, userData);
-            })
-    }
-}
+        if (!interaction.isButton()) return;
+
+        const sourceInteraction = getSourceInteraction(interaction);
+        const sourceUserId = sourceInteraction?.user?.id;
+
+        if (sourceUserId && interaction.user.id !== sourceUserId) {
+            return safeRespond(interaction, { content: 'Not your button!', ephemeral: true });
+        }
+
+        if (
+            !NEWS_BUTTONS.has(interaction.customId) &&
+            !SETTINGS_DELETE_BUTTONS.has(interaction.customId)
+        )
+            return;
+
+        let userData = normalizeUserData(DEFAULT_USER_DATA);
+        try {
+            userData = (await getInteractionUserContext(interaction)).userData;
+
+            if (NEWS_BUTTONS.has(interaction.customId)) {
+                setInteractionTimer(sourceInteraction?.id, () => {
+                    safeEdit(interaction, { components: [], ephemeral: userData.invisible });
+                });
+                return newsFile.execute(interaction, auth, userData);
+            }
+
+            if (SETTINGS_DELETE_BUTTONS.has(interaction.customId)) {
+                return settingsDelete.execute(interaction, userData, timers);
+            }
+        } catch (error) {
+            await handleCommandError(interaction, userData, error);
+        }
+    },
+};

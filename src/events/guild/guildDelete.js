@@ -1,10 +1,14 @@
-const setGuildCount = require("../../utilities/functions/setGuildCount");
+const setGuildCount = require('../../utilities/functions/setGuildCount');
+const logger = require('../../utilities/functions/logger').child({ module: 'guildDelete' });
 
 module.exports = {
-    name: "guildDelete",
+    name: 'guildDelete',
     once: false,
     async execute(guildDelete, auth) {
-        console.log(`${guildDelete.client.user.username} REMOVED: ${guildDelete.name} (${guildDelete.id})\nCount: Is being set.`);
+        logger.info('Bot removed from guild', {
+            guildId: guildDelete.id,
+            guildName: guildDelete.name,
+        });
         setGuildCount.execute(guildDelete.client, auth);
-    }
-}
+    },
+};

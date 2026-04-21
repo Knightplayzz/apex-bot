@@ -1,36 +1,28 @@
 const { Routes, REST } = require('discord.js');
-const fs = require('fs');
-const path = require('path');
 require('dotenv').config();
+const { loadSlashCommandModules } = require('./utilities/functions/loaders');
+const logger = require('./utilities/functions/logger').child({ module: 'deployCommands' });
 
-// Initialize the REST client
-const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
-
-// Array to hold the slash commands
-const slashCommands = [];
-
-// Load and register commands
-const commandFolders = fs.readdirSync(path.join(__dirname, 'commands/slashCommands'));
-for (const folder of commandFolders) {
-    const commandFiles = fs.readdirSync(path.join(__dirname, `commands/slashCommands/${folder}`)).filter(file => file.endsWith('.js'));
-    for (const file of commandFiles) {
-        const command = require(`./commands/slashCommands/${folder}/${file}`);
-        slashCommands.push(command.data.toJSON());
-        console.log(`Loaded command: ${file}`);
-    }
+if (!process.env.TOKEN || !process.env.CLIENTID) {
+    logger.error('Missing required TOKEN and/or CLIENTID environment variables');
+    process.exit(1);
 }
+
+const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
+const slashCommands = loadSlashCommandModules().map(({ command, file, folder }) => {
+    logger.info('Slash command prepared for deploy', { command: command.data.name, file, folder });
+    return command.data.toJSON();
+});
 
 (async () => {
     try {
-        console.log('Started refreshing application (/) commands.');
+        logger.info('Refreshing application slash commands', { count: slashCommands.length });
 
-        await rest.put(
-            Routes.applicationCommands(process.env.CLIENTID),
-            { body: slashCommands }
-        );
+        await rest.put(Routes.applicationCommands(process.env.CLIENTID), { body: slashCommands });
 
-        console.log('Successfully reloaded application (/) commands.');
+        logger.info('Application slash commands refreshed', { count: slashCommands.length });
     } catch (error) {
-        console.error('Error while refreshing commands:', error);
+        logger.error('Error while refreshing commands', { error });
+        process.exitCode = 1;
     }
 })();

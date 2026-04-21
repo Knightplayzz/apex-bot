@@ -1,26 +1,30 @@
-const firebase = require('firebase/app');
-const { getFirestore, doc, getDoc, deleteDoc } = require('firebase/firestore');
-const { getAuth, signInWithEmailAndPassword, } = require('firebase/auth');
-const email = process.env.email;
-const password = process.env.password;
-const firebaseConfig = require('../../SECURITY/firebaseConfig.json');
-const app = firebase.initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const fireAuth = getAuth();
+const { deleteDoc, doc, getDoc } = require('firebase/firestore');
+const { ensureSignedIn, getDb } = require('../../utilities/functions/firebase');
+const logger = require('../../utilities/functions/logger').child({ module: 'guildMemberRemove' });
 
 module.exports = {
-    name: "guildMemberRemove",
+    name: 'guildMemberRemove',
     once: false,
     async execute(member) {
+        try {
+            await ensureSignedIn();
 
-        signInWithEmailAndPassword(fireAuth, email, password)
-            .then(async (cred) => {
-                const docRef3 = doc(db, 'serverUsers', member.guild.id, 'users', member.user.id);
-                const docSnap2 = await getDoc(docRef3);
-                if (!docSnap2.exists()) return;
-                deleteDoc(docRef3)
-                    .then(() => { console.log(`Succesfully deleted: ${member.user.username} from db.`) })
-                    .catch(error => { console.log(error) });
-            })
-    }
-}
+            const userRef = doc(getDb(), 'serverUsers', member.guild.id, 'users', member.user.id);
+            const snapshot = await getDoc(userRef);
+            if (!snapshot.exists()) return;
+
+            await deleteDoc(userRef);
+            logger.info('Deleted departing guild member from database', {
+                guildId: member.guild.id,
+                userId: member.user.id,
+                username: member.user.username,
+            });
+        } catch (error) {
+            logger.error('Failed to remove departing guild member from database', {
+                error,
+                guildId: member.guild.id,
+                userId: member.user.id,
+            });
+        }
+    },
+};

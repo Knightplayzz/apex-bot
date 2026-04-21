@@ -1,10 +1,14 @@
-const setGuildCount = require("../../utilities/functions/setGuildCount");
+const setGuildCount = require('../../utilities/functions/setGuildCount');
+const logger = require('../../utilities/functions/logger').child({ module: 'guildCreate' });
 
 module.exports = {
-    name: "guildCreate",
+    name: 'guildCreate',
     once: false,
     async execute(guild, auth) {
-        console.log(`${guild.client.user.username} ADDED: ${guild.name} (${guild.id})\nCount: Is being set.`);
+        logger.info('Bot added to guild', {
+            guildId: guild.id,
+            guildName: guild.name,
+        });
         setGuildCount.execute(guild.client, auth);
-    }
-}
+    },
+};
